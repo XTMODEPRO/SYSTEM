@@ -33,7 +33,6 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            padding-bottom: 60px;
         }
 
         .container {
@@ -146,20 +145,7 @@
 
         main {
             flex: 1;
-        }
-
-        .section-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .section-title i {
-            color: var(--accent);
+            padding-bottom: 40px;
         }
 
         .app-grid {
@@ -275,14 +261,21 @@
             opacity: 0.9;
         }
 
+        /* Area Iklan Kecil di Bawah */
+        .ads-small-section {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+        }
+
         footer {
             background-color: var(--bg-secondary);
             color: var(--text-muted);
             text-align: center;
-            padding: 25px 0;
+            padding: 20px 0;
             border-top: 1px solid var(--border);
             font-size: 13px;
-            margin-top: 50px;
+            margin-top: auto;
         }
     </style>
 </head>
@@ -292,7 +285,7 @@
         <div class="container navbar">
             <div class="logo">
                 <a href="#">
-                    <img src="https://files.catbox.moe/6q95es.jpg" alt="Logo" class="logo-icon">
+                    <img src="https://files.catbox.moe/u31omk.jpeg" alt="Logo" class="logo-icon">
                     XTMODE<span>PRO</span>
                 </a>
             </div>
@@ -309,18 +302,25 @@
                 <h2>Selamat Datang di XTMODEPRO! 🚀</h2>
                 <p>Database mod game dan aplikasi terlengkap dan terupdate.</p>
             </div>
+        </div>            
+        
+        <div class="app-grid" id="appGrid">
+            <!-- Data akan otomatis dimuat dari database.json -->
         </div>
 
-        <section>
-            <div class="section-title">
-                <i class="fa-solid fa-bolt"></i>
-                <h2>Daftar Mod Terbaru</h2>
-            </div>
-            
-            <div class="app-grid" id="appGrid">
-                <!-- Data akan otomatis dimuat dari database.json -->
-            </div>
-        </section>
+        <!-- Iklan Banner Kecil 320x50 di Bagian Bawah -->
+        <div class="ads-small-section">
+            <script>
+              atOptions = {
+                'key' : 'd3e139d8e396bc56c76e6486819376d1',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+              };
+            </script>
+            <script src="https://www.highperformanceformat.com/d3e139d8e396bc56c76e6486819376d1/invoke.js"></script>
+        </div>
     </main>
 
     <footer>
@@ -332,7 +332,6 @@
     <script>
         let allMods = [];
 
-        // Mengambil data otomatis dari file database.json di GitHub
         async function loadDatabase() {
             try {
                 const response = await fetch('database.json');
@@ -376,7 +375,6 @@
             });
         }
 
-        // Fitur Pencarian Realtime
         document.getElementById('searchInput').addEventListener('input', function(e) {
             const keyword = e.target.value.toLowerCase();
             const filtered = allMods.filter(mod => 
