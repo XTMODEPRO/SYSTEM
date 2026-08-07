@@ -198,15 +198,23 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .category-tag {
             font-size: 11px;
             color: var(--text-muted);
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             text-transform: uppercase;
+        }
+
+        .version-tag {
+            font-size: 12px;
+            color: var(--accent);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
         }
 
         .meta-badges {
@@ -312,7 +320,6 @@
 
         async function loadDatabase() {
             try {
-                // Menggunakan parameter waktu agar GitHub / Browser tidak mengambil data dari cache lama
                 const response = await fetch('database.json?t=' + new Date().getTime(), {
                     cache: 'no-store'
                 });
@@ -337,13 +344,17 @@
             }
 
             mods.forEach(mod => {
+                // Menambahkan huruf 'v' otomatis jika belum ada di depan versi
+                let versionText = mod.version.toString().toLowerCase().startsWith('v') ? mod.version : 'v' + mod.version;
+
                 appGrid.innerHTML += `
                     <div class="app-card">
                         <div class="card-top">
                             <img src="${mod.icon}" alt="App Icon">
                             <div class="app-info">
                                 <h3>${mod.name}</h3>
-                                <span class="category-tag">${mod.category} • ${mod.version}</span>
+                                <span class="category-tag">${mod.category}</span>
+                                <span class="version-tag">${versionText}</span>
                                 <div class="meta-badges">
                                     <span class="badge">${mod.size}</span>
                                     <span class="badge safe"><i class="fa-solid fa-shield-halved"></i> Aman</span>
