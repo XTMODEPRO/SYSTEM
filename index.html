@@ -27,7 +27,6 @@
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
 
-        /* Mengatur agar body menjadi flex layout full tinggi layar */
         body {
             background-color: var(--bg-primary);
             color: var(--text-main);
@@ -144,24 +143,9 @@
             margin-top: 5px;
         }
 
-        /* Memaksa area main mengisi sisa ruang kosong agar footer terdorong ke bawah secara rapi */
         main {
             flex: 1;
             padding-bottom: 40px;
-        }
-
-        .section-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .section-title i {
-            color: var(--accent);
         }
 
         .app-grid {
@@ -328,12 +312,18 @@
 
         async function loadDatabase() {
             try {
-                const response = await fetch('database.json');
+                // Menggunakan parameter waktu agar GitHub / Browser tidak mengambil data dari cache lama
+                const response = await fetch('database.json?t=' + new Date().getTime(), {
+                    cache: 'no-store'
+                });
+                
+                if (!response.ok) throw new Error('Gagal merespons server');
+                
                 allMods = await response.json();
                 displayMods(allMods);
             } catch (error) {
                 console.error('Gagal memuat database:', error);
-                document.getElementById('appGrid').innerHTML = '<p style="color:red;">Gagal memuat data dari database.json</p>';
+                document.getElementById('appGrid').innerHTML = '<p style="color:red; grid-column:1/-1; text-align:center;">Gagal memuat data dari database.json. Periksa koneksi atau format file JSON Anda.</p>';
             }
         }
 
@@ -342,13 +332,13 @@
             appGrid.innerHTML = '';
 
             if (mods.length === 0) {
-                appGrid.innerHTML = '<p style="color:var(--text-muted);">Tidak ada mod ditemukan.</p>';
+                appGrid.innerHTML = '<p style="color:var(--text-muted); grid-column:1/-1; text-align:center;">Tidak ada mod ditemukan.</p>';
                 return;
             }
 
             mods.forEach(mod => {
                 appGrid.innerHTML += `
-                    <div class="app-card" data-name="${mod.name.toLowerCase()}">
+                    <div class="app-card">
                         <div class="card-top">
                             <img src="${mod.icon}" alt="App Icon">
                             <div class="app-info">
@@ -361,7 +351,7 @@
                             </div>
                         </div>
                         <div class="features-box">${mod.features}</div>
-                        <a href="${mod.download_url}" class="download-btn">
+                        <a href="${mod.download_url}" class="download-btn" target="_blank">
                             <i class="fa-solid fa-download"></i> Unduh APK
                         </a>
                     </div>
