@@ -61,7 +61,7 @@
   },
   {
     "id": 9,
-    "name": "Room Virtual Master",
+    "name": "Room Backup",
     "category": "Room Virtual",
     "version": "1.0",
     "size": "975MB",
