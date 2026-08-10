@@ -61,12 +61,12 @@
   },
   {
     "id": 9,
-    "name": "Virtual Master",
-    "category": "Virtual Android",
-    "version": "3.2.67",
-    "size": "143MB",
+    "name": "Room Virtual Master",
+    "category": "Room Virtual",
+    "version": "1.0",
+    "size": "975MB",
     "icon": "https://files.catbox.moe/kniqz5.png",
-    "features": "virtual Android 64bit & 32bit",
-    "download_url": "https://www.mediafire.com/file/5vqqhgcigv64kdw/MK_TechDroid-VM-v3.2.67-official.apk/file"
+    "features": "Root magisk",
+    "download_url": "https://www.mediafire.com/file/3awtoc6rzn6y85z/MK+TechDroid+ROM+A11+3267+Magisk+++GMS.zip/file?dkey=kgrfqislqru&r=1502"
   }
 ]
