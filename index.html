@@ -179,10 +179,6 @@
             outline: none;
         }
 
-        .lang-search-box input:focus {
-            border-color: var(--accent);
-        }
-
         .lang-list {
             max-height: 250px;
             overflow-y: auto;
@@ -199,7 +195,6 @@
             font-size: 13px;
             font-weight: 500;
             cursor: pointer;
-            transition: background 0.2s;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -620,7 +615,7 @@
                     </button>
                     <div class="lang-dropdown" id="langDropdown">
                         <div class="lang-search-box">
-                            <input type="text" id="langSearchInput" placeholder="Cari bahasa / Search languages...">
+                            <input type="text" id="langSearchInput" placeholder="Cari bahasa...">
                         </div>
                         <div class="lang-list" id="langList"></div>
                     </div>
@@ -648,90 +643,6 @@
     <script>
         let allMods = [];
 
-        // Data backup langsung dari database.json milikmu agar aman dibaca offline/local file://
-        const defaultDatabase = [
-          {
-            "id": 1,
-            "name": "XTMODEPRO MODS VIP",
-            "category": "Mobile Legend",
-            "version": "1.0",
-            "size": "3MB",
-            "icon": "https://files.catbox.moe/6q95es.jpg",
-            "features": "MODS ROOT",
-            "download_url": "https://xtmodepro.github.io/XTMODEPRO/proses#MCA5Pzd/fGo7Jig7PDE9PStrNCw3OjA2dj0iYBwRHgoHFxUGF3seFhcRFghgHwYVbQQ3K2sjFCo0HzwZIAQnfywOOn00NBYNKwR/IDMLKggpGzwnMxp/IBUOKSYhAgdgGgQkFgEEEHU0FTwWNg=="
-          },
-          {
-            "id": 3,
-            "name": "XT FAKE LAG",
-            "category": "Free Fire",
-            "version": "3.0",
-            "size": "400KB",
-            "icon": "https://files.catbox.moe/y24bpf.jpg",
-            "features": "TELEPORT & FREEZE & GHOST",
-            "download_url": "https://xtmodepro.github.io/XTMODEPRO/proses#MCA5Pzd/fGo7Jig7PDE9PStrNCw3OjA2dj0iYBwRHgoHFxUGF3seFhcRFghgHwYVbQQ3K2sjFCo0HzwZIAQnfywOOn00NBYNKwR/IDMLKggpGzwnMxp/ID0OGxAbET1sHhsnHioIPXUVFSIjDA=="
-          },
-          {
-            "id": 5,
-            "name": "VPhoneGaGa",
-            "category": "Virtual android",
-            "version": "3.0",
-            "size": "871MB",
-            "icon": "https://files.catbox.moe/q48e6b.jpg",
-            "features": "Suport Magisk",
-            "download_url": "https://xtmodepro.github.io/XTMODEPRO/proses#MCA5Pzd/fGo7Jig7PDE9PStrNCw3OjA2dj0iYBwRHgoHFxUGF3seFhcRFghgHwYVbQQ3K2sjFCpwNAYzIDA6OB4ENDYBFC1kDhM1GXMkBAtsNB0FZQ=="
-          },
-          {
-            "id": 6,
-            "name": "XT VIRTUAL V2",
-            "category": "System",
-            "version": "3.0",
-            "size": "8MB",
-            "icon": "https://files.catbox.moe/ia4yv4.png",
-            "features": "SUPPORT ROOT GG | SUPORT ANDROID 5+",
-            "download_url": "https://safefileku.com/download/g8rb9nwIYJHQflU5"
-          },
-          {
-            "id": 7,
-            "name": "Y2media Premium",
-            "category": "Downloader",
-            "version": "1.0",
-            "size": "124KB",
-            "icon": "https://files.catbox.moe/hvv2k9.png",
-            "features": "DOWNLOAD MUSIK & VIDEO",
-            "download_url": "https://safefileku.com/download/5mwuNYXVIDn1GzLQ"
-          },
-          {
-            "id": 8,
-            "name": "Virtual Master",
-            "category": "Virtual Android",
-            "version": "3.2.67",
-            "size": "143MB",
-            "icon": "https://files.catbox.moe/kniqz5.png",
-            "features": "virtual Android 64bit & 32bit",
-            "download_url": "https://www.mediafire.com/file/5vqqhgcigv64kdw/MK_TechDroid-VM-v3.2.67-official.apk/file"
-          },
-          {
-            "id": 9,
-            "name": "Room Backup",
-            "category": "Room Virtual",
-            "version": "1.0",
-            "size": "975MB",
-            "icon": "https://files.catbox.moe/kniqz5.png",
-            "features": "Root magisk  | Android 11",
-            "download_url": "https://www.mediafire.com/file/3awtoc6rzn6y85z/MK+TechDroid+ROM+A11+3267+Magisk+++GMS.zip/file?dkey=kgrfqislqru&r=1502"
-          },
-          {
-            "id": 10,
-            "name": "XTMODEPRO PROXY",
-            "category": "Free Fire & Free Fire Max",
-            "version": "1.0",
-            "size": "100KB",
-            "icon": "https://files.catbox.moe/elmboo.png",
-            "features": "ANTENNA TANGAN & DARG HS",
-            "download_url": "https://safefileku.com/download/QXXUgtiIQF0Dp5sJ"
-          }
-        ];
-
         const translations = {
             id: {
                 name: "Bahasa Indonesia",
@@ -745,73 +656,8 @@
                 noteTitle: "📝 CATATAN:",
                 noteDesc: "Jika crack gagal, uang tidak akan hilang karena sistem tidak minta uang dulu. Tapi dibuat dulu dan di-test, setelah APK siap baru kami akan minta konfirmasi apakah mau atau tidak.",
                 modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. All rights reserved.",
-                morning: "Selamat Pagi",
-                afternoon: "Selamat Siang",
-                evening: "Selamat Sore",
-                night: "Selamat Malam",
                 noData: "Tidak ada mod ditemukan.",
-                failLoad: "Gagal memuat data database."
-            },
-            ace: {
-                name: "Bahasa Aceh",
-                searchPlace: "Mita mod...",
-                bannerSub: "Database mod game ngon aplikasi nyang paleng lekap ngon update.",
-                skipText: "Langkah / Lanjut u Web",
-                safeText: "AMAN BE UNAH",
-                safeBadge: "Aman",
-                downloadBtn: "Download APK",
-                modalTitle: "⚡ JASA CRACK APK ⚡",
-                noteTitle: "📝 CATATAN:",
-                noteDesc: "Meunyoe crack gagal, peuet hana meuhilang sabab sistem hana meujak peunyo awai.",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. Hak cipta dilindungi.",
-                morning: "Beungoh Baro",
-                afternoon: "Uroe Teungoh",
-                evening: "Seupôt",
-                night: "Malam Nyoe",
-                noData: "Hana mod nyang teumeme.",
-                failLoad: "Gagal muat data database."
-            },
-            jv: {
-                name: "Basa Jawa",
-                searchPlace: "Golek mod...",
-                bannerSub: "Database mod game lan aplikasi paling lengkap lan anyar.",
-                skipText: "Liwati / Lanjut Menyang Web",
-                safeText: "AMAN TANPA VIRUS",
-                safeBadge: "Aman",
-                downloadBtn: "Unduh APK",
-                modalTitle: "⚡ JASA CRACK APK ⚡",
-                noteTitle: "📝 CATETAN:",
-                noteDesc: "Menawa crack gagal, dhuwit ora bakal ilang amarga sistem ora njaluk dhuwit dhisik.",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. Hak cipta dilindhungi.",
-                morning: "Sugeng Enjang",
-                afternoon: "Sugeng Siang",
-                evening: "Sugeng Sonten",
-                night: "Sugeng Wengi",
-                noData: "Ora ana mod sing ditemokake.",
-                failLoad: "Gagal ngemot data database."
-            },
-            su: {
-                name: "Basa Sunda",
-                searchPlace: "Milarian mod...",
-                bannerSub: "Database mod game sareng aplikasi panglengkapna tur panganyarna.",
-                skipText: "Liwat / Lajeng ka Wéb",
-                safeText: "AMAN TANPA VIRUS",
-                safeBadge: "Aman",
-                downloadBtn: "Unduh APK",
-                modalTitle: "⚡ JASA CRACK APK ⚡",
-                noteTitle: "📝 CATETAN:",
-                noteDesc: "Upami crack gagal, artos henteu bakal musna sabab sistem henteu menta artos tipayun.",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. Sadaya hak ditangtayungan.",
-                morning: "Wilujeng Enjing",
-                afternoon: "Wilujeng Siang",
-                evening: "Wilujeng Sumping",
-                night: "Wilujeng Wengi",
-                noData: "Teu aya mod anu kapanggih.",
-                failLoad: "Gagal ngamuat data database."
+                failLoad: "Gagal memuat database.json!"
             },
             en: {
                 name: "English",
@@ -825,22 +671,16 @@
                 noteTitle: "📝 NOTE:",
                 noteDesc: "If the crack fails, your money is safe as payment is requested only after the APK is built and tested.",
                 modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. All rights reserved.",
-                morning: "Good Morning",
-                afternoon: "Good Afternoon",
-                evening: "Good Evening",
-                night: "Good Night",
                 noData: "No mods found.",
-                failLoad: "Failed to load database."
+                failLoad: "Failed to load database.json!"
             }
         };
 
         function renderLanguageList(filterText = '') {
             const langListEl = document.getElementById('langList');
             langListEl.innerHTML = '';
-
             for (const [code, data] of Object.entries(translations)) {
-                if (data.name.toLowerCase().includes(filterText.toLowerCase()) || code.toLowerCase().includes(filterText.toLowerCase())) {
+                if (data.name.toLowerCase().includes(filterText.toLowerCase())) {
                     const btn = document.createElement('button');
                     btn.className = 'lang-option';
                     btn.onclick = () => changeLanguage(code);
@@ -850,40 +690,14 @@
             }
         }
 
-        function getDynamicGreeting(lang) {
-            const hour = new Date().getHours();
-            const t = translations[lang] || translations['id'];
-            let timeWord = t.night;
-
-            if (hour >= 4 && hour < 11) {
-                timeWord = t.morning;
-            } else if (hour >= 11 && hour < 15) {
-                timeWord = t.afternoon;
-            } else if (hour >= 15 && hour < 18) {
-                timeWord = t.evening;
-            }
-
-            return `${timeWord} di XTMODEPRO! 🚀`;
-        }
-
-        function detectUserLanguage() {
-            const savedLang = localStorage.getItem('xt_mod_lang');
-            if (savedLang && translations[savedLang]) {
-                return savedLang;
-            }
-            return 'id';
-        }
-
-        let currentLang = detectUserLanguage();
+        let currentLang = 'id';
 
         function applyLanguage(lang) {
             currentLang = lang;
-            localStorage.setItem('xt_mod_lang', lang);
             const t = translations[lang] || translations['id'];
-
             document.getElementById('currentLangLabel').innerText = lang.toUpperCase();
             document.getElementById('searchInput').placeholder = t.searchPlace;
-            document.getElementById('greetingTitle').innerText = getDynamicGreeting(lang);
+            document.getElementById('greetingTitle').innerText = "Selamat Datang di XTMODEPRO! 🚀";
             document.getElementById('greetingDesc').innerText = t.bannerSub;
             document.getElementById('skipModalBtn').innerText = t.skipText;
             document.getElementById('modalSafe').innerHTML = `<i class="fa-solid fa-shield-halved"></i> ${t.safeText}`;
@@ -904,9 +718,6 @@
         langBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             langDropdown.classList.toggle('active');
-            if(langDropdown.classList.contains('active')) {
-                langSearchInput.focus();
-            }
         });
 
         langSearchInput.addEventListener('input', function(e) {
@@ -922,40 +733,27 @@
             langDropdown.classList.remove('active');
         }
 
-        // Fungsi Load Database yang sudah diperbaiki agar support file:// lokal & fetch standar
-        async function loadDatabase() {
-            try {
-                // Coba fetch standar (berfungsi jika online/server lokal)
-                const response = await fetch('database.json');
-                if (!response.ok) throw new Error('Network response not ok');
-                allMods = await response.json();
-                displayMods(allMods);
-            } catch (error) {
-                console.warn('Fetch standar gagal, mencoba metode XHR/Fallback lokal...');
-                
-                try {
-                    // Gunakan XMLHttpRequest untuk akses file:// di Android storage
-                    const xhr = new XMLHttpRequest();
-                    xhr.overrideMimeType("application/json");
-                    xhr.open("GET", "database.json", true);
-                    xhr.onreadystatechange = function () {
-                        if (xhr.readyState === 4) {
-                            if (xhr.status === 0 || xhr.status === 200) {
-                                allMods = JSON.parse(xhr.responseText);
-                                displayMods(allMods);
-                            } else {
-                                throw new Error('XHR load failed');
-                            }
+        // FUNGSI UTAMA: Ambil murni dari file database.json terpisah dengan XHR (bypass CORS file:// di HP)
+        function loadDatabase() {
+            const xhr = new XMLHttpRequest();
+            xhr.overrideMimeType("application/json");
+            xhr.open("GET", "database.json", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200 || xhr.status === 0) {
+                        try {
+                            allMods = JSON.parse(xhr.responseText);
+                            displayMods(allMods);
+                        } catch (e) {
+                            console.error("Format JSON salah:", e);
+                            document.getElementById('appGrid').innerHTML = `<p style="color:#ef4444;">Format JSON di database.json salah!</p>`;
                         }
-                    };
-                    xhr.send(null);
-                } catch (err) {
-                    console.warn('XHR gagal, menggunakan database cadangan langsung...');
-                    // Fallback menggunakan variabel defaultDatabase jika file.json benar-benar ter-block total
-                    allMods = defaultDatabase;
-                    displayMods(allMods);
+                    } else {
+                        document.getElementById('appGrid').innerHTML = `<p style="color:#ef4444;">Gagal membaca database.json! Pastikan file ada di folder yang sama.</p>`;
+                    }
                 }
-            }
+            };
+            xhr.send(null);
         }
 
         function displayMods(mods) {
@@ -1003,7 +801,7 @@
         window.addEventListener('DOMContentLoaded', () => {
             renderLanguageList();
             applyLanguage(currentLang);
-            loadDatabase();
+            loadDatabase(); // Eksekusi load data dari file database.json terpisah
         });
 
         const modal = document.getElementById('promoModal');
