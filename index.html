@@ -179,6 +179,10 @@
             outline: none;
         }
 
+        .lang-search-box input:focus {
+            border-color: var(--accent);
+        }
+
         .lang-list {
             max-height: 250px;
             overflow-y: auto;
@@ -195,6 +199,7 @@
             font-size: 13px;
             font-weight: 500;
             cursor: pointer;
+            transition: background 0.2s;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -546,45 +551,45 @@
     <div class="modal-overlay" id="promoModal">
         <div class="modal-box">
             <div class="promo-header">
-                <h2>⚡ JASA CRACK APK ⚡</h2>
-                <span class="badge-safe-pop" id="modalSafe"><i class="fa-solid fa-shield-halved"></i> SAFE NO VIRUS</span>
+                <h2 id="modalTitle">⚡ JASA CRACK APK ⚡</h2>
+                <span class="badge-safe-pop"><i class="fa-solid fa-shield-halved"></i> <span id="modalSafe">SAFE NO VIRUS</span></span>
             </div>
 
             <ul class="promo-price-list">
                 <li>
                     <a href="https://t.me/NantaXTVip?text=Halo%20kak,%20saya%20mau%20order%20jasa%20crack%20paket:%20CRACK%20RANDOM%20KEY%20(Rp.5.000)." target="_blank" class="promo-price-item">
-                        <span class="promo-service-name">🔑 CRACK RANDOM KEY</span>
+                        <span class="promo-service-name" id="srv1">🔑 CRACK RANDOM KEY</span>
                         <span class="promo-price-tag">Rp. 5.000</span>
                     </a>
                 </li>
                 <li>
                     <a href="https://t.me/NantaXTVip?text=Halo%20kak,%20saya%20mau%20order%20jasa%20crack%20paket:%20CRACK%20CUSTOM%20KEY%20(Rp.5.000)." target="_blank" class="promo-price-item">
-                        <span class="promo-service-name">🔑 CRACK CUSTOM KEY</span>
+                        <span class="promo-service-name" id="srv2">🔑 CRACK CUSTOM KEY</span>
                         <span class="promo-price-tag">Rp. 5.000</span>
                     </a>
                 </li>
                 <li>
                     <a href="https://t.me/NantaXTVip?text=Halo%20kak,%20saya%20mau%20order%20jasa%20crack%20paket:%20CRACK%20NO%20LOGIN%20(Rp.6.000)." target="_blank" class="promo-price-item">
-                        <span class="promo-service-name">🔰 CRACK NO LOGIN</span>
+                        <span class="promo-service-name" id="srv3">🔰 CRACK NO LOGIN</span>
                         <span class="promo-price-tag">Rp. 6.000</span>
                     </a>
                 </li>
                 <li>
                     <a href="https://t.me/NantaXTVip?text=Halo%20kak,%20saya%20mau%20order%20jasa%20crack%20paket:%20CRACK%20KEY%20+%20ADMIN%20PANEL%20(Rp.20.000)." target="_blank" class="promo-price-item">
-                        <span class="promo-service-name">💻 CRACK KEY + ADMIN PANEL</span>
+                        <span class="promo-service-name" id="srv4">💻 CRACK KEY + ADMIN PANEL</span>
                         <span class="promo-price-tag">Rp. 20.000</span>
                     </a>
                 </li>
                 <li>
                     <a href="https://t.me/NantaXTVip?text=Halo%20kak,%20saya%20mau%20order%20jasa%20crack%20paket:%20ADD%20SYSTEM%20ANTI%20CRACK%20APK%20(Rp.10.000)." target="_blank" class="promo-price-item">
-                        <span class="promo-service-name">🛡️ ADD SYSTEM ANTI CRACK APK</span>
+                        <span class="promo-service-name" id="srv5">🛡️ ADD SYSTEM ANTI CRACK APK</span>
                         <span class="promo-price-tag">Rp. 10.000</span>
                     </a>
                 </li>
             </ul>
 
             <div class="promo-note">
-                <strong id="modalNoteTitle">📝 CATATAN:</strong>
+                <strong id="modalNoteTitle">📝 NOTE:</strong>
                 <span id="modalNoteDesc">Jika crack gagal, uang tidak akan hilang karena sistem tidak minta uang dulu. Tapi dibuat dulu dan di-test, setelah APK siap baru kami akan minta konfirmasi apakah mau atau tidak.</span>
             </div>
 
@@ -615,7 +620,7 @@
                     </button>
                     <div class="lang-dropdown" id="langDropdown">
                         <div class="lang-search-box">
-                            <input type="text" id="langSearchInput" placeholder="Cari bahasa...">
+                            <input type="text" id="langSearchInput" placeholder="Cari semua bahasa / Search all languages...">
                         </div>
                         <div class="lang-list" id="langList"></div>
                     </div>
@@ -636,13 +641,14 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 XTMODEPRO. All rights reserved.</p>
+            <p id="footerText">&copy; 2026 XTMODEPRO. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
         let allMods = [];
 
+        // Database Terjemahan Lengkap untuk Seluruh Elemen Teks (UI, Pop-up, Tombol, Label Kartu)
         const translations = {
             id: {
                 name: "Bahasa Indonesia",
@@ -653,11 +659,101 @@
                 safeBadge: "Aman",
                 downloadBtn: "Unduh APK",
                 modalTitle: "⚡ JASA CRACK APK ⚡",
-                noteTitle: "📝 CATATAN:",
+                noteTitle: "📝 NOTE:",
                 noteDesc: "Jika crack gagal, uang tidak akan hilang karena sistem tidak minta uang dulu. Tapi dibuat dulu dan di-test, setelah APK siap baru kami akan minta konfirmasi apakah mau atau tidak.",
                 modalCta: "PM: @NantaXTVip",
+                footerText: "&copy; 2026 XTMODEPRO. All rights reserved.",
+                morning: "Selamat Pagi",
+                afternoon: "Selamat Siang",
+                evening: "Selamat Sore",
+                night: "Selamat Malam",
+                welcomeSuffix: " di XTMODEPRO! 🚀",
                 noData: "Tidak ada mod ditemukan.",
-                failLoad: "Gagal memuat database.json!"
+                failLoad: "Gagal memuat data dari database.json"
+            },
+            ace: {
+                name: "Bahasa Aceh",
+                searchPlace: "Mita mod...",
+                bannerSub: "Database mod game ngon aplikasi nyang paleng lekap ngon update.",
+                skipText: "Langkah / Lanjut u Web",
+                safeText: "AMAN BE UNAH",
+                safeBadge: "Aman",
+                downloadBtn: "Download APK",
+                modalTitle: "⚡ JASA CRACK APK ⚡",
+                noteTitle: "📝 CATATAN:",
+                noteDesc: "Meunyoe crack gagal, peuet hana meuhilang sabab sistem hana meujak peunyo awai. Teuma geupeubeuet ngon geuji uroe jinoe.",
+                modalCta: "PM: @NantaXTVip",
+                footerText: "&copy; 2026 XTMODEPRO. Hak cipta dilindungi.",
+                morning: "Beungoh Baro",
+                afternoon: "Uroe Teungoh",
+                evening: "Seupôt",
+                night: "Malam Nyoe",
+                welcomeSuffix: " di XTMODEPRO! 🚀",
+                noData: "Hana mod nyang teumeme.",
+                failLoad: "Gagal muat data dari database.json"
+            },
+            jv: {
+                name: "Basa Jawa",
+                searchPlace: "Golek mod...",
+                bannerSub: "Database mod game lan aplikasi paling lengkap lan anyar.",
+                skipText: "Liwati / Lanjut Menyang Web",
+                safeText: "AMAN TANPA VIRUS",
+                safeBadge: "Aman",
+                downloadBtn: "Unduh APK",
+                modalTitle: "⚡ JASA CRACK APK ⚡",
+                noteTitle: "📝 CATETAN:",
+                noteDesc: "Menawa crack gagal, dhuwit ora bakal ilang amarga sistem ora njaluk dhuwit dhisik. Nanging digawé dhisik lan diuji, sawisé APK siap lagi takon konfirmasi.",
+                modalCta: "PM: @NantaXTVip",
+                footerText: "&copy; 2026 XTMODEPRO. Hak cipta dilindhungi.",
+                morning: "Sugeng Enjang",
+                afternoon: "Sugeng Siang",
+                evening: "Sugeng Sonten",
+                night: "Sugeng Wengi",
+                welcomeSuffix: " ing XTMODEPRO! 🚀",
+                noData: "Ora ana mod sing ditemokake.",
+                failLoad: "Gagal ngemot data saking database.json"
+            },
+            su: {
+                name: "Basa Sunda",
+                searchPlace: "Milarian mod...",
+                bannerSub: "Database mod game sareng aplikasi panglengkapna tur panganyarna.",
+                skipText: "Liwat / Lajeng ka Wéb",
+                safeText: "AMAN TANPA VIRUS",
+                safeBadge: "Aman",
+                downloadBtn: "Unduh APK",
+                modalTitle: "⚡ JASA CRACK APK ⚡",
+                noteTitle: "📝 CATETAN:",
+                noteDesc: "Upami crack gagal, artos henteu bakal musna sabab sistem henteu menta artos tipayun. Tapi di damel henteu sareng diuji enjing-enjing.",
+                modalCta: "PM: @NantaXTVip",
+                footerText: "&copy; 2026 XTMODEPRO. Sadaya hak ditangtayungan.",
+                morning: "Wilujeng Enjing",
+                afternoon: "Wilujeng Siang",
+                evening: "Wilujeng Sumping",
+                night: "Wilujeng Wengi",
+                welcomeSuffix: " di XTMODEPRO! 🚀",
+                noData: "Teu aya mod anu kapanggih.",
+                failLoad: "Gagal ngamuat data tina database.json"
+            },
+            min: {
+                name: "Baso Minangkabau",
+                searchPlace: "Cari mod...",
+                bannerSub: "Database mod game jo aplikasi nan paliang langkok jo update.",
+                skipText: "Talaik / Lanjuik ka Web",
+                safeText: "AMAN INDAK VIRUS",
+                safeBadge: "Aman",
+                downloadBtn: "Unduah APK",
+                modalTitle: "⚡ JASA CRACK APK ⚡",
+                noteTitle: "📝 CATATAN:",
+                noteDesc: "Jikok crack gagal, pitih indak ka ilang dek sistem indak mamiliah pitiah dulu. Tapi dibuek duyu jo diuji.",
+                modalCta: "PM: @NantaXTVip",
+                footerText: "&copy; 2026 XTMODEPRO. Hak cipta dilindungi.",
+                morning: "Salamaik Pagi",
+                afternoon: "Salamaik Siang",
+                evening: "Salamaik Petang",
+                night: "Salamaik Malam",
+                welcomeSuffix: " di XTMODEPRO! 🚀",
+                noData: "Indak ado mod nan basobok.",
+                failLoad: "Gagal mambao data dari database.json"
             },
             en: {
                 name: "English",
@@ -669,18 +765,193 @@
                 downloadBtn: "Download APK",
                 modalTitle: "⚡ APK CRACK SERVICE ⚡",
                 noteTitle: "📝 NOTE:",
-                noteDesc: "If the crack fails, your money is safe as payment is requested only after the APK is built and tested.",
+                noteDesc: "If the crack fails, your money is safe as payment is requested only after the APK is built, tested, and confirmed.",
                 modalCta: "PM: @NantaXTVip",
+                footerText: "&copy; 2026 XTMODEPRO. All rights reserved.",
+                morning: "Good Morning",
+                afternoon: "Good Afternoon",
+                evening: "Good Evening",
+                night: "Good Night",
+                welcomeSuffix: " to XTMODEPRO! 🚀",
                 noData: "No mods found.",
-                failLoad: "Failed to load database.json!"
+                failLoad: "Failed to load data from database.json"
+            },
+            es: {
+                name: "Español",
+                searchPlace: "Buscar mod...",
+                bannerSub: "Base de datos de mods de juegos y aplicaciones completa y actualizada.",
+                skipText: "Omitir / Ir al sitio web",
+                safeText: "SEGURO SIN VIRUS",
+                safeBadge: "Seguro",
+                downloadBtn: "Descargar APK",
+                modalTitle: "⚡ SERVICIO DE CRACK APK ⚡",
+                noteTitle: "📝 NOTA:",
+                noteDesc: "Si el crack falla, tu dinero está seguro ya que solo se solicita pago después de crear, probar y confirmar el APK.",
+                modalCta: "PM: @NantaXTVip",
+                footerText: "&copy; 2026 XTMODEPRO. Todos los derechos reservados.",
+                morning: "Buenos Días",
+                afternoon: "Buenas Tardes",
+                evening: "Buenas Tardes",
+                night: "Buenas Noches",
+                welcomeSuffix: " en XTMODEPRO! 🚀",
+                noData: "No se encontraron mods.",
+                failLoad: "Error al cargar datos de database.json"
+            },
+            ar: {
+                name: "العربية (Arabic)",
+                searchPlace: "البحث عن تعديل...",
+                bannerSub: "قاعدة بيانات تعديلات الألعاب والتطبيقات الشاملة والمحدثة.",
+                skipText: "تخطي / متابعة إلى الموقع",
+                safeText: "آمن بدون فيروسات",
+                safeBadge: "آمن",
+                downloadBtn: "تحميل APK",
+                modalTitle: "⚡ خدمة كسر الحماية ⚡",
+                noteTitle: "📝 ملاحظة:",
+                noteDesc: "إذا فشل التكسير، فلن تضيع أموالك حيث لا يطلب النظام أموالاً مقدماً، بل يتم إنشاؤه واختباره أولاً.",
+                modalCta: "PM: @NantaXTVip",
+                footerText: "&copy; 2026 XTMODEPRO. كل الحقوق محفوظة.",
+                morning: "صباح الخير",
+                afternoon: "مساء الخير",
+                evening: "مساء الخير",
+                night: "تصبح على خير",
+                welcomeSuffix: " في XTMODEPRO! 🚀",
+                noData: "لم يتم العثور على تعديلات.",
+                failLoad: "فشل تحميل البيانات من database.json"
+            },
+            zh: {
+                name: "中文 (Chinese)",
+                searchPlace: "搜索模组...",
+                bannerSub: "最完整和更新的游戏及应用程序修改数据库。",
+                skipText: "跳过 / 进入网页",
+                safeText: "安全无病毒",
+                safeBadge: "安全",
+                downloadBtn: "下载 APK",
+                modalTitle: "⚡ APK 破解服务 ⚡",
+                noteTitle: "📝 备注:",
+                noteDesc: "如果破解失败，您的资金是安全的，因为只有在 APK 构建、测试和确认后才会要求付款。",
+                modalCta: "PM: @NantaXTVip",
+                footerText: "&copy; 2026 XTMODEPRO. 版权所有.",
+                morning: "早上好",
+                afternoon: "下午好",
+                evening: "傍晚好",
+                night: "晚上好",
+                welcomeSuffix: " 来到 XTMODEPRO! 🚀",
+                noData: "未找到模组。",
+                failLoad: "从 database.json 加载数据失败"
+            },
+            ja: {
+                name: "日本語 (Japanese)",
+                searchPlace: "Modを検索...",
+                bannerSub: "最も完全で最新のゲームおよびアプリModデータベース。",
+                skipText: "スキップ / ウェブへ進む",
+                safeText: "安全・ウイルスなし",
+                safeBadge: "安全",
+                downloadBtn: "APKをダウンロード",
+                modalTitle: "⚡ APKクラックサービス ⚡",
+                noteTitle: "📝 注意:",
+                noteDesc: "クラックが失敗した場合でも、APKの作成、テスト、確認後にのみ支払いが発生するため、お金は安全です。",
+                modalCta: "PM: @NantaXTVip",
+                footerText: "&copy; 2026 XTMODEPRO. All rights reserved.",
+                morning: "おはようございます",
+                afternoon: "こんにちは",
+                evening: "こんばんは",
+                night: "おやすみなさい",
+                welcomeSuffix: " XTMODEPROへ! 🚀",
+                noData: "Modが見つかりませんでした。",
+                failLoad: "database.jsonからのデータの読み込みに失敗しました"
+            },
+            ko: {
+                name: "한국어 (Korean)",
+                searchPlace: "모드 검색...",
+                bannerSub: "가장 완성도 높고 최신화된 게임 및 앱 모드 데이터베이스.",
+                skipText: "건너뛰기 / 웹으로 이동",
+                safeText: "안전 바이러스 없음",
+                safeBadge: "안전",
+                downloadBtn: "APK 다운로드",
+                modalTitle: "⚡ APK 크랙 서비스 ⚡",
+                noteTitle: "📝 참고:",
+                noteDesc: "크랙이 실패하더라도 APK가 제작, 테스트 및 확인된 후에만 요금이 청구되므로 안전합니다.",
+                modalCta: "PM: @NantaXTVip",
+                footerText: "&copy; 2026 XTMODEPRO. 판권 소유.",
+                morning: "좋은 아침입니다",
+                afternoon: "좋은 오후입니다",
+                evening: "좋은 저녁입니다",
+                night: "안녕히 주무세요",
+                welcomeSuffix: " XTMODEPRO에 오신 것을 환영합니다! 🚀",
+                noData: "모드를 찾을 수 없습니다.",
+                failLoad: "database.json에서 데이터를 로드하지 못했습니다."
+            },
+            ms: {
+                name: "Bahasa Melayu",
+                searchPlace: "Cari mod...",
+                bannerSub: "Pangkalan data mod permainan dan aplikasi yang lengkap dan terkini.",
+                skipText: "Langkau / Teruskan ke Web",
+                safeText: "SELAMAT TIADA VIRUS",
+                safeBadge: "Selamat",
+                downloadBtn: "Muat Turun APK",
+                modalTitle: "⚡ PERKHIDMATAN CRACK APK ⚡",
+                noteTitle: "📝 NOTA:",
+                noteDesc: "Jika crack gagal, wang anda selamat kerana bayaran hanya diminta selepas APK siap dibina, diuji dan disahkan.",
+                modalCta: "PM: @NantaXTVip",
+                footerText: "&copy; 2026 XTMODEPRO. Hak cipta terpelihara.",
+                morning: "Selamat Pagi",
+                afternoon: "Selamat Tengah Hari",
+                evening: "Selamat Petang",
+                night: "Selamat Malam",
+                welcomeSuffix: " di XTMODEPRO! 🚀",
+                noData: "Tiada mod ditemui.",
+                failLoad: "Gagal memuatkan data dari database.json"
+            },
+            th: {
+                name: "ไทย (Thai)",
+                searchPlace: "ค้นหา mod...",
+                bannerSub: "ฐานข้อมูลมอดเกมและแอปพลิเคชันที่สมบูรณ์และอัปเดตที่สุด",
+                skipText: "ข้าม / ไปยังเว็บไซต์",
+                safeText: "ปลอดภัย ไม่มีไวรัส",
+                safeBadge: "ปลอดภัย",
+                downloadBtn: "ดาวน์โหลด APK",
+                modalTitle: "⚡ บริการแคร็ก APK ⚡",
+                noteTitle: "📝 หมายเหตุ:",
+                noteDesc: "หากการแคร็กไม่สำเร็จ เงินของคุณจะปลอดภัยเนื่องจากจะขอชำระเงินหลังจากสร้างและทดสอบ APK แล้วเท่านั้น",
+                modalCta: "PM: @NantaXTVip",
+                footerText: "&copy; 2026 XTMODEPRO. สงวนลิขสิทธิ์.",
+                morning: "สวัสดีตอนเช้า",
+                afternoon: "สวัสดีตอนบ่าย",
+                evening: "สวัสดีตอนเย็น",
+                night: "ราตรีสวัสดิ์",
+                welcomeSuffix: " ที่ XTMODEPRO! 🚀",
+                noData: "ไม่พบมอด",
+                failLoad: "ไม่สามารถโหลดข้อมูลจาก database.json ได้"
+            },
+            vi: {
+                name: "Tiếng Việt (Vietnamese)",
+                searchPlace: "Tìm kiếm mod...",
+                bannerSub: "Cơ sở dữ liệu mod trò chơi và ứng dụng hoàn chỉnh và cập nhật nhất.",
+                skipText: "Bỏ qua / Tiếp tục đến Web",
+                safeText: "AN TOÀN KHÔNG VIRUS",
+                safeBadge: "An toàn",
+                downloadBtn: "Tải xuống APK",
+                modalTitle: "⚡ DỊCH VỤ BẺ KHÓA APK ⚡",
+                noteTitle: "📝 LƯU Ý:",
+                noteDesc: "Nếu bẻ khóa không thành công, tiền của bạn được an toàn vì thanh toán chỉ được yêu cầu sau khi APK được tạo và kiểm tra.",
+                modalCta: "PM: @NantaXTVip",
+                footerText: "&copy; 2026 XTMODEPRO. Mọi quyền được bảo lưu.",
+                morning: "Chào buổi sáng",
+                afternoon: "Chào buổi chiều",
+                evening: "Chào buổi tối",
+                night: "Chúc ngủ ngon",
+                welcomeSuffix: " tại XTMODEPRO! 🚀",
+                noData: "Không tìm thấy mod nào.",
+                failLoad: "Không thể tải dữ liệu từ database.json"
             }
         };
 
         function renderLanguageList(filterText = '') {
             const langListEl = document.getElementById('langList');
             langListEl.innerHTML = '';
+
             for (const [code, data] of Object.entries(translations)) {
-                if (data.name.toLowerCase().includes(filterText.toLowerCase())) {
+                if (data.name.toLowerCase().includes(filterText.toLowerCase()) || code.toLowerCase().includes(filterText.toLowerCase())) {
                     const btn = document.createElement('button');
                     btn.className = 'lang-option';
                     btn.onclick = () => changeLanguage(code);
@@ -690,22 +961,57 @@
             }
         }
 
-        let currentLang = 'id';
+        function getDynamicGreeting(lang) {
+            const hour = new Date().getHours();
+            const t = translations[lang] || translations['id'];
+            let timeWord = t.night;
+
+            if (hour >= 4 && hour < 11) {
+                timeWord = t.morning;
+            } else if (hour >= 11 && hour < 15) {
+                timeWord = t.afternoon;
+            } else if (hour >= 15 && hour < 18) {
+                timeWord = t.evening;
+            }
+
+            // Memanggil gabungan Waktu + Suffix dari kamus bahasa
+            return `${timeWord}${t.welcomeSuffix}`;
+        }
+
+        function detectUserLanguage() {
+            const savedLang = localStorage.getItem('xt_mod_lang');
+            if (savedLang && translations[savedLang]) {
+                return savedLang;
+            }
+
+            const browserLang = (navigator.language || navigator.userLanguage || 'id').toLowerCase();
+            for (let key in translations) {
+                if (browserLang.startsWith(key)) return key;
+            }
+
+            return 'id';
+        }
+
+        let currentLang = detectUserLanguage();
 
         function applyLanguage(lang) {
             currentLang = lang;
+            localStorage.setItem('xt_mod_lang', lang);
             const t = translations[lang] || translations['id'];
+
             document.getElementById('currentLangLabel').innerText = lang.toUpperCase();
             document.getElementById('searchInput').placeholder = t.searchPlace;
-            document.getElementById('greetingTitle').innerText = "Selamat Datang di XTMODEPRO! 🚀";
+            document.getElementById('greetingTitle').innerText = getDynamicGreeting(lang);
             document.getElementById('greetingDesc').innerText = t.bannerSub;
             document.getElementById('skipModalBtn').innerText = t.skipText;
-            document.getElementById('modalSafe').innerHTML = `<i class="fa-solid fa-shield-halved"></i> ${t.safeText}`;
+            document.getElementById('modalSafe').innerText = t.safeText;
             document.getElementById('modalTitle').innerText = t.modalTitle;
             document.getElementById('modalNoteTitle').innerText = t.noteTitle;
             document.getElementById('modalNoteDesc').innerText = t.noteDesc;
             document.getElementById('modalCta').innerHTML = `<i class="fa-brands fa-telegram"></i> ${t.modalCta}`;
+            document.getElementById('footerText').innerHTML = t.footerText;
 
+            // Refresh tampilan kartu mod agar tombol dan label badge ikut berubah bahasa
             if (allMods.length > 0) {
                 displayMods(allMods);
             }
@@ -718,6 +1024,9 @@
         langBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             langDropdown.classList.toggle('active');
+            if(langDropdown.classList.contains('active')) {
+                langSearchInput.focus();
+            }
         });
 
         langSearchInput.addEventListener('input', function(e) {
@@ -733,27 +1042,16 @@
             langDropdown.classList.remove('active');
         }
 
-        // FUNGSI UTAMA: Ambil murni dari file database.json terpisah dengan XHR (bypass CORS file:// di HP)
-        function loadDatabase() {
-            const xhr = new XMLHttpRequest();
-            xhr.overrideMimeType("application/json");
-            xhr.open("GET", "database.json", true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200 || xhr.status === 0) {
-                        try {
-                            allMods = JSON.parse(xhr.responseText);
-                            displayMods(allMods);
-                        } catch (e) {
-                            console.error("Format JSON salah:", e);
-                            document.getElementById('appGrid').innerHTML = `<p style="color:#ef4444;">Format JSON di database.json salah!</p>`;
-                        }
-                    } else {
-                        document.getElementById('appGrid').innerHTML = `<p style="color:#ef4444;">Gagal membaca database.json! Pastikan file ada di folder yang sama.</p>`;
-                    }
-                }
-            };
-            xhr.send(null);
+        async function loadDatabase() {
+            try {
+                const response = await fetch('database.json');
+                allMods = await response.json();
+                displayMods(allMods);
+            } catch (error) {
+                console.error('Gagal memuat database:', error);
+                const t = translations[currentLang] || translations['id'];
+                document.getElementById('appGrid').innerHTML = `<p style="color:red;">${t.failLoad}</p>`;
+            }
         }
 
         function displayMods(mods) {
@@ -761,7 +1059,7 @@
             appGrid.innerHTML = '';
             const t = translations[currentLang] || translations['id'];
 
-            if (!mods || mods.length === 0) {
+            if (mods.length === 0) {
                 appGrid.innerHTML = `<p style="color:var(--text-muted);">${t.noData}</p>`;
                 return;
             }
@@ -801,7 +1099,7 @@
         window.addEventListener('DOMContentLoaded', () => {
             renderLanguageList();
             applyLanguage(currentLang);
-            loadDatabase(); // Eksekusi load data dari file database.json terpisah
+            loadDatabase();
         });
 
         const modal = document.getElementById('promoModal');
@@ -815,6 +1113,12 @@
 
         skipModalBtn.addEventListener('click', () => {
             modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
         });
     </script>
 </body>
