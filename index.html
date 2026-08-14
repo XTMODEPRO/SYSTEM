@@ -648,6 +648,90 @@
     <script>
         let allMods = [];
 
+        // Data backup langsung dari database.json milikmu agar aman dibaca offline/local file://
+        const defaultDatabase = [
+          {
+            "id": 1,
+            "name": "XTMODEPRO MODS VIP",
+            "category": "Mobile Legend",
+            "version": "1.0",
+            "size": "3MB",
+            "icon": "https://files.catbox.moe/6q95es.jpg",
+            "features": "MODS ROOT",
+            "download_url": "https://xtmodepro.github.io/XTMODEPRO/proses#MCA5Pzd/fGo7Jig7PDE9PStrNCw3OjA2dj0iYBwRHgoHFxUGF3seFhcRFghgHwYVbQQ3K2sjFCo0HzwZIAQnfywOOn00NBYNKwR/IDMLKggpGzwnMxp/IBUOKSYhAgdgGgQkFgEEEHU0FTwWNg=="
+          },
+          {
+            "id": 3,
+            "name": "XT FAKE LAG",
+            "category": "Free Fire",
+            "version": "3.0",
+            "size": "400KB",
+            "icon": "https://files.catbox.moe/y24bpf.jpg",
+            "features": "TELEPORT & FREEZE & GHOST",
+            "download_url": "https://xtmodepro.github.io/XTMODEPRO/proses#MCA5Pzd/fGo7Jig7PDE9PStrNCw3OjA2dj0iYBwRHgoHFxUGF3seFhcRFghgHwYVbQQ3K2sjFCo0HzwZIAQnfywOOn00NBYNKwR/IDMLKggpGzwnMxp/ID0OGxAbET1sHhsnHioIPXUVFSIjDA=="
+          },
+          {
+            "id": 5,
+            "name": "VPhoneGaGa",
+            "category": "Virtual android",
+            "version": "3.0",
+            "size": "871MB",
+            "icon": "https://files.catbox.moe/q48e6b.jpg",
+            "features": "Suport Magisk",
+            "download_url": "https://xtmodepro.github.io/XTMODEPRO/proses#MCA5Pzd/fGo7Jig7PDE9PStrNCw3OjA2dj0iYBwRHgoHFxUGF3seFhcRFghgHwYVbQQ3K2sjFCpwNAYzIDA6OB4ENDYBFC1kDhM1GXMkBAtsNB0FZQ=="
+          },
+          {
+            "id": 6,
+            "name": "XT VIRTUAL V2",
+            "category": "System",
+            "version": "3.0",
+            "size": "8MB",
+            "icon": "https://files.catbox.moe/ia4yv4.png",
+            "features": "SUPPORT ROOT GG | SUPORT ANDROID 5+",
+            "download_url": "https://safefileku.com/download/g8rb9nwIYJHQflU5"
+          },
+          {
+            "id": 7,
+            "name": "Y2media Premium",
+            "category": "Downloader",
+            "version": "1.0",
+            "size": "124KB",
+            "icon": "https://files.catbox.moe/hvv2k9.png",
+            "features": "DOWNLOAD MUSIK & VIDEO",
+            "download_url": "https://safefileku.com/download/5mwuNYXVIDn1GzLQ"
+          },
+          {
+            "id": 8,
+            "name": "Virtual Master",
+            "category": "Virtual Android",
+            "version": "3.2.67",
+            "size": "143MB",
+            "icon": "https://files.catbox.moe/kniqz5.png",
+            "features": "virtual Android 64bit & 32bit",
+            "download_url": "https://www.mediafire.com/file/5vqqhgcigv64kdw/MK_TechDroid-VM-v3.2.67-official.apk/file"
+          },
+          {
+            "id": 9,
+            "name": "Room Backup",
+            "category": "Room Virtual",
+            "version": "1.0",
+            "size": "975MB",
+            "icon": "https://files.catbox.moe/kniqz5.png",
+            "features": "Root magisk  | Android 11",
+            "download_url": "https://www.mediafire.com/file/3awtoc6rzn6y85z/MK+TechDroid+ROM+A11+3267+Magisk+++GMS.zip/file?dkey=kgrfqislqru&r=1502"
+          },
+          {
+            "id": 10,
+            "name": "XTMODEPRO PROXY",
+            "category": "Free Fire & Free Fire Max",
+            "version": "1.0",
+            "size": "100KB",
+            "icon": "https://files.catbox.moe/elmboo.png",
+            "features": "ANTENNA TANGAN & DARG HS",
+            "download_url": "https://safefileku.com/download/QXXUgtiIQF0Dp5sJ"
+          }
+        ];
+
         const translations = {
             id: {
                 name: "Bahasa Indonesia",
@@ -667,27 +751,7 @@
                 evening: "Selamat Sore",
                 night: "Selamat Malam",
                 noData: "Tidak ada mod ditemukan.",
-                failLoad: "Gagal memuat data dari database.json"
-            },
-            mad: {
-                name: "Basa Madura",
-                searchPlace: "Nyari mod...",
-                bannerSub: "Database mod game bân aplikasi palèng lengkap bân anyar.",
-                skipText: "Lèbat / Nyambung ka Web",
-                safeText: "AMAN È BÂBÂNA VIRUS",
-                safeBadge: "Aman",
-                downloadBtn: "Unduh APK",
-                modalTitle: "⚡ JASA CRACK APK ⚡",
-                noteTitle: "📝 CATTAN:",
-                noteDesc: "Mon crack-ah gagal, pèssè ta' èlang polana sistem ta' menta pèssè dâ'-aḍâ'. Nanging èyḍâ'aghi ḍâ'-aḍâ' bân ètès, mon APK-ah la siap, kakḍinto ngèbâ konfirmasi mènangka parlo otabâ bhunten.",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. Hak cipta èlindungi.",
-                morning: "Sè-nga' Pagi",
-                afternoon: "Tengnga Arè",
-                evening: "Sore",
-                night: "Malem",
-                noData: "Ta' bâḍâ mod sè ètemmo.",
-                failLoad: "Gagal ngèmot data ḍâri database.json"
+                failLoad: "Gagal memuat data database."
             },
             ace: {
                 name: "Bahasa Aceh",
@@ -699,7 +763,7 @@
                 downloadBtn: "Download APK",
                 modalTitle: "⚡ JASA CRACK APK ⚡",
                 noteTitle: "📝 CATATAN:",
-                noteDesc: "Meunyoe crack gagal, peuet hana meuhilang sabab sistem hana meujak peunyo awai. Teuma geupeubeuet ngon geuji uroe jinoe.",
+                noteDesc: "Meunyoe crack gagal, peuet hana meuhilang sabab sistem hana meujak peunyo awai.",
                 modalCta: "PM: @NantaXTVip",
                 footerText: "&copy; 2026 XTMODEPRO. Hak cipta dilindungi.",
                 morning: "Beungoh Baro",
@@ -707,7 +771,7 @@
                 evening: "Seupôt",
                 night: "Malam Nyoe",
                 noData: "Hana mod nyang teumeme.",
-                failLoad: "Gagal muat data dari database.json"
+                failLoad: "Gagal muat data database."
             },
             jv: {
                 name: "Basa Jawa",
@@ -719,7 +783,7 @@
                 downloadBtn: "Unduh APK",
                 modalTitle: "⚡ JASA CRACK APK ⚡",
                 noteTitle: "📝 CATETAN:",
-                noteDesc: "Menawa crack gagal, dhuwit ora bakal ilang amarga sistem ora njaluk dhuwit dhisik. Nanging digawé dhisik lan diuji, sawisé APK siap lagi takon konfirmasi.",
+                noteDesc: "Menawa crack gagal, dhuwit ora bakal ilang amarga sistem ora njaluk dhuwit dhisik.",
                 modalCta: "PM: @NantaXTVip",
                 footerText: "&copy; 2026 XTMODEPRO. Hak cipta dilindhungi.",
                 morning: "Sugeng Enjang",
@@ -727,7 +791,7 @@
                 evening: "Sugeng Sonten",
                 night: "Sugeng Wengi",
                 noData: "Ora ana mod sing ditemokake.",
-                failLoad: "Gagal ngemot data saking database.json"
+                failLoad: "Gagal ngemot data database."
             },
             su: {
                 name: "Basa Sunda",
@@ -739,7 +803,7 @@
                 downloadBtn: "Unduh APK",
                 modalTitle: "⚡ JASA CRACK APK ⚡",
                 noteTitle: "📝 CATETAN:",
-                noteDesc: "Upami crack gagal, artos henteu bakal musna sabab sistem henteu menta artos tipayun. Tapi di damel henteu sareng diuji enjing-enjing.",
+                noteDesc: "Upami crack gagal, artos henteu bakal musna sabab sistem henteu menta artos tipayun.",
                 modalCta: "PM: @NantaXTVip",
                 footerText: "&copy; 2026 XTMODEPRO. Sadaya hak ditangtayungan.",
                 morning: "Wilujeng Enjing",
@@ -747,67 +811,7 @@
                 evening: "Wilujeng Sumping",
                 night: "Wilujeng Wengi",
                 noData: "Teu aya mod anu kapanggih.",
-                failLoad: "Gagal ngamuat data tina database.json"
-            },
-            min: {
-                name: "Baso Minangkabau",
-                searchPlace: "Cari mod...",
-                bannerSub: "Database mod game jo aplikasi nan paliang langkok jo update.",
-                skipText: "Talaik / Lanjuik ka Web",
-                safeText: "AMAN INDAK VIRUS",
-                safeBadge: "Aman",
-                downloadBtn: "Unduah APK",
-                modalTitle: "⚡ JASA CRACK APK ⚡",
-                noteTitle: "📝 CATATAN:",
-                noteDesc: "Jikok crack gagal, pitih indak ka ilang dek sistem indak mamiliah pitiah dulu. Tapi dibuek duyu jo diuji.",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. Hak cipta dilindungi.",
-                morning: "Salamaik Pagi",
-                afternoon: "Salamaik Siang",
-                evening: "Salamaik Petang",
-                night: "Salamaik Malam",
-                noData: "Indak ado mod nan basobok.",
-                failLoad: "Gagal mambao data dari database.json"
-            },
-            bug: {
-                name: "Basa Ugi (Bugis)",
-                searchPlace: "Mita mod...",
-                bannerSub: "Database mod game sibawa aplikasi pole ri Indonesia nennia napassili.",
-                skipText: "Lao / Lanjut ri Web",
-                safeText: "AMAN DE'GAGA VIRUS",
-                safeBadge: "Aman",
-                downloadBtn: "Download APK",
-                modalTitle: "⚡ JASA CRACK APK ⚡",
-                noteTitle: "📝 PANGNGERANG:",
-                noteDesc: "Narekko crackna gau', duitmu dé'na rilao mabelai nasaba de'na nasaba'i duit mula-mula.",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. Hak cipta rilindungi.",
-                morning: "Maraja Marie",
-                afternoon: "Wettu Mettoa",
-                evening: "Wettu Maleling",
-                night: "Wettu Bongi",
-                noData: "Dé' gaga mod rilolongeng.",
-                failLoad: "De'na nahakai data pole ri database.json"
-            },
-            ban: {
-                name: "Basa Bali",
-                searchPlace: "Cari mod...",
-                bannerSub: "Database mod game lan aplikasi pinih lengkap lan paling baru.",
-                skipText: "Liwati / Lanjut ke Web",
-                safeText: "AMAN TANPA VIRUS",
-                safeBadge: "Aman",
-                downloadBtn: "Unduh APK",
-                modalTitle: "⚡ JASA CRACK APK ⚡",
-                noteTitle: "📝 CATATAN:",
-                noteDesc: "Yening crack gagal, jinah ragane ten ilang krana sistem ten nunas jinah riin.",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. Hak cipta kajaga.",
-                morning: "Tresna Semeng",
-                afternoon: "Diverse Tengah Lemeng",
-                evening: "Sanja",
-                night: "Wengi",
-                noData: "Ten wenten mod kacunduk.",
-                failLoad: "Gagal ngamedalang data saking database.json"
+                failLoad: "Gagal ngamuat data database."
             },
             en: {
                 name: "English",
@@ -819,7 +823,7 @@
                 downloadBtn: "Download APK",
                 modalTitle: "⚡ APK CRACK SERVICE ⚡",
                 noteTitle: "📝 NOTE:",
-                noteDesc: "If the crack fails, your money is safe as payment is requested only after the APK is built, tested, and confirmed.",
+                noteDesc: "If the crack fails, your money is safe as payment is requested only after the APK is built and tested.",
                 modalCta: "PM: @NantaXTVip",
                 footerText: "&copy; 2026 XTMODEPRO. All rights reserved.",
                 morning: "Good Morning",
@@ -827,447 +831,7 @@
                 evening: "Good Evening",
                 night: "Good Night",
                 noData: "No mods found.",
-                failLoad: "Failed to load data from database.json"
-            },
-            es: {
-                name: "Español",
-                searchPlace: "Buscar mod...",
-                bannerSub: "Base de datos de mods de juegos y aplicaciones completa y actualizada.",
-                skipText: "Omitir / Ir al sitio web",
-                safeText: "SEGURO SIN VIRUS",
-                safeBadge: "Seguro",
-                downloadBtn: "Descargar APK",
-                modalTitle: "⚡ SERVICIO DE CRACK APK ⚡",
-                noteTitle: "📝 NOTA:",
-                noteDesc: "Si el crack falla, tu dinero está seguro ya que solo se solicita pago después de crear, probar y confirmar el APK.",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. Todos los derechos reservados.",
-                morning: "Buenos Días",
-                afternoon: "Buenas Tardes",
-                evening: "Buenas Tardes",
-                night: "Buenas Noches",
-                noData: "No se encontraron mods.",
-                failLoad: "Error al cargar datos de database.json"
-            },
-            fr: {
-                name: "Français",
-                searchPlace: "Rechercher un mod...",
-                bannerSub: "Base de données de mods de jeux et d'applications complète et mise à jour.",
-                skipText: "Passer / Continuer vers le Web",
-                safeText: "SÛR SANS VIRUS",
-                safeBadge: "Sûr",
-                downloadBtn: "Télécharger l'APK",
-                modalTitle: "⚡ SERVICE DE CRACK APK ⚡",
-                noteTitle: "📝 NOTE :",
-                noteDesc: "Si le crack échoue, votre argent est en sécurité car le paiement n'est demandé qu'après la création et le test de l'APK.",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. Tous droits réservés.",
-                morning: "Bonjour",
-                afternoon: "Bon après-midi",
-                evening: "Bonsoir",
-                night: "Bonne nuit",
-                noData: "Aucun mod trouvé.",
-                failLoad: "Échec du chargement des données depuis database.json"
-            },
-            de: {
-                name: "Deutsch",
-                searchPlace: "Mod suchen...",
-                bannerSub: "Vollständige und aktuelle Mod-Datenbank für Spiele und Apps.",
-                skipText: "Überspringen / Weiter zur Website",
-                safeText: "SICHER KEIN VIRUS",
-                safeBadge: "Sicher",
-                downloadBtn: "APK herunterladen",
-                modalTitle: "⚡ APK-CRACK-DIENST ⚡",
-                noteTitle: "📝 HINWEIS:",
-                noteDesc: "Wenn der Crack fehlschlägt, ist Ihr Geld sicher, da die Bezahlung erst nach Erstellung und Test der APK erfolgt.",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. Alle Rechte vorbehalten.",
-                morning: "Guten Morgen",
-                afternoon: "Guten Tag",
-                evening: "Guten Abend",
-                night: "Gute Nacht",
-                noData: "Keine Mods gefunden.",
-                failLoad: "Fehler beim Laden der Daten aus database.json"
-            },
-            pt: {
-                name: "Português",
-                searchPlace: "Pesquisar mod...",
-                bannerSub: "Banco de dados completo e atualizado de mods de jogos e aplicativos.",
-                skipText: "Pular / Continuar para o Web",
-                safeText: "SEGURO SEM VÍRUS",
-                safeBadge: "Seguro",
-                downloadBtn: "Baixar APK",
-                modalTitle: "⚡ SERVIÇO DE CRACK APK ⚡",
-                noteTitle: "📝 NOTA:",
-                noteDesc: "Se o crack falhar, seu dinheiro estará seguro, pois o pagamento só é solicitado após a criação e teste do APK.",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. Todos os direitos reservados.",
-                morning: "Bom Dia",
-                afternoon: "Boa Tarde",
-                evening: "Boa Noite",
-                night: "Boa Noite",
-                noData: "Nenhum mod encontrado.",
-                failLoad: "Falha ao carregar dados de database.json"
-            },
-            it: {
-                name: "Italiano",
-                searchPlace: "Cerca mod...",
-                bannerSub: "Database di mod per giochi e applicazioni completo e aggiornato.",
-                skipText: "Salta / Continua al Web",
-                safeText: "SICURO SENZA VIRUS",
-                safeBadge: "Sicuro",
-                downloadBtn: "Scarica APK",
-                modalTitle: "⚡ SERVIZIO CRACK APK ⚡",
-                noteTitle: "📝 NOTA:",
-                noteDesc: "Se il crack fallisce, i tuoi soldi sono al sicuro poiché il pagamento viene richiesto solo dopo la creazione e il test dell'APK.",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. Tutti i diritti riservati.",
-                morning: "Buongiorno",
-                afternoon: "Buon pomeriggio",
-                evening: "Buonasera",
-                night: "Buonanotte",
-                noData: "Nessuna mod trovata.",
-                failLoad: "Impossibile caricare i dati da database.json"
-            },
-            ru: {
-                name: "Русский (Russian)",
-                searchPlace: "Поиск мода...",
-                bannerSub: "Полная и обновленная база данных модов для игр и приложений.",
-                skipText: "Пропустить / На сайт",
-                safeText: "БЕЗОПАСНО БЕЗ ВИРУСОВ",
-                safeBadge: "Безопасно",
-                downloadBtn: "Скачать APK",
-                modalTitle: "⚡ УСЛУГА ВЗЛОМА APK ⚡",
-                noteTitle: "📝 ПРИМЕЧАНИЕ:",
-                noteDesc: "Если взлом не удался, ваши деньги в безопасности, так как оплата запрашивается только после создания и тестирования APK.",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. Все права защищены.",
-                morning: "Доброе утро",
-                afternoon: "Добрый день",
-                evening: "Добрый вечер",
-                night: "Спокойной ночи",
-                noData: "Моды не найдены.",
-                failLoad: "Не удалось загрузить данные из database.json"
-            },
-            tr: {
-                name: "Türkçe (Turkish)",
-                searchPlace: "Mod ara...",
-                bannerSub: "En kapsamlı ve güncel oyun ve uygulama mod veritabanı.",
-                skipText: "Atla / Web'e Devam Et",
-                safeText: "GÜVENLİ VİRÜSSÜZ",
-                safeBadge: "Güvenli",
-                downloadBtn: "APK İndir",
-                modalTitle: "⚡ APK KIRMA HİZMETİ ⚡",
-                noteTitle: "📝 NOT:",
-                noteDesc: "Kırma işlemi başarısız olursa, ödeme yalnızca APK oluşturulup test edildikten sonra istendiği için paranız güvendedir.",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. Tüm hakları saklıdır.",
-                morning: "Günaydın",
-                afternoon: "İyi günler",
-                evening: "İyi akşamlar",
-                night: "İyi geceler",
-                noData: "Mod bulunamadı.",
-                failLoad: "database.json verileri yüklenemedi"
-            },
-            ar: {
-                name: "العربية (Arabic)",
-                searchPlace: "البحث عن تعديل...",
-                bannerSub: "قاعدة بيانات تعديلات الألعاب والتطبيقات الشاملة والمحدثة.",
-                skipText: "تخطي / متابعة إلى الموقع",
-                safeText: "آمن بدون فيروسات",
-                safeBadge: "آمن",
-                downloadBtn: "تحميل APK",
-                modalTitle: "⚡ خدمة كسر الحماية ⚡",
-                noteTitle: "📝 ملاحظة:",
-                noteDesc: "إذا فشل التكسير، فلن تضيع أموالك حيث لا يطلب النظام أموالاً مقدماً، بل يتم إنشاؤه واختباره أولاً.",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. كل الحقوق محفوظة.",
-                morning: "صباح الخير",
-                afternoon: "مساء الخير",
-                evening: "مساء الخير",
-                night: "تصبح على خير",
-                noData: "لم يتم العثور على تعديلات.",
-                failLoad: "فشل تحميل البيانات من database.json"
-            },
-            hi: {
-                name: "हिन्दी (Hindi)",
-                searchPlace: "मोड खोजें...",
-                bannerSub: "पूर्ण और अद्यतन गेम और एप्लिकेशन मॉड डेटाबेस।",
-                skipText: "छोड़ें / वेब पर जारी रखें",
-                safeText: "सुरक्षित कोई वायरस नहीं",
-                safeBadge: "सुरक्षित",
-                downloadBtn: "APK डाउनलोड करें",
-                modalTitle: "⚡ APK क्रैक सेवा ⚡",
-                noteTitle: "📝 नोट:",
-                noteDesc: "यदि क्रैक विफल हो जाता है, तो आपका पैसा सुरक्षित है क्योंकि भुगतान का अनुरोध केवल APK बनने और परीक्षण के बाद किया जाता है।",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. सभी अधिकार सुरक्षित।",
-                morning: "सुप्रभात",
-                afternoon: "नमस्ते",
-                evening: "शुभ संध्या",
-                night: "शुभ रात्रि",
-                noData: "कोई मॉड नहीं मिला।",
-                failLoad: "database.json से डेटा लोड करने में विफल"
-            },
-            fa: {
-                name: "فارسی (Persian)",
-                searchPlace: "جستجوی مود...",
-                bannerSub: "کامل‌ترین و به‌روزترین پایگاه داده مودهای بازی و اپلیکیشن.",
-                skipText: "رد شدن / ادامه به وب",
-                safeText: "امن بدون ویروس",
-                safeBadge: "امن",
-                downloadBtn: "دانلود APK",
-                modalTitle: "⚡ سرویس کرک APK ⚡",
-                noteTitle: "📝 توجه:",
-                noteDesc: "اگر کرک ناموفق باشد، پول شما امن است زیرا پرداخت تنها پس از ساخت و تست APK درخواست می‌شود.",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. تمامی حقوق محفوظ است.",
-                morning: "صبح بخیر",
-                afternoon: "ظهر بخیر",
-                evening: "عصر بخیر",
-                night: "شب بخیر",
-                noData: "مودی یافت نشد.",
-                failLoad: "بارگیری داده‌ها از database.json انجام نشد"
-            },
-            ur: {
-                name: "اردو (Urdu)",
-                searchPlace: "موڈ تلاش کریں...",
-                bannerSub: "مکمل اور تازہ ترین گیم اور ایپلیکیشن موڈ ڈیٹا بیس۔",
-                skipText: "چھوڑیں / ویب پر جائیں",
-                safeText: "محفوظ کوئی وائرس نہیں",
-                safeBadge: "محفوظ",
-                downloadBtn: "APK ڈاؤن لوڈ کریں",
-                modalTitle: "⚡ اے پی کے کریک سروس ⚡",
-                noteTitle: "📝 نوٹ:",
-                noteDesc: "اگر کریک ناکام ہو جائے تو آپ کا پیسہ محفوظ ہے کیونکہ ادائیگی صرف APK بننے اور ٹیسٹ ہونے کے بعد مانگی جاتی ہے۔",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. جملہ حقوق محفوظ ہیں۔",
-                morning: "صبح بخیر",
-                afternoon: "دوپہر بخیر",
-                evening: "شام بخیر",
-                night: "شب بخیر",
-                noData: "کوئی موڈ نہیں ملا۔",
-                failLoad: "database.json سے ڈیٹا لوڈ کرنے میں ناکامی"
-            },
-            bn: {
-                name: "বাংলা (Bengali)",
-                searchPlace: "মড খুঁজুন...",
-                bannerSub: "সম্পূর্ণ এবং আপডেট করা গেম এবং অ্যাপ্লিকেশন মড ডাটাবেস।",
-                skipText: "ড়িয়ে যান / ওয়েবে চলুন",
-                safeText: "নিরাপদ কোনো ভাইরাস নেই",
-                safeBadge: "নিরাপদ",
-                downloadBtn: "APK ডাউনলোড করুন",
-                modalTitle: "⚡ APK ক্র্যাক সার্ভিস ⚡",
-                noteTitle: "📝 নোট:",
-                noteDesc: "যদি ক্র্যাক ব্যর্থ হয়, আপনার টাকা নিরাপদ কারণ APK তৈরি এবং পরীক্ষার পরেই পেমেন্ট চাওয়া হয়।",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. সর্বস্বত্ব সংরক্ষিত।",
-                morning: "শুভ সকাল",
-                afternoon: "শুভ দুপুর",
-                evening: "শুভ সন্ধ্যা",
-                night: "শুভ রাত্রি",
-                noData: "কোনো মড পাওয়া যায়নি.",
-                failLoad: "database.json থেকে ডেটা লোড করতে ব্যর্থ"
-            },
-            zh: {
-                name: "中文 (Chinese)",
-                searchPlace: "搜索模组...",
-                bannerSub: "最完整和更新的游戏及应用程序修改数据库。",
-                skipText: "跳过 / 进入网页",
-                safeText: "安全无病毒",
-                safeBadge: "安全",
-                downloadBtn: "下载 APK",
-                modalTitle: "⚡ APK 破解服务 ⚡",
-                noteTitle: "📝 备注:",
-                noteDesc: "如果破解失败，您的资金是安全的，因为只有在 APK 构建、测试和确认后才会要求付款。",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. 版权所有.",
-                morning: "早上好",
-                afternoon: "下午好",
-                evening: "傍晚好",
-                night: "晚上好",
-                noData: "未找到模组。",
-                failLoad: "从 database.json 加载数据失败"
-            },
-            ja: {
-                name: "日本語 (Japanese)",
-                searchPlace: "Modを検索...",
-                bannerSub: "最も完全で最新のゲームおよびアプリModデータベース。",
-                skipText: "スキップ / ウェブへ進む",
-                safeText: "安全・ウイルスなし",
-                safeBadge: "安全",
-                downloadBtn: "APKをダウンロード",
-                modalTitle: "⚡ APKクラックサービス ⚡",
-                noteTitle: "📝 注意:",
-                noteDesc: "クラックが失敗した場合でも、APKの作成、テスト、確認後にのみ支払いが発生するため、お金は安全です。",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. All rights reserved.",
-                morning: "おはようございます",
-                afternoon: "こんにちは",
-                evening: "こんばんは",
-                night: "おやすみなさい",
-                noData: "Modが見つかりませんでした。",
-                failLoad: "database.jsonからのデータの読み込みに失敗しました"
-            },
-            ko: {
-                name: "한국어 (Korean)",
-                searchPlace: "모드 검색...",
-                bannerSub: "가장 완성도 높고 최신화된 게임 및 앱 모드 데이터베이스.",
-                skipText: "건너뛰기 / 웹으로 이동",
-                safeText: "안전 바이러스 없음",
-                safeBadge: "안전",
-                downloadBtn: "APK 다운로드",
-                modalTitle: "⚡ APK 크랙 서비스 ⚡",
-                noteTitle: "📝 참고:",
-                noteDesc: "크랙이 실패하더라도 APK가 제작, 테스트 및 확인된 후에만 요금이 청구되므로 안전합니다.",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. 판권 소유.",
-                morning: "좋은 아침입니다",
-                afternoon: "좋은 오후입니다",
-                evening: "좋은 저녁입니다",
-                night: "안녕히 주무세요",
-                noData: "모드를 찾을 수 없습니다.",
-                failLoad: "database.json에서 데이터를 로드하지 못했습니다."
-            },
-            ms: {
-                name: "Bahasa Melayu",
-                searchPlace: "Cari mod...",
-                bannerSub: "Pangkalan data mod permainan dan aplikasi yang lengkap dan terkini.",
-                skipText: "Langkau / Teruskan ke Web",
-                safeText: "SELAMAT TIADA VIRUS",
-                safeBadge: "Selamat",
-                downloadBtn: "Muat Turun APK",
-                modalTitle: "⚡ PERKHIDMATAN CRACK APK ⚡",
-                noteTitle: "📝 NOTA:",
-                noteDesc: "Jika crack gagal, wang anda selamat kerana bayaran hanya diminta selepas APK siap dibina, diuji dan disahkan.",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. Hak cipta terpelihara.",
-                morning: "Selamat Pagi",
-                afternoon: "Selamat Tengah Hari",
-                evening: "Selamat Petang",
-                night: "Selamat Malam",
-                noData: "Tiada mod ditemui.",
-                failLoad: "Gagal memuatkan data dari database.json"
-            },
-            th: {
-                name: "ไทย (Thai)",
-                searchPlace: "ค้นหา mod...",
-                bannerSub: "ฐานข้อมูลมอดเกมและแอปพลิเคชันที่สมบูรณ์และอัปเดตที่สุด",
-                skipText: "ข้าม / ไปยังเว็บไซต์",
-                safeText: "ปลอดภัย ไม่มีไวรัส",
-                safeBadge: "ปลอดภัย",
-                downloadBtn: "ดาวน์โหลด APK",
-                modalTitle: "⚡ บริการแคร็ก APK ⚡",
-                noteTitle: "📝 หมายเหตุ:",
-                noteDesc: "หากการแคร็กไม่สำเร็จ เงินของคุณจะปลอดภัยเนื่องจากจะขอชำระเงินหลังจากสร้างและทดสอบ APK แล้วเท่านั้น",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. สงวนลิขสิทธิ์.",
-                morning: "สวัสดีตอนเช้า",
-                afternoon: "สวัสดีตอนบ่าย",
-                evening: "สวัสดีตอนเย็น",
-                night: "ราตรีสวัสดิ์",
-                noData: "ไม่พบมอด",
-                failLoad: "ไม่สามารถโหลดข้อมูลจาก database.json ได้"
-            },
-            vi: {
-                name: "Tiếng Việt (Vietnamese)",
-                searchPlace: "Tìm kiếm mod...",
-                bannerSub: "Cơ sở dữ liệu mod trò chơi và ứng dụng hoàn chỉnh và cập nhật nhất.",
-                skipText: "Bỏ qua / Tiếp tục đến Web",
-                safeText: "AN TOÀN KHÔNG VIRUS",
-                safeBadge: "An toàn",
-                downloadBtn: "Tải xuống APK",
-                modalTitle: "⚡ DỊCH VỤ BẺ KHÓA APK ⚡",
-                noteTitle: "📝 LƯU Ý:",
-                noteDesc: "Nếu bẻ khóa không thành công, tiền của bạn được an toàn vì thanh toán chỉ được yêu cầu sau khi APK được tạo và kiểm tra.",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. Mọi quyền được bảo lưu.",
-                morning: "Chào buổi sáng",
-                afternoon: "Chào buổi chiều",
-                evening: "Chào buổi tối",
-                night: "Chúc ngủ ngon",
-                noData: "Không tìm thấy mod nào.",
-                failLoad: "Không thể tải dữ liệu từ database.json"
-            },
-            tl: {
-                name: "Tagalog (Filipino)",
-                searchPlace: "Maghanap ng mod...",
-                bannerSub: "Kumpleto at updated na database ng mod para sa laro at aplikasyon.",
-                skipText: "Laktawan / Pumunta sa Web",
-                safeText: "LIGTAS WALANG VIRUS",
-                safeBadge: "Ligtas",
-                downloadBtn: "I-download ang APK",
-                modalTitle: "⚡ SERBISYONG CRACK NG APK ⚡",
-                noteTitle: "📝 TANDAAN:",
-                noteDesc: "Kung mabigo ang crack, ligtas ang iyong pera dahil hihingi lamang ng bayad pagkatapos gawin at subukan ang APK.",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. All rights reserved.",
-                morning: "Magandang Umaga",
-                afternoon: "Magandang Hapon",
-                evening: "Magandang Gabi",
-                night: "Magandang Gabi",
-                noData: "Walang nahanap na mod.",
-                failLoad: "Nabigong i-load ang data mula sa database.json"
-            },
-            my: {
-                name: "မြန်မာ (Burmese)",
-                searchPlace: "မုဒ်ကို ရှာရန်...",
-                bannerSub: "အပြည့်စုံဆုံးနှင့် နောက်ဆုံးပေါ် ဂိမ်းနှင့် အက်ပ်မုဒ် ဒေတာဘေ့စ်။",
-                skipText: "ကျော်ရန် / ဝဘ်သို့ ဆက်သွားရန်",
-                safeText: "ဘေးကင်းသည် ဗိုင်းရပ်စ်မရှိပါ",
-                safeBadge: "ဘေးကင်းသည်",
-                downloadBtn: "APK ကို ဒေါင်းလုဒ်လုပ်ရန်",
-                modalTitle: "⚡ APK ခွဲက်ဝန်ဆောင်မှု ⚡",
-                noteTitle: "📝 မှတ်ချက် -",
-                noteDesc: "ခွဲက်ခြင်း မအောင်မြင်ပါက APK တည်ဆောက်ပြီး စမ်းသပ်ပြီးမှသာ ငွေပေးချေရန် တောင်းဆိုသောကြောင့် သင့်ငွေ လုံခြုံပါသည်။",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. မူပိုင်ခွင့် အားလုံးရယူထားသည်။",
-                morning: "မနက်ခင်းပါ",
-                afternoon: "မွန်းလွဲခင်းပါ",
-                evening: "ညနေခင်းပါ",
-                night: "ညချမ်းပါ",
-                noData: "မုဒ်များ မတွေ့ပါ။",
-                failLoad: "database.json မှ ဒေတာများကို တင်၍မရပါ"
-            },
-            km: {
-                name: "ខ្មែរ (Khmer)",
-                searchPlace: "ស្វែងរកម៉ូដ...",
-                bannerSub: "មូលដ្ឋានទិន្នន័យម៉ូដហ្គេម និងកម្មវិធីពេញលេញ និងទាន់សម័យបំផុត។",
-                skipText: "រំលង / បន្តទៅគេហទំព័រ",
-                safeText: "សុវត្ថិភាព គ្មានមេរោគ",
-                safeBadge: "សុវត្ថិភាព",
-                downloadBtn: "ទាញយក APK",
-                modalTitle: "⚡ សេវាកម្មបំបែក APK ⚡",
-                noteTitle: "📝សម្គាល់៖",
-                noteDesc: "ប្រសិនបើការបំបែកបរាជ័យ ប្រាក់របស់អ្នកមានសុវត្ថិភាព ព្រោះការទូទាត់ត្រូវបានស្នើសុំតែបន្ទាប់ពីបង្កើត និងសាកល្បង APK ប៉ុណ្ណោះ។",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. រក្សាសិទ្ធិគ្រប់យ៉ាង។",
-                morning: "អរុណសួស្តី",
-                afternoon: "ទិវាសួស្តី",
-                evening: "សាយ័ន្តសួស្តី",
-                night: "រាត្រីសួស្តី",
-                noData: "រកមិនឃើញម៉ូដទេ។",
-                failLoad: "បរាជ័យក្នុងការទាញយកទិន្នន័យពី database.json"
-            },
-            lo: {
-                name: "ລາວ (Lao)",
-                searchPlace: "ຄົ້ນຫາໂມດ...",
-                bannerSub: "ຖານຂໍ້ມູນໂມດເກມ ແລະ ແອັບພລິເຄຊັນທີ່ສົມບູນ ແລະ ອັບເດດທີ່ສຸດ.",
-                skipText: "ຂ້າມ / ໄປຕໍ່ເວັບໄຊ",
-                safeText: "ປອດໄພ ບໍ່ມີໄວຣັສ",
-                safeBadge: "ປອດໄພ",
-                downloadBtn: "ດາວໂຫລດ APK",
-                modalTitle: "⚡ บริการແຄຣັກ APK ⚡",
-                noteTitle: "📝 ໝາຍເຫດ:",
-                noteDesc: "ຖ້າການແຄຣັກບໍ່ສຳເລັດ ເງິນຂອງທ່ານແມ່ນປອດໄພ ເພາະຈະຂໍຊຳລະເງິນຫຼັງຈາກສ້າງ ແລະ ທົດສອບ APK ແລ້ວເທົ່ານັ້ນ.",
-                modalCta: "PM: @NantaXTVip",
-                footerText: "&copy; 2026 XTMODEPRO. สงวนลิຂະສິດ.",
-                morning: "ສະບາຍດີຕອນເຊົ້າ",
-                afternoon: "ສະບາຍດີຕອນບ່າຍ",
-                evening: "ສະບາຍດີຕອນແລງ",
-                night: "ສະບາຍດີຕອນຄືນ",
-                noData: "ບໍ່ພົບໂມດ.",
-                failLoad: "ບໍ່ສາມາດໂຫຼດຂໍ້ມູນຈາກ database.json ໄດ້"
+                failLoad: "Failed to load database."
             }
         };
 
@@ -1299,70 +863,7 @@
                 timeWord = t.evening;
             }
 
-            switch(lang) {
-                case 'en':
-                    return `${timeWord}, welcome to XTMODEPRO! 🚀`;
-                case 'es':
-                    return `¡${timeWord}, bienvenido a XTMODEPRO! 🚀`;
-                case 'fr':
-                    return `${timeWord}, bienvenue sur XTMODEPRO ! 🚀`;
-                case 'de':
-                    return `${timeWord}, willkommen bei XTMODEPRO! 🚀`;
-                case 'pt':
-                    return `${timeWord}, bem-vindo ao XTMODEPRO! 🚀`;
-                case 'it':
-                    return `${timeWord}, benvenuto su XTMODEPRO! 🚀`;
-                case 'ru':
-                    return `${timeWord}, добро пожаловать в XTMODEPRO! 🚀`;
-                case 'tr':
-                    return `${timeWord}, XTMODEPRO'ye hoş geldiniz! 🚀`;
-                case 'ar':
-                    return `مرحباً بك، ${timeWord} في XTMODEPRO! 🚀`;
-                case 'hi':
-                    return `${timeWord}, XTMODEPRO में आपका स्वागत है! 🚀`;
-                case 'fa':
-                    return `${timeWord}، به XTMODEPRO خوش آمدید! 🚀`;
-                case 'ur':
-                    return `${timeWord}, XTMODEPRO میں خوش آمدید! 🚀`;
-                case 'bn':
-                    return `${timeWord}, XTMODEPRO-এ স্বাগতম! 🚀`;
-                case 'zh':
-                    return `${timeWord}，欢迎来到 XTMODEPRO！ 🚀`;
-                case 'ja':
-                    return `XTMODEPROへようこそ、${timeWord}！ 🚀`;
-                case 'ko':
-                    return `XTMODEPRO에 오신 것을 환영합니다, ${timeWord}! 🚀`;
-                case 'ms':
-                    return `${timeWord}, selamat datang ke XTMODEPRO! 🚀`;
-                case 'th':
-                    return `${timeWord} ยินดีต้อนรับสู่ XTMODEPRO! 🚀`;
-                case 'vi':
-                    return `${timeWord}, chào mừng bạn đến với XTMODEPRO! 🚀`;
-                case 'tl':
-                    return `${timeWord}, maligayang pagdating sa XTMODEPRO! 🚀`;
-                case 'my':
-                    return `${timeWord}၊ XTMODEPRO မှ ကြိုဆိုပါတယ်! 🚀`;
-                case 'km':
-                    return `${timeWord} សូមស្វាគមន៍មកកាន់ XTMODEPRO! 🚀`;
-                case 'lo':
-                    return `${timeWord} ຍິນດີຕ້ອນຮັບສູ່ XTMODEPRO! 🚀`;
-                case 'mad':
-                    return `${timeWord} è XTMODEPRO! 🚀`;
-                case 'ace':
-                    return `${timeWord} u XTMODEPRO! 🚀`;
-                case 'jv':
-                    return `${timeWord} ing XTMODEPRO! 🚀`;
-                case 'su':
-                    return `${timeWord} di XTMODEPRO! 🚀`;
-                case 'min':
-                    return `${timeWord} di XTMODEPRO! 🚀`;
-                case 'bug':
-                    return `${timeWord} ri XTMODEPRO! 🚀`;
-                case 'ban':
-                    return `${timeWord} ring XTMODEPRO! 🚀`;
-                default:
-                    return `${timeWord} di XTMODEPRO! 🚀`;
-            }
+            return `${timeWord} di XTMODEPRO! 🚀`;
         }
 
         function detectUserLanguage() {
@@ -1370,12 +871,6 @@
             if (savedLang && translations[savedLang]) {
                 return savedLang;
             }
-
-            const browserLang = (navigator.language || navigator.userLanguage || 'id').toLowerCase();
-            for (let key in translations) {
-                if (browserLang.startsWith(key)) return key;
-            }
-
             return 'id';
         }
 
@@ -1427,15 +922,39 @@
             langDropdown.classList.remove('active');
         }
 
+        // Fungsi Load Database yang sudah diperbaiki agar support file:// lokal & fetch standar
         async function loadDatabase() {
             try {
+                // Coba fetch standar (berfungsi jika online/server lokal)
                 const response = await fetch('database.json');
+                if (!response.ok) throw new Error('Network response not ok');
                 allMods = await response.json();
                 displayMods(allMods);
             } catch (error) {
-                console.error('Gagal memuat database:', error);
-                const t = translations[currentLang] || translations['id'];
-                document.getElementById('appGrid').innerHTML = `<p style="color:red;">${t.failLoad}</p>`;
+                console.warn('Fetch standar gagal, mencoba metode XHR/Fallback lokal...');
+                
+                try {
+                    // Gunakan XMLHttpRequest untuk akses file:// di Android storage
+                    const xhr = new XMLHttpRequest();
+                    xhr.overrideMimeType("application/json");
+                    xhr.open("GET", "database.json", true);
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4) {
+                            if (xhr.status === 0 || xhr.status === 200) {
+                                allMods = JSON.parse(xhr.responseText);
+                                displayMods(allMods);
+                            } else {
+                                throw new Error('XHR load failed');
+                            }
+                        }
+                    };
+                    xhr.send(null);
+                } catch (err) {
+                    console.warn('XHR gagal, menggunakan database cadangan langsung...');
+                    // Fallback menggunakan variabel defaultDatabase jika file.json benar-benar ter-block total
+                    allMods = defaultDatabase;
+                    displayMods(allMods);
+                }
             }
         }
 
@@ -1444,7 +963,7 @@
             appGrid.innerHTML = '';
             const t = translations[currentLang] || translations['id'];
 
-            if (mods.length === 0) {
+            if (!mods || mods.length === 0) {
                 appGrid.innerHTML = `<p style="color:var(--text-muted);">${t.noData}</p>`;
                 return;
             }
