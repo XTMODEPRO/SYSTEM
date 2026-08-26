@@ -361,180 +361,6 @@
             opacity: 0.9;
         }
 
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(7, 9, 14, 0.85);
-            backdrop-filter: blur(8px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            padding: 15px;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            width: 100%;
-            max-width: 500px;
-            padding: 25px;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .modal-overlay.active .modal-box {
-            transform: scale(1);
-        }
-
-        .promo-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .promo-header h2 {
-            font-size: 20px;
-            color: #fff;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, var(--accent), var(--pink-accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .badge-safe-pop {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        .promo-price-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .promo-price-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 15px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            font-size: 13px;
-            text-decoration: none;
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-
-        .promo-price-item:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
-            background: rgba(0, 242, 254, 0.05);
-        }
-
-        .promo-service-name {
-            font-weight: 600;
-            color: #fff;
-        }
-
-        .promo-price-tag {
-            background: linear-gradient(135deg, var(--accent), var(--pink-accent));
-            color: var(--bg-primary);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 12px;
-        }
-
-        .promo-note {
-            background: rgba(234, 179, 8, 0.08);
-            border: 1px solid rgba(234, 179, 8, 0.2);
-            border-left: 3px solid #eab308;
-            padding: 12px;
-            border-radius: 0 8px 8px 0;
-            margin-bottom: 15px;
-            font-size: 12px;
-            line-height: 1.4;
-            color: #fef08a;
-        }
-
-        .promo-note strong {
-            color: #facc15;
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .promo-cta-button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            width: 100%;
-            background: linear-gradient(135deg, var(--accent), var(--pink-accent));
-            color: var(--bg-primary);
-            text-align: center;
-            padding: 12px;
-            border-radius: 10px;
-            font-weight: 700;
-            text-decoration: none;
-            font-size: 13px;
-            text-transform: uppercase;
-            box-shadow: 0 4px 15px var(--accent-glow);
-            transition: opacity 0.2s;
-            margin-bottom: 10px;
-        }
-
-        .promo-cta-button:hover {
-            opacity: 0.9;
-        }
-
-        .skip-btn {
-            display: block;
-            width: 100%;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-            text-align: center;
-            padding: 11px;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .skip-btn:hover {
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
-            border-color: var(--text-muted);
-        }
-
         footer {
             background-color: var(--bg-secondary);
             color: var(--text-muted);
@@ -547,77 +373,6 @@
     </style>
 </head>
 <body>
-
-    <div class="modal-overlay" id="promoModal">
-        <div class="modal-box">
-            <div class="promo-header">
-                <h2 id="modalTitle">⚡ JASA CRACK APK ⚡</h2>
-                <span class="badge-safe-pop"><i class="fa-solid fa-shield-halved"></i> <span id="modalSafe">SAFE NO VIRUS</span></span>
-            </div>
-
-            <ul class="promo-price-list">
-                <li>
-                    <a href="https://t.me/NantaXTVip?text=Halo%20kak,%20saya%20mau%20order%20jasa%20crack%20paket:%20CRACK%20RANDOM%20KEY%20(Rp.8.000)." target="_blank" class="promo-price-item">
-                        <span class="promo-service-name">🔑 CRACK RANDOM KEY</span>
-                        <span class="promo-price-tag">Rp. 8.000</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://t.me/NantaXTVip?text=Halo%20kak,%20saya%20mau%20order%20jasa%20crack%20paket:%20CRACK%20NO%20LOGIN%20(Rp.6.000)." target="_blank" class="promo-price-item">
-                        <span class="promo-service-name">🔰 CRACK NO LOGIN</span>
-                        <span class="promo-price-tag">Rp. 6.000</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://t.me/NantaXTVip?text=Halo%20kak,%20saya%20mau%20order%20jasa%20crack%20paket:%20UNLOCK%20VIP%20FITUR%20(Rp.7.000)." target="_blank" class="promo-price-item">
-                        <span class="promo-service-name">⭐ UNLOCK VIP FITUR</span>
-                        <span class="promo-price-tag">Rp. 7.000</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://t.me/NantaXTVip?text=Halo%20kak,%20saya%20mau%20order%20jasa%20crack%20paket:%20RANDOM%20KEY%20LIB%20(Rp.10.000)." target="_blank" class="promo-price-item">
-                        <span class="promo-service-name">📚 RANDOM KEY LIB</span>
-                        <span class="promo-price-tag">Rp. 10.000</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://t.me/NantaXTVip?text=Halo%20kak,%20saya%20mau%20order%20jasa%20crack%20paket:%20DELETED%20ADS%20APK%20(Rp.2.000)." target="_blank" class="promo-price-item">
-                        <span class="promo-service-name">🚫 DELETED ADS APK</span>
-                        <span class="promo-price-tag">Rp. 2.000</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://t.me/NantaXTVip?text=Halo%20kak,%20saya%20mau%20order%20jasa%20crack%20paket:%20BYPASS%20AKSES%20AKUN%20APK%20(Rp.5.000)." target="_blank" class="promo-price-item">
-                        <span class="promo-service-name">🔓 BYPASS AKSES AKUN APK</span>
-                        <span class="promo-price-tag">Rp. 5.000</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://t.me/NantaXTVip?text=Halo%20kak,%20saya%20mau%20order%20jasa%20crack%20paket:%20CRACK%20CUSTOM%20KEY%20(Rp.6.000)." target="_blank" class="promo-price-item">
-                        <span class="promo-service-name">🔑 CRACK CUSTOM KEY</span>
-                        <span class="promo-price-tag">Rp. 6.000</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://t.me/NantaXTVip?text=Halo%20kak,%20saya%20mau%20order%20jasa%20crack%20paket:%20CRACK%20KEY%20+%20ADMIN%20PANEL%20(Rp.25.000)." target="_blank" class="promo-price-item">
-                        <span class="promo-service-name">💻 CRACK KEY + ADMIN PANEL</span>
-                        <span class="promo-price-tag">Rp. 25.000</span>
-                    </a>
-                </li>
-            </ul>
-
-            <div class="promo-note">
-                <strong id="modalNoteTitle">📝 NOTE:</strong>
-                <span id="modalNoteDesc">Jika crack gagal, uang tidak akan hilang karena sistem tidak minta uang dulu. Tapi buat dulu dan di test dan setelah APK siap baru kami akan minta konfirmasi apakah mau atau tidak</span>
-            </div>
-
-            <a href="https://t.me/NantaXTVip?text=Halo%20kak,%20saya%20mau%20tanya-tanya%20tentang%20jasa%20crack%20APK." target="_blank" class="promo-cta-button" id="modalCta">
-                <i class="fa-brands fa-telegram"></i> PM: @NantaXTVip
-            </a>
-
-            <button class="skip-btn" id="skipModalBtn">Lewati / Lanjut ke Web</button>
-        </div>
-    </div>
 
     <header>
         <div class="container navbar">
@@ -666,20 +421,13 @@
     <script>
         let allMods = [];
 
-        // Database Terjemahan Lengkap untuk Seluruh Elemen Teks (UI, Pop-up, Tombol, Label Kartu)
         const translations = {
             id: {
                 name: "Bahasa Indonesia",
                 searchPlace: "Cari mod...",
                 bannerSub: "Database mod game dan aplikasi terlengkap dan terupdate.",
-                skipText: "Lewati / Lanjut ke Web",
-                safeText: "SAFE NO VIRUS",
                 safeBadge: "Aman",
                 downloadBtn: "Unduh APK",
-                modalTitle: "⚡ JASA CRACK APK ⚡",
-                noteTitle: "📝 NOTE:",
-                noteDesc: "Jika crack gagal, uang tidak akan hilang karena sistem tidak minta uang dulu. Tapi buat dulu dan di test dan setelah APK siap baru kami akan minta konfirmasi apakah mau atau tidak",
-                modalCta: "PM: @NantaXTVip",
                 footerText: "&copy; 2026 XTMODEPRO. All rights reserved.",
                 morning: "Selamat Pagi",
                 afternoon: "Selamat Siang",
@@ -693,14 +441,8 @@
                 name: "Bahasa Aceh",
                 searchPlace: "Mita mod...",
                 bannerSub: "Database mod game ngon aplikasi nyang paleng lekap ngon update.",
-                skipText: "Langkah / Lanjut u Web",
-                safeText: "AMAN BE UNAH",
                 safeBadge: "Aman",
                 downloadBtn: "Download APK",
-                modalTitle: "⚡ JASA CRACK APK ⚡",
-                noteTitle: "📝 CATATAN:",
-                noteDesc: "Meunyoe crack gagal, peuet hana meuhilang sabab sistem hana meujak peunyo awai.",
-                modalCta: "PM: @NantaXTVip",
                 footerText: "&copy; 2026 XTMODEPRO. Hak cipta dilindungi.",
                 morning: "Beungoh Baro",
                 afternoon: "Uroe Teungoh",
@@ -714,14 +456,8 @@
                 name: "Basa Jawa",
                 searchPlace: "Golek mod...",
                 bannerSub: "Database mod game lan aplikasi paling lengkap lan anyar.",
-                skipText: "Liwati / Lanjut Menyang Web",
-                safeText: "AMAN TANPA VIRUS",
                 safeBadge: "Aman",
                 downloadBtn: "Unduh APK",
-                modalTitle: "⚡ JASA CRACK APK ⚡",
-                noteTitle: "📝 CATETAN:",
-                noteDesc: "Menawa crack gagal, dhuwit ora bakal ilang amarga sistem ora njaluk dhuwit dhisik.",
-                modalCta: "PM: @NantaXTVip",
                 footerText: "&copy; 2026 XTMODEPRO. Hak cipta dilindhungi.",
                 morning: "Sugeng Enjang",
                 afternoon: "Sugeng Siang",
@@ -735,14 +471,8 @@
                 name: "Basa Sunda",
                 searchPlace: "Milarian mod...",
                 bannerSub: "Database mod game sareng aplikasi panglengkapna tur panganyarna.",
-                skipText: "Liwat / Lajeng ka Wéb",
-                safeText: "AMAN TANPA VIRUS",
                 safeBadge: "Aman",
                 downloadBtn: "Unduh APK",
-                modalTitle: "⚡ JASA CRACK APK ⚡",
-                noteTitle: "📝 CATETAN:",
-                noteDesc: "Upami crack gagal, artos henteu bakal musna sabab sistem henteu menta artos tipayun.",
-                modalCta: "PM: @NantaXTVip",
                 footerText: "&copy; 2026 XTMODEPRO. Sadaya hak ditangtayungan.",
                 morning: "Wilujeng Enjing",
                 afternoon: "Wilujeng Siang",
@@ -756,14 +486,8 @@
                 name: "Baso Minangkabau",
                 searchPlace: "Cari mod...",
                 bannerSub: "Database mod game jo aplikasi nan paliang langkok jo update.",
-                skipText: "Talaik / Lanjuik ka Web",
-                safeText: "AMAN INDAK VIRUS",
                 safeBadge: "Aman",
                 downloadBtn: "Unduah APK",
-                modalTitle: "⚡ JASA CRACK APK ⚡",
-                noteTitle: "📝 CATATAN:",
-                noteDesc: "Jikok crack gagal, pitih indak ka ilang dek sistem indak mamiliah pitiah dulu.",
-                modalCta: "PM: @NantaXTVip",
                 footerText: "&copy; 2026 XTMODEPRO. Hak cipta dilindungi.",
                 morning: "Salamaik Pagi",
                 afternoon: "Salamaik Siang",
@@ -777,14 +501,8 @@
                 name: "English",
                 searchPlace: "Search mod...",
                 bannerSub: "Complete and updated game and application mod database.",
-                skipText: "Skip / Continue to Web",
-                safeText: "SAFE NO VIRUS",
                 safeBadge: "Safe",
                 downloadBtn: "Download APK",
-                modalTitle: "⚡ APK CRACK SERVICE ⚡",
-                noteTitle: "📝 NOTE:",
-                noteDesc: "If the crack fails, your money is safe as payment is requested only after the APK is built, tested, and confirmed.",
-                modalCta: "PM: @NantaXTVip",
                 footerText: "&copy; 2026 XTMODEPRO. All rights reserved.",
                 morning: "Good Morning",
                 afternoon: "Good Afternoon",
@@ -798,14 +516,8 @@
                 name: "Español",
                 searchPlace: "Buscar mod...",
                 bannerSub: "Base de datos de mods de juegos y aplicaciones completa y actualizada.",
-                skipText: "Omitir / Ir al sitio web",
-                safeText: "SEGURO SIN VIRUS",
                 safeBadge: "Seguro",
                 downloadBtn: "Descargar APK",
-                modalTitle: "⚡ SERVICIO DE CRACK APK ⚡",
-                noteTitle: "📝 NOTA:",
-                noteDesc: "Si el crack falla, tu dinero está seguro ya que solo se solicita pago después de crear, probar y confirmar el APK.",
-                modalCta: "PM: @NantaXTVip",
                 footerText: "&copy; 2026 XTMODEPRO. Todos los derechos reservados.",
                 morning: "Buenos Días",
                 afternoon: "Buenas Tardes",
@@ -819,14 +531,8 @@
                 name: "العربية (Arabic)",
                 searchPlace: "البحث عن تعديل...",
                 bannerSub: "قاعدة بيانات تعديلات الألعاب والتطبيقات الشاملة والمحدثة.",
-                skipText: "تخطي / متابعة إلى الموقع",
-                safeText: "آمن بدون فيروسات",
                 safeBadge: "آمن",
                 downloadBtn: "تحميل APK",
-                modalTitle: "⚡ خدمة كسر الحماية ⚡",
-                noteTitle: "📝 ملاحظة:",
-                noteDesc: "إذا فشل التكسير، فلن تضيع أموالك حيث لا يطلب النظام أموالاً مقدماً.",
-                modalCta: "PM: @NantaXTVip",
                 footerText: "&copy; 2026 XTMODEPRO. كل الحقوق محفوظة.",
                 morning: "صباح الخير",
                 afternoon: "مساء الخير",
@@ -840,14 +546,8 @@
                 name: "中文 (Chinese)",
                 searchPlace: "搜索模组...",
                 bannerSub: "最完整和更新的游戏及应用程序修改数据库。",
-                skipText: "跳过 / 进入网页",
-                safeText: "安全无病毒",
                 safeBadge: "安全",
                 downloadBtn: "下载 APK",
-                modalTitle: "⚡ APK 破解服务 ⚡",
-                noteTitle: "📝 备注:",
-                noteDesc: "如果破解失败，您的资金是安全的，因为只有在 APK 构建、测试和确认后才会要求付款。",
-                modalCta: "PM: @NantaXTVip",
                 footerText: "&copy; 2026 XTMODEPRO. 版权所有.",
                 morning: "早上好",
                 afternoon: "下午好",
@@ -861,14 +561,8 @@
                 name: "日本語 (Japanese)",
                 searchPlace: "Modを検索...",
                 bannerSub: "最も完全で最新のゲームおよびアプリModデータベース。",
-                skipText: "スキップ / ウェブへ進む",
-                safeText: "安全・ウイルスなし",
                 safeBadge: "安全",
                 downloadBtn: "APKをダウンロード",
-                modalTitle: "⚡ APKクラックサービス ⚡",
-                noteTitle: "📝 注意:",
-                noteDesc: "クラックが失敗した場合でも、APKの作成、テスト、確認後にのみ支払いが発生するため、お金は安全です。",
-                modalCta: "PM: @NantaXTVip",
                 footerText: "&copy; 2026 XTMODEPRO. All rights reserved.",
                 morning: "おはようございます",
                 afternoon: "こんにちは",
@@ -882,14 +576,8 @@
                 name: "한국어 (Korean)",
                 searchPlace: "모드 검색...",
                 bannerSub: "가장 완성도 높고 최신화된 게임 및 앱 모드 데이터베이스.",
-                skipText: "건너뛰기 / 웹으로 이동",
-                safeText: "안전 바이러스 없음",
                 safeBadge: "안전",
                 downloadBtn: "APK 다운로드",
-                modalTitle: "⚡ APK 크랙 서비스 ⚡",
-                noteTitle: "📝 참고:",
-                noteDesc: "크랙이 실패하더라도 APK가 제작, 테스트 및 확인된 후에만 요금이 청구되므로 안전합니다.",
-                modalCta: "PM: @NantaXTVip",
                 footerText: "&copy; 2026 XTMODEPRO. 판권 소유.",
                 morning: "좋은 아침입니다",
                 afternoon: "좋은 오후입니다",
@@ -903,14 +591,8 @@
                 name: "Bahasa Melayu",
                 searchPlace: "Cari mod...",
                 bannerSub: "Pangkalan data mod permainan dan aplikasi yang lengkap dan terkini.",
-                skipText: "Langkau / Teruskan ke Web",
-                safeText: "SELAMAT TIADA VIRUS",
                 safeBadge: "Selamat",
                 downloadBtn: "Muat Turun APK",
-                modalTitle: "⚡ PERKHIDMATAN CRACK APK ⚡",
-                noteTitle: "📝 NOTA:",
-                noteDesc: "Jika crack gagal, wang anda selamat kerana bayaran hanya diminta selepas APK siap dibina, diuji dan disahkan.",
-                modalCta: "PM: @NantaXTVip",
                 footerText: "&copy; 2026 XTMODEPRO. Hak cipta terpelihara.",
                 morning: "Selamat Pagi",
                 afternoon: "Selamat Tengah Hari",
@@ -924,14 +606,8 @@
                 name: "ไทย (Thai)",
                 searchPlace: "ค้นหา mod...",
                 bannerSub: "ฐานข้อมูลมอดเกมและแอปพลิเคชันที่สมบูรณ์และอัปเดตที่สุด",
-                skipText: "ข้าม / ไปยังเว็บไซต์",
-                safeText: "ปลอดภัย ไม่มีไวรัส",
                 safeBadge: "ปลอดภัย",
                 downloadBtn: "ดาวน์โหลด APK",
-                modalTitle: "⚡ บริการแคร็ก APK ⚡",
-                noteTitle: "📝 หมายเหตุ:",
-                noteDesc: "หากการแคร็กไม่สำเร็จ เงินของคุณจะปลอดภัยเนื่องจากจะขอชำระเงินหลังจากสร้างและทดสอบ APK แล้วเท่านั้น",
-                modalCta: "PM: @NantaXTVip",
                 footerText: "&copy; 2026 XTMODEPRO. สงวนลิขสิทธิ์.",
                 morning: "สวัสดีตอนเช้า",
                 afternoon: "สวัสดีตอนบ่าย",
@@ -945,14 +621,8 @@
                 name: "Tiếng Việt (Vietnamese)",
                 searchPlace: "Tìm kiếm mod...",
                 bannerSub: "Cơ sở dữ liệu mod trò chơi và ứng dụng hoàn chỉnh và cập nhật nhất.",
-                skipText: "Bỏ qua / Tiếp tục đến Web",
-                safeText: "AN TOÀN KHÔNG VIRUS",
                 safeBadge: "An toàn",
                 downloadBtn: "Tải xuống APK",
-                modalTitle: "⚡ DỊCH VỤ BẺ KHÓA APK ⚡",
-                noteTitle: "📝 LƯU Ý:",
-                noteDesc: "Nếu bẻ khóa không thành công, tiền của bạn được an toàn vì thanh toán chỉ được yêu cầu sau khi APK được tạo và kiểm tra.",
-                modalCta: "PM: @NantaXTVip",
                 footerText: "&copy; 2026 XTMODEPRO. Mọi quyền được bảo lưu.",
                 morning: "Chào buổi sáng",
                 afternoon: "Chào buổi chiều",
@@ -1020,12 +690,6 @@
             document.getElementById('searchInput').placeholder = t.searchPlace;
             document.getElementById('greetingTitle').innerText = getDynamicGreeting(lang);
             document.getElementById('greetingDesc').innerText = t.bannerSub;
-            document.getElementById('skipModalBtn').innerText = t.skipText;
-            document.getElementById('modalSafe').innerText = t.safeText;
-            document.getElementById('modalTitle').innerText = t.modalTitle;
-            document.getElementById('modalNoteTitle').innerText = t.noteTitle;
-            document.getElementById('modalNoteDesc').innerText = t.noteDesc;
-            document.getElementById('modalCta').innerHTML = `<i class="fa-brands fa-telegram"></i> ${t.modalCta}`;
             document.getElementById('footerText').innerHTML = t.footerText;
 
             if (allMods.length > 0) {
@@ -1116,25 +780,6 @@
             renderLanguageList();
             applyLanguage(currentLang);
             loadDatabase();
-        });
-
-        const modal = document.getElementById('promoModal');
-        const skipModalBtn = document.getElementById('skipModalBtn');
-
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                modal.classList.add('active');
-            }, 500);
-        });
-
-        skipModalBtn.addEventListener('click', () => {
-            modal.classList.remove('active');
-        });
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-            }
         });
     </script>
 </body>
