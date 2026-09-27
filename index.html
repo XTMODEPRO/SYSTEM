@@ -561,7 +561,8 @@
 
         async function loadDatabase() {
             try {
-                const response = await fetch('database.json');
+                // Parameter timestamp ditambahkan agar browser selalu meminta data paling baru dari server
+                const response = await fetch('database.json?v=' + new Date().getTime());
                 allMods = await response.json();
                 filteredMods = [...allMods];
                 resetAndRenderMods();
