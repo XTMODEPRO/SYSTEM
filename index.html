@@ -7,16 +7,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-primary: #0b0f19;
-            --bg-secondary: #131b2e;
-            --bg-card: #182238;
-            --bg-card-hover: #1f2c48;
+            --bg-primary: #070a12;
+            --bg-secondary: #0d1220;
+            --bg-card: rgba(18, 25, 41, 0.7);
+            --bg-card-hover: rgba(28, 38, 61, 0.85);
             --accent: #00f2fe;
             --accent-green: #10b981;
-            --accent-glow: rgba(0, 242, 254, 0.15);
+            --accent-glow: rgba(0, 242, 254, 0.2);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(0, 242, 254, 0.35);
         }
 
         * {
@@ -32,6 +33,10 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(0, 242, 254, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.03) 0%, transparent 40%);
+            background-attachment: fixed;
         }
 
         .container {
@@ -42,8 +47,9 @@
 
         /* HEADER & NAVBAR */
         header {
-            background-color: rgba(19, 27, 46, 0.85);
-            backdrop-filter: blur(16px);
+            background-color: rgba(7, 10, 18, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             padding: 14px 0;
             position: sticky;
@@ -65,7 +71,7 @@
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             letter-spacing: 0.5px;
         }
 
@@ -74,8 +80,8 @@
             height: 38px;
             border-radius: 12px;
             object-fit: cover;
-            border: 1px solid var(--accent);
-            box-shadow: 0 0 12px var(--accent-glow);
+            border: 1.5px solid var(--accent);
+            box-shadow: 0 0 15px var(--accent-glow);
         }
 
         .logo span {
@@ -94,7 +100,7 @@
 
         .search-box {
             display: flex;
-            background: var(--bg-primary);
+            background: var(--bg-secondary);
             border-radius: 20px;
             overflow: hidden;
             border: 1px solid var(--border);
@@ -105,7 +111,7 @@
 
         .search-box:focus-within {
             border-color: var(--accent);
-            box-shadow: 0 0 10px var(--accent-glow);
+            box-shadow: 0 0 15px var(--accent-glow);
         }
 
         .search-box input {
@@ -131,7 +137,7 @@
         }
 
         .lang-btn {
-            background: var(--bg-primary);
+            background: var(--bg-secondary);
             border: 1px solid var(--border);
             color: var(--text-main);
             padding: 8px 14px;
@@ -142,17 +148,22 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--accent);
         }
 
         .lang-dropdown {
             position: absolute;
             right: 0;
             top: calc(100% + 10px);
-            background: var(--bg-card);
+            background: #0d1322;
             border: 1px solid var(--border);
             border-radius: 16px;
             width: 280px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
             display: none;
             flex-direction: column;
             z-index: 1001;
@@ -166,12 +177,12 @@
         .lang-search-box {
             padding: 10px;
             border-bottom: 1px solid var(--border);
-            background: var(--bg-secondary);
+            background: var(--bg-primary);
         }
 
         .lang-search-box input {
             width: 100%;
-            background: var(--bg-primary);
+            background: var(--bg-secondary);
             border: 1px solid var(--border);
             border-radius: 8px;
             padding: 8px 12px;
@@ -207,13 +218,14 @@
 
         /* HERO BANNER */
         .greeting-banner {
-            background: linear-gradient(135deg, rgba(0, 242, 254, 0.08) 0%, rgba(19, 27, 46, 0.8) 100%);
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.08) 0%, rgba(13, 18, 32, 0.8) 100%);
             border: 1px solid var(--border);
             border-radius: 20px;
             padding: 24px 30px;
             margin: 25px 0;
             position: relative;
             backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .greeting-text h2 {
@@ -242,22 +254,24 @@
 
         .app-card {
             background: var(--bg-card);
-            border-radius: 18px;
-            padding: 16px;
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 18px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            gap: 12px;
+            gap: 14px;
             border: 1px solid var(--border);
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             position: relative;
+            overflow: hidden;
         }
 
         .app-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
             background: var(--bg-card-hover);
-            border-color: rgba(0, 242, 254, 0.4);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border-color: var(--border-hover);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 242, 254, 0.15);
         }
 
         .card-top {
@@ -266,16 +280,14 @@
             gap: 14px;
         }
 
-        /* Optimasi render gambar */
         .app-card img {
             width: 64px;
             height: 64px;
-            border-radius: 14px;
+            border-radius: 16px;
             object-fit: cover;
             border: 1px solid var(--border);
-            background: #07090e;
+            background: #000;
             flex-shrink: 0;
-            image-rendering: -webkit-optimize-contrast;
         }
 
         .app-info {
@@ -307,20 +319,26 @@
 
         .badge {
             font-size: 10px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.04);
             color: var(--accent);
-            padding: 2px 8px;
+            padding: 3px 8px;
             border-radius: 6px;
             border: 1px solid rgba(0, 242, 254, 0.2);
             font-weight: 600;
         }
 
+        .badge-mod {
+            color: var(--accent-green);
+            border-color: rgba(16, 185, 129, 0.2);
+            background: rgba(16, 185, 129, 0.05);
+        }
+
         .features-box {
             font-size: 12px;
             color: #cbd5e1;
-            background: rgba(11, 15, 25, 0.6);
+            background: rgba(7, 10, 18, 0.6);
             padding: 10px 12px;
-            border-radius: 10px;
+            border-radius: 12px;
             border-left: 3px solid var(--accent-green);
             line-height: 1.4;
             display: -webkit-box;
@@ -331,9 +349,9 @@
 
         .download-btn {
             background: linear-gradient(135deg, var(--accent) 0%, #00c6ff 100%);
-            color: #0b0f19;
+            color: #070a12;
             text-align: center;
-            padding: 10px;
+            padding: 11px;
             border-radius: 12px;
             text-decoration: none;
             font-size: 13px;
@@ -342,34 +360,38 @@
             justify-content: center;
             align-items: center;
             gap: 8px;
-            transition: opacity 0.2s;
+            transition: all 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.2);
         }
 
         .download-btn:hover {
             opacity: 0.9;
+            transform: scale(1.01);
         }
 
-        /* LOAD MORE CONTAINER */
-        .load-more-container {
+        /* INFINITE SCROLL LOADER */
+        .loading-sentinel {
             text-align: center;
-            margin-top: 30px;
-        }
-
-        .load-more-btn {
-            background: var(--bg-card);
-            color: var(--text-main);
-            border: 1px solid var(--border);
-            padding: 12px 28px;
-            border-radius: 25px;
-            font-weight: 600;
+            padding: 30px 0;
+            color: var(--text-muted);
             font-size: 13px;
-            cursor: pointer;
-            transition: all 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
         }
 
-        .load-more-btn:hover {
-            border-color: var(--accent);
-            color: var(--accent);
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         footer {
@@ -389,7 +411,6 @@
         <div class="container navbar">
             <div class="logo">
                 <a href="#">
-                    <!-- Logo Utama -->
                     <img src="https://files.catbox.moe/jnelom.png" alt="Logo" class="logo-icon" loading="lazy">
                     <span>XTMODEPRO</span>
                 </a>
@@ -424,8 +445,9 @@
         
         <div class="app-grid" id="appGrid"></div>
 
-        <div class="load-more-container" id="loadMoreContainer" style="display: none;">
-            <button class="load-more-btn" id="loadMoreBtn">Muat Lebih Banyak</button>
+        <!-- Element Pemicu Infinite Scroll -->
+        <div id="infiniteScrollTrigger" class="loading-sentinel" style="display: none;">
+            <div class="spinner"></div> Memuat data...
         </div>
     </main>
 
@@ -439,29 +461,17 @@
         let allMods = [];
         let filteredMods = [];
         let currentPage = 1;
-        const itemsPerPage = 12; // Membatasi jumlah card yang di-load sekaligus (hemat memori)
+        const itemsPerPage = 12; // Render bertahap 12 item
+        let isLoading = false;
 
         const translations = {
-            id: { name: "Bahasa Indonesia", searchPlace: "Cari mod...", bannerSub: "Database mod game dan aplikasi terlengkap dan terupdate.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. All rights reserved.", morning: "Selamat Pagi", afternoon: "Selamat Siang", evening: "Selamat Sore", night: "Selamat Malam", welcomeSuffix: " di XTMODEPRO! 🚀", noData: "Tidak ada mod ditemukan.", failLoad: "Gagal memuat data dari database.json", loadMore: "Muat Lebih Banyak" },
-            ace: { name: "Bahasa Aceh", searchPlace: "Mita mod...", bannerSub: "Database mod game ngon aplikasi nyang paleng lekap ngon update.", downloadBtn: "Download APK", footerText: "&copy; 2026 XTMODEPRO. Hak cipta dilindungi.", morning: "Beungoh Baro", afternoon: "Uroe Teungoh", evening: "Seupôt", night: "Malam Nyoe", welcomeSuffix: " di XTMODEPRO! 🚀", noData: "Hana mod nyang teumeme.", failLoad: "Gagal muat data dari database.json", loadMore: "Muat Lebih Banyak" },
-            jv: { name: "Basa Jawa", searchPlace: "Golek mod...", bannerSub: "Database mod game lan aplikasi paling lengkap lan anyar.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. Hak cipta dilindhungi.", morning: "Sugeng Enjang", afternoon: "Sugeng Siang", evening: "Sugeng Sonten", night: "Sugeng Wengi", welcomeSuffix: " ing XTMODEPRO! 🚀", noData: "Ora ana mod sing ditemokake.", failLoad: "Gagal ngemot data saking database.json", loadMore: "Luwih Akèh" },
-            su: { name: "Basa Sunda", searchPlace: "Milarian mod...", bannerSub: "Database mod game sareng aplikasi panglengkapna tur panganyarna.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. Sadaya hak ditangtayungan.", morning: "Wilujeng Enjing", afternoon: "Wilujeng Siang", evening: "Wilujeng Sumping", night: "Wilujeng Wengi", welcomeSuffix: " di XTMODEPRO! 🚀", noData: "Teu aya mod anu kapanggih.", failLoad: "Gagal ngamuat data tina database.json", loadMore: "Muat Langkung Seueur" },
-            min: { name: "Baso Minangkabau", searchPlace: "Cari mod...", bannerSub: "Database mod game jo aplikasi nan paliang langkok jo update.", downloadBtn: "Unduah APK", footerText: "&copy; 2026 XTMODEPRO. Hak cipta dilindungi.", morning: "Salamaik Pagi", afternoon: "Salamaik Siang", evening: "Salamaik Petang", night: "Salamaik Malam", welcomeSuffix: " di XTMODEPRO! 🚀", noData: "Indak ado mod nan basobok.", failLoad: "Gagal mambao data dari database.json", loadMore: "Muat Labiah Banyak" },
-            en: { name: "English", searchPlace: "Search mod...", bannerSub: "Complete and updated game and application mod database.", downloadBtn: "Download APK", footerText: "&copy; 2026 XTMODEPRO. All rights reserved.", morning: "Good Morning", afternoon: "Good Afternoon", evening: "Good Evening", night: "Good Night", welcomeSuffix: " to XTMODEPRO! 🚀", noData: "No mods found.", failLoad: "Failed to load data from database.json", loadMore: "Load More" },
-            es: { name: "Español", searchPlace: "Buscar mod...", bannerSub: "Base de datos de mods de juegos y aplicaciones completa y actualizada.", downloadBtn: "Descargar APK", footerText: "&copy; 2026 XTMODEPRO. Todos los derechos reservados.", morning: "Buenos Días", afternoon: "Buenas Tardes", evening: "Buenas Tardes", night: "Buenas Noches", welcomeSuffix: " en XTMODEPRO! 🚀", noData: "No se encontraron mods.", failLoad: "Error al cargar datos de database.json", loadMore: "Cargar Más" },
-            ar: { name: "العربية (Arabic)", searchPlace: "البحث عن تعديل...", bannerSub: "قاعدة بيانات تعديلات الألعاب والتطبيقات الشاملة والمحدثة.", downloadBtn: "تحميل APK", footerText: "&copy; 2026 XTMODEPRO. كل الحقوق محفوظة.", morning: "صباح الخير", afternoon: "مساء الخير", evening: "مساء الخير", night: "تصبح على خير", welcomeSuffix: " في XTMODEPRO! 🚀", noData: "لم يتم العثور على تعديلات.", failLoad: "فشل تحميل البيانات من database.json", loadMore: "تحميل المزيد" },
-            zh: { name: "中文 (Chinese)", searchPlace: "搜索模组...", bannerSub: "最完整和更新的游戏及应用程序修改数据库。", downloadBtn: "下载 APK", footerText: "&copy; 2026 XTMODEPRO. 版权所有.", morning: "早上好", afternoon: "下午好", evening: "傍晚好", night: "晚上好", welcomeSuffix: " 来到 XTMODEPRO! 🚀", noData: "未找到模组。", failLoad: "从 database.json 加载数据失败", loadMore: "加载更多" },
-            ja: { name: "日本語 (Japanese)", searchPlace: "Modを検索...", bannerSub: "最も完全で最新のゲームおよびアプリModデータベース。", downloadBtn: "APKをダウンロード", footerText: "&copy; 2026 XTMODEPRO. All rights reserved.", morning: "おはようございます", afternoon: "こんにちは", evening: "こんばんは", night: "おやすみなさい", welcomeSuffix: " XTMODEPROへ! 🚀", noData: "Modが見つかりませんでした。", failLoad: "database.jsonからのデータの読み込みに失敗しました", loadMore: "もっと読み込む" },
-            ko: { name: "한국어 (Korean)", searchPlace: "모드 검색...", bannerSub: "가장 완성도 높고 최신화된 게임 및 앱 모드 데이터베이스.", downloadBtn: "APK 다운로드", footerText: "&copy; 2026 XTMODEPRO. 판권 소유.", morning: "좋은 아침입니다", afternoon: "좋은 오후입니다", evening: "좋은 저녁입니다", night: "안녕히 주무세요", welcomeSuffix: " XTMODEPRO에 오신 것을 환영합니다! 🚀", noData: "모드를 찾을 수 없습니다.", failLoad: "database.json에서 데이터를 로드하지 못했습니다.", loadMore: "더 보기" },
-            ms: { name: "Bahasa Melayu", searchPlace: "Cari mod...", bannerSub: "Pangkalan data mod permainan dan aplikasi yang lengkap dan terkini.", downloadBtn: "Muat Turun APK", footerText: "&copy; 2026 XTMODEPRO. Hak cipta terpelihara.", morning: "Selamat Pagi", afternoon: "Selamat Tengah Hari", evening: "Selamat Petang", night: "Selamat Malam", welcomeSuffix: " di XTMODEPRO! 🚀", noData: "Tiada mod ditemui.", failLoad: "Gagal memuatkan data dari database.json", loadMore: "Muat Lagi" },
-            th: { name: "ไทย (Thai)", searchPlace: "ค้นหา mod...", bannerSub: "ฐานข้อมูลมอดเกมและแอปพลิเคชันที่สมบูรณ์และอัปเดตที่สุด", downloadBtn: "ดาวน์โหลด APK", footerText: "&copy; 2026 XTMODEPRO. สงวนลิขสิทธิ์.", morning: "สวัสดีตอนเช้า", afternoon: "สวัสดีตอนบ่าย", evening: "สวัสดีตอนเย็น", night: "ราตรีสวัสดิ์", welcomeSuffix: " ที่ XTMODEPRO! 🚀", noData: "ไม่พบมอด", failLoad: "ไม่สามารถโหลดข้อมูลจาก database.json ได้", loadMore: "โหลดเพิ่มเติม" },
-            vi: { name: "Tiếng Việt (Vietnamese)", searchPlace: "Tìm kiếm mod...", bannerSub: "Cơ sở dữ liệu mod trò chơi và ứng dụng hoàn chỉnh và cập nhật nhất.", downloadBtn: "Tải xuống APK", footerText: "&copy; 2026 XTMODEPRO. Mọi quyền được bảo lưu.", morning: "Chào buổi sáng", afternoon: "Chào buổi chiều", evening: "Chào buổi tối", night: "Chúc ngủ ngon", welcomeSuffix: " tại XTMODEPRO! 🚀", noData: "Không tìm thấy mod nào.", failLoad: "Không thể tải dữ liệu từ database.json", loadMore: "Tải thêm" }
+            id: { name: "Bahasa Indonesia", searchPlace: "Cari mod...", bannerSub: "Database mod game dan aplikasi terlengkap dan terupdate.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. All rights reserved.", morning: "Selamat Pagi", afternoon: "Selamat Siang", evening: "Selamat Sore", night: "Selamat Malam", welcomeSuffix: " di XTMODEPRO! 🚀", noData: "Tidak ada mod ditemukan.", failLoad: "Gagal memuat data dari database.json", loadingText: "Memuat data..." },
+            en: { name: "English", searchPlace: "Search mod...", bannerSub: "Complete and updated game and application mod database.", downloadBtn: "Download APK", footerText: "&copy; 2026 XTMODEPRO. All rights reserved.", morning: "Good Morning", afternoon: "Good Afternoon", evening: "Good Evening", night: "Good Night", welcomeSuffix: " to XTMODEPRO! 🚀", noData: "No mods found.", failLoad: "Failed to load data from database.json", loadingText: "Loading data..." }
         };
 
         function renderLanguageList(filterText = '') {
             const langListEl = document.getElementById('langList');
             langListEl.innerHTML = '';
-
             for (const [code, data] of Object.entries(translations)) {
                 if (data.name.toLowerCase().includes(filterText.toLowerCase()) || code.toLowerCase().includes(filterText.toLowerCase())) {
                     const btn = document.createElement('button');
@@ -488,12 +498,6 @@
         function detectUserLanguage() {
             const savedLang = localStorage.getItem('xt_mod_lang');
             if (savedLang && translations[savedLang]) return savedLang;
-
-            const browserLang = (navigator.language || navigator.userLanguage || 'id').toLowerCase();
-            for (let key in translations) {
-                if (browserLang.startsWith(key)) return key;
-            }
-
             return 'id';
         }
 
@@ -509,7 +513,6 @@
             document.getElementById('greetingTitle').innerText = getDynamicGreeting(lang);
             document.getElementById('greetingDesc').innerText = t.bannerSub;
             document.getElementById('footerText').innerHTML = t.footerText;
-            document.getElementById('loadMoreBtn').innerText = t.loadMore || "Load More";
 
             resetAndRenderMods();
         }
@@ -554,10 +557,11 @@
         function renderNextBatch() {
             const appGrid = document.getElementById('appGrid');
             const t = translations[currentLang] || translations['id'];
-            
+            const trigger = document.getElementById('infiniteScrollTrigger');
+
             if (filteredMods.length === 0) {
                 appGrid.innerHTML = `<p style="color:var(--text-muted); font-size: 14px;">${t.noData}</p>`;
-                document.getElementById('loadMoreContainer').style.display = 'none';
+                trigger.style.display = 'none';
                 return;
             }
 
@@ -569,14 +573,13 @@
                 appGrid.innerHTML += `
                     <div class="app-card">
                         <div class="card-top">
-                            <!-- Memuat ikon asli dengan lazy-loading -->
                             <img src="${mod.icon}" alt="${mod.name}" loading="lazy" width="64" height="64">
                             <div class="app-info">
                                 <h3>${mod.name}</h3>
                                 <span class="category-tag">${mod.category} • v${mod.version}</span>
                                 <div class="meta-badges">
                                     <span class="badge">${mod.size}</span>
-                                    <span class="badge" style="color:#10b981; border-color:rgba(16,185,129,0.2);">MOD</span>
+                                    <span class="badge badge-mod">MOD</span>
                                 </div>
                             </div>
                         </div>
@@ -588,19 +591,42 @@
                 `;
             });
 
-            const loadMoreContainer = document.getElementById('loadMoreContainer');
+            // Atur indikator pencapaian akhir data
             if (end < filteredMods.length) {
-                loadMoreContainer.style.display = 'block';
+                trigger.style.display = 'flex';
             } else {
-                loadMoreContainer.style.display = 'none';
+                trigger.style.display = 'none';
             }
+            
+            isLoading = false;
         }
 
-        document.getElementById('loadMoreBtn').addEventListener('click', () => {
-            currentPage++;
-            renderNextBatch();
-        });
+        // Setup Intersection Observer untuk Infinite Scroll Otomatis
+        function setupInfiniteScroll() {
+            const trigger = document.getElementById('infiniteScrollTrigger');
+            
+            const observer = new IntersectionObserver((entries) => {
+                const firstEntry = entries[0];
+                if (firstEntry.isIntersecting && !isLoading) {
+                    const start = currentPage * itemsPerPage;
+                    if (start < filteredMods.length) {
+                        isLoading = true;
+                        currentPage++;
+                        setTimeout(() => {
+                            renderNextBatch();
+                        }, 300); // Penundaan kecil untuk animasi halus
+                    }
+                }
+            }, {
+                root: null,
+                rootMargin: '150px', // Memuat sebelum pengguna menyentuh paling bawah
+                threshold: 0.1
+            });
 
+            observer.observe(trigger);
+        }
+
+        // Pencarian Realtime
         document.getElementById('searchInput').addEventListener('input', function(e) {
             const keyword = e.target.value.toLowerCase().trim();
             filteredMods = allMods.filter(mod => 
@@ -615,6 +641,7 @@
             renderLanguageList();
             applyLanguage(currentLang);
             loadDatabase();
+            setupInfiniteScroll();
         });
     </script>
 </body>
