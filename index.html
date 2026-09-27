@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XTMODEPRO - MODS</title>
+    <title>XTMODEPRO - Database Mod APK</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -266,7 +266,7 @@
             gap: 14px;
         }
 
-        /* Gambar terkompres & lazy load */
+        /* Optimasi render gambar */
         .app-card img {
             width: 64px;
             height: 64px;
@@ -275,6 +275,7 @@
             border: 1px solid var(--border);
             background: #07090e;
             flex-shrink: 0;
+            image-rendering: -webkit-optimize-contrast;
         }
 
         .app-info {
@@ -348,7 +349,7 @@
             opacity: 0.9;
         }
 
-        /* LOAD MORE & LOADER */
+        /* LOAD MORE CONTAINER */
         .load-more-container {
             text-align: center;
             margin-top: 30px;
@@ -388,7 +389,8 @@
         <div class="container navbar">
             <div class="logo">
                 <a href="#">
-                    <img src="https://wsrv.nl/?url=files.catbox.moe/jnelom.png&w=80&q=60" alt="Logo" class="logo-icon">
+                    <!-- Logo Utama -->
+                    <img src="https://files.catbox.moe/jnelom.png" alt="Logo" class="logo-icon" loading="lazy">
                     <span>XTMODEPRO</span>
                 </a>
             </div>
@@ -437,25 +439,29 @@
         let allMods = [];
         let filteredMods = [];
         let currentPage = 1;
-        const itemsPerPage = 12; // Membatasi jumlah data yang di-load dalam satu waktu
+        const itemsPerPage = 12; // Membatasi jumlah card yang di-load sekaligus (hemat memori)
 
         const translations = {
             id: { name: "Bahasa Indonesia", searchPlace: "Cari mod...", bannerSub: "Database mod game dan aplikasi terlengkap dan terupdate.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. All rights reserved.", morning: "Selamat Pagi", afternoon: "Selamat Siang", evening: "Selamat Sore", night: "Selamat Malam", welcomeSuffix: " di XTMODEPRO! 🚀", noData: "Tidak ada mod ditemukan.", failLoad: "Gagal memuat data dari database.json", loadMore: "Muat Lebih Banyak" },
-            en: { name: "English", searchPlace: "Search mod...", bannerSub: "Complete and updated game and application mod database.", downloadBtn: "Download APK", footerText: "&copy; 2026 XTMODEPRO. All rights reserved.", morning: "Good Morning", afternoon: "Good Afternoon", evening: "Good Evening", night: "Good Night", welcomeSuffix: " to XTMODEPRO! 🚀", noData: "No mods found.", failLoad: "Failed to load data from database.json", loadMore: "Load More" }
+            ace: { name: "Bahasa Aceh", searchPlace: "Mita mod...", bannerSub: "Database mod game ngon aplikasi nyang paleng lekap ngon update.", downloadBtn: "Download APK", footerText: "&copy; 2026 XTMODEPRO. Hak cipta dilindungi.", morning: "Beungoh Baro", afternoon: "Uroe Teungoh", evening: "Seupôt", night: "Malam Nyoe", welcomeSuffix: " di XTMODEPRO! 🚀", noData: "Hana mod nyang teumeme.", failLoad: "Gagal muat data dari database.json", loadMore: "Muat Lebih Banyak" },
+            jv: { name: "Basa Jawa", searchPlace: "Golek mod...", bannerSub: "Database mod game lan aplikasi paling lengkap lan anyar.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. Hak cipta dilindhungi.", morning: "Sugeng Enjang", afternoon: "Sugeng Siang", evening: "Sugeng Sonten", night: "Sugeng Wengi", welcomeSuffix: " ing XTMODEPRO! 🚀", noData: "Ora ana mod sing ditemokake.", failLoad: "Gagal ngemot data saking database.json", loadMore: "Luwih Akèh" },
+            su: { name: "Basa Sunda", searchPlace: "Milarian mod...", bannerSub: "Database mod game sareng aplikasi panglengkapna tur panganyarna.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. Sadaya hak ditangtayungan.", morning: "Wilujeng Enjing", afternoon: "Wilujeng Siang", evening: "Wilujeng Sumping", night: "Wilujeng Wengi", welcomeSuffix: " di XTMODEPRO! 🚀", noData: "Teu aya mod anu kapanggih.", failLoad: "Gagal ngamuat data tina database.json", loadMore: "Muat Langkung Seueur" },
+            min: { name: "Baso Minangkabau", searchPlace: "Cari mod...", bannerSub: "Database mod game jo aplikasi nan paliang langkok jo update.", downloadBtn: "Unduah APK", footerText: "&copy; 2026 XTMODEPRO. Hak cipta dilindungi.", morning: "Salamaik Pagi", afternoon: "Salamaik Siang", evening: "Salamaik Petang", night: "Salamaik Malam", welcomeSuffix: " di XTMODEPRO! 🚀", noData: "Indak ado mod nan basobok.", failLoad: "Gagal mambao data dari database.json", loadMore: "Muat Labiah Banyak" },
+            en: { name: "English", searchPlace: "Search mod...", bannerSub: "Complete and updated game and application mod database.", downloadBtn: "Download APK", footerText: "&copy; 2026 XTMODEPRO. All rights reserved.", morning: "Good Morning", afternoon: "Good Afternoon", evening: "Good Evening", night: "Good Night", welcomeSuffix: " to XTMODEPRO! 🚀", noData: "No mods found.", failLoad: "Failed to load data from database.json", loadMore: "Load More" },
+            es: { name: "Español", searchPlace: "Buscar mod...", bannerSub: "Base de datos de mods de juegos y aplicaciones completa y actualizada.", downloadBtn: "Descargar APK", footerText: "&copy; 2026 XTMODEPRO. Todos los derechos reservados.", morning: "Buenos Días", afternoon: "Buenas Tardes", evening: "Buenas Tardes", night: "Buenas Noches", welcomeSuffix: " en XTMODEPRO! 🚀", noData: "No se encontraron mods.", failLoad: "Error al cargar datos de database.json", loadMore: "Cargar Más" },
+            ar: { name: "العربية (Arabic)", searchPlace: "البحث عن تعديل...", bannerSub: "قاعدة بيانات تعديلات الألعاب والتطبيقات الشاملة والمحدثة.", downloadBtn: "تحميل APK", footerText: "&copy; 2026 XTMODEPRO. كل الحقوق محفوظة.", morning: "صباح الخير", afternoon: "مساء الخير", evening: "مساء الخير", night: "تصبح على خير", welcomeSuffix: " في XTMODEPRO! 🚀", noData: "لم يتم العثور على تعديلات.", failLoad: "فشل تحميل البيانات من database.json", loadMore: "تحميل المزيد" },
+            zh: { name: "中文 (Chinese)", searchPlace: "搜索模组...", bannerSub: "最完整和更新的游戏及应用程序修改数据库。", downloadBtn: "下载 APK", footerText: "&copy; 2026 XTMODEPRO. 版权所有.", morning: "早上好", afternoon: "下午好", evening: "傍晚好", night: "晚上好", welcomeSuffix: " 来到 XTMODEPRO! 🚀", noData: "未找到模组。", failLoad: "从 database.json 加载数据失败", loadMore: "加载更多" },
+            ja: { name: "日本語 (Japanese)", searchPlace: "Modを検索...", bannerSub: "最も完全で最新のゲームおよびアプリModデータベース。", downloadBtn: "APKをダウンロード", footerText: "&copy; 2026 XTMODEPRO. All rights reserved.", morning: "おはようございます", afternoon: "こんにちは", evening: "こんばんは", night: "おやすみなさい", welcomeSuffix: " XTMODEPROへ! 🚀", noData: "Modが見つかりませんでした。", failLoad: "database.jsonからのデータの読み込みに失敗しました", loadMore: "もっと読み込む" },
+            ko: { name: "한국어 (Korean)", searchPlace: "모드 검색...", bannerSub: "가장 완성도 높고 최신화된 게임 및 앱 모드 데이터베이스.", downloadBtn: "APK 다운로드", footerText: "&copy; 2026 XTMODEPRO. 판권 소유.", morning: "좋은 아침입니다", afternoon: "좋은 오후입니다", evening: "좋은 저녁입니다", night: "안녕히 주무세요", welcomeSuffix: " XTMODEPRO에 오신 것을 환영합니다! 🚀", noData: "모드를 찾을 수 없습니다.", failLoad: "database.json에서 데이터를 로드하지 못했습니다.", loadMore: "더 보기" },
+            ms: { name: "Bahasa Melayu", searchPlace: "Cari mod...", bannerSub: "Pangkalan data mod permainan dan aplikasi yang lengkap dan terkini.", downloadBtn: "Muat Turun APK", footerText: "&copy; 2026 XTMODEPRO. Hak cipta terpelihara.", morning: "Selamat Pagi", afternoon: "Selamat Tengah Hari", evening: "Selamat Petang", night: "Selamat Malam", welcomeSuffix: " di XTMODEPRO! 🚀", noData: "Tiada mod ditemui.", failLoad: "Gagal memuatkan data dari database.json", loadMore: "Muat Lagi" },
+            th: { name: "ไทย (Thai)", searchPlace: "ค้นหา mod...", bannerSub: "ฐานข้อมูลมอดเกมและแอปพลิเคชันที่สมบูรณ์และอัปเดตที่สุด", downloadBtn: "ดาวน์โหลด APK", footerText: "&copy; 2026 XTMODEPRO. สงวนลิขสิทธิ์.", morning: "สวัสดีตอนเช้า", afternoon: "สวัสดีตอนบ่าย", evening: "สวัสดีตอนเย็น", night: "ราตรีสวัสดิ์", welcomeSuffix: " ที่ XTMODEPRO! 🚀", noData: "ไม่พบมอด", failLoad: "ไม่สามารถโหลดข้อมูลจาก database.json ได้", loadMore: "โหลดเพิ่มเติม" },
+            vi: { name: "Tiếng Việt (Vietnamese)", searchPlace: "Tìm kiếm mod...", bannerSub: "Cơ sở dữ liệu mod trò chơi và ứng dụng hoàn chỉnh và cập nhật nhất.", downloadBtn: "Tải xuống APK", footerText: "&copy; 2026 XTMODEPRO. Mọi quyền được bảo lưu.", morning: "Chào buổi sáng", afternoon: "Chào buổi chiều", evening: "Chào buổi tối", night: "Chúc ngủ ngon", welcomeSuffix: " tại XTMODEPRO! 🚀", noData: "Không tìm thấy mod nào.", failLoad: "Không thể tải dữ liệu từ database.json", loadMore: "Tải thêm" }
         };
-
-        // Fungsi kompresi URL gambar via wsrv.nl CDN service
-        function getLowResImageUrl(originalUrl) {
-            if (!originalUrl) return '';
-            // Jika gambar adalah data base64 / blob lokal, abaikan
-            if (originalUrl.startsWith('data:') || originalUrl.startsWith('blob:')) return originalUrl;
-            // Membatasi lebar max 80px & kualitas 50% (Sangat ringan/burik ramah kuota)
-            return `https://wsrv.nl/?url=${encodeURIComponent(originalUrl)}&w=80&q=50&output=webp`;
-        }
 
         function renderLanguageList(filterText = '') {
             const langListEl = document.getElementById('langList');
             langListEl.innerHTML = '';
+
             for (const [code, data] of Object.entries(translations)) {
                 if (data.name.toLowerCase().includes(filterText.toLowerCase()) || code.toLowerCase().includes(filterText.toLowerCase())) {
                     const btn = document.createElement('button');
@@ -482,6 +488,12 @@
         function detectUserLanguage() {
             const savedLang = localStorage.getItem('xt_mod_lang');
             if (savedLang && translations[savedLang]) return savedLang;
+
+            const browserLang = (navigator.language || navigator.userLanguage || 'id').toLowerCase();
+            for (let key in translations) {
+                if (browserLang.startsWith(key)) return key;
+            }
+
             return 'id';
         }
 
@@ -539,7 +551,6 @@
             renderNextBatch();
         }
 
-        // Render data bertahap (Paging)
         function renderNextBatch() {
             const appGrid = document.getElementById('appGrid');
             const t = translations[currentLang] || translations['id'];
@@ -555,13 +566,11 @@
             const batch = filteredMods.slice(start, end);
 
             batch.forEach(mod => {
-                // Konversi gambar ke versi ringan + tambahkan loading="lazy"
-                const lowResIcon = getLowResImageUrl(mod.icon);
-
                 appGrid.innerHTML += `
                     <div class="app-card">
                         <div class="card-top">
-                            <img src="${lowResIcon}" alt="${mod.name}" loading="lazy" width="64" height="64">
+                            <!-- Memuat ikon asli dengan lazy-loading -->
+                            <img src="${mod.icon}" alt="${mod.name}" loading="lazy" width="64" height="64">
                             <div class="app-info">
                                 <h3>${mod.name}</h3>
                                 <span class="category-tag">${mod.category} • v${mod.version}</span>
@@ -579,7 +588,6 @@
                 `;
             });
 
-            // Tampilkan atau sembunyikan tombol "Load More"
             const loadMoreContainer = document.getElementById('loadMoreContainer');
             if (end < filteredMods.length) {
                 loadMoreContainer.style.display = 'block';
@@ -593,7 +601,6 @@
             renderNextBatch();
         });
 
-        // Fitur Pencarian
         document.getElementById('searchInput').addEventListener('input', function(e) {
             const keyword = e.target.value.toLowerCase().trim();
             filteredMods = allMods.filter(mod => 
