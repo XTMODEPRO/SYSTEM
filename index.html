@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XTMODEPRO MODS</title>
+    <title>XTMODEPRO - Database Mod APK</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -75,7 +75,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Dibuat tetap tajam walau resolusi kecil */
         .logo-icon {
             width: 38px;
             height: 38px;
@@ -282,7 +281,6 @@
             gap: 14px;
         }
 
-        /* Optimalisasi gambar icon pada card: tajam & ringan */
         .app-card img {
             width: 64px;
             height: 64px;
@@ -414,8 +412,8 @@
         <div class="container navbar">
             <div class="logo">
                 <a href="#">
-                    <!-- Auto-resize logo lewat Weserv CDN menjadi 80px WebP (hanya ~3KB) -->
-                    <img src="https://images.weserv.nl/?url=https://files.catbox.moe/jnelom.png&w=80&h=80&output=webp&q=80" alt="Logo" class="logo-icon" loading="lazy" width="38" height="38" decoding="async">
+                    <!-- Menggunakan URL asli langsung tanpa CDN luar -->
+                    <img src="https://files.catbox.moe/jnelom.png" alt="Logo" class="logo-icon" loading="lazy" width="38" height="38" decoding="async">
                     <span>XTMODEPRO</span>
                 </a>
             </div>
@@ -493,13 +491,6 @@
             nl: { name: "Nederlands (Belanda)", searchPlace: "Zoek mod...", bannerSub: "Volledige en bijgewerkte game- en app-mod-database.", downloadBtn: "Download APK", footerText: "&copy; 2026 XTMODEPRO. Alle rechten voorbehouden.", morning: "Goedemorgen", afternoon: "Goedemiddag", evening: "Goedenavond", night: "Goedenacht", welcomeSuffix: " bij XTMODEPRO! 🚀", noData: "Geen mods gevonden.", failLoad: "Laden van data uit database.json mislukt", loadingText: "Data laden..." },
             tr: { name: "Türkçe (Turki)", searchPlace: "Mod ara...", bannerSub: "Eksiksiz ve güncel oyun ve uygulama mod veritabanı.", downloadBtn: "APK İndir", footerText: "&copy; 2026 XTMODEPRO. Tüm hakları saklıdır.", morning: "Günaydın", afternoon: "Tünaydın", evening: "İyi Akşamlar", night: "İyi Geceler", welcomeSuffix: " XTMODEPRO'ya Hoş Geldiniz! 🚀", noData: "Mod bulunamadı.", failLoad: "database.json verisi yüklenemedi", loadingText: "Veriler yükleniyor..." }
         };
-
-        // Otomatis mengompres URL gambar external lewat Weserv CDN jika ukuran asli terlalu besar
-        function getLowResImageUrl(url) {
-            if (!url) return '';
-            if (url.includes('weserv.nl')) return url;
-            return `https://images.weserv.nl/?url=${encodeURIComponent(url)}&w=128&h=128&output=webp&q=75`;
-        }
 
         function renderLanguageList(filterText = '') {
             const langListEl = document.getElementById('langList');
@@ -603,13 +594,10 @@
             const batch = filteredMods.slice(start, end);
 
             batch.forEach(mod => {
-                // Mengkonversi URL icon menjadi ultra-ringan (ringan di RAM & kuota)
-                const optimizedIcon = getLowResImageUrl(mod.icon);
-
                 appGrid.innerHTML += `
                     <div class="app-card">
                         <div class="card-top">
-                            <img src="${optimizedIcon}" alt="${mod.name}" loading="lazy" width="64" height="64" decoding="async">
+                            <img src="${mod.icon}" alt="${mod.name}" loading="lazy" width="64" height="64" decoding="async">
                             <div class="app-info">
                                 <h3>${mod.name}</h3>
                                 <span class="category-tag">${mod.category} • v${mod.version}</span>
