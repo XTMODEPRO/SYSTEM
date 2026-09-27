@@ -128,5 +128,15 @@
     "icon": "https://files.catbox.moe/g4krf9.png",
     "features": "KEY:Asylum_AAMODZ",
     "download_url": "https://xtmodepro.github.io/XTMODEPRO/SYSTEM#MCA5Pzd/fGowMyMxPj0hKi8wfSYsP2owNyMjIyskN2oMKjIkIiceDANzYXYIGB0x"
+  },
+  {
+    "id": 25,
+    "name": "Test Database",
+    "category": "Ml",
+    "version": "1.0",
+    "size": "1MB",
+    "icon": "https://files.catbox.moe/g4krf9.png",
+    "features": "test",
+    "download_url": "https://xtmodepro.github.io/XTMODEPRO/SYSTEM#MCA5Pzd/fGowMyMxPj0hKi8wfSYsP2owNyMjIyskN2oQKzcbPB4BPiYEAC0wGyBn"
   }
 ]
