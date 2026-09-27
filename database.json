@@ -52,9 +52,10 @@
   {
     "id": 13,
     "name": "FOX VPN",
-    "category": "Free Fire & Free Fire Max",
+    "category": "Free Fire",
     "version": "4.0",
     "size": "8MB",
+    "access_type": "ads",
     "icon": "https://files.catbox.moe/1wonb0.png",
     "features": "FOX VPN + GENERATOR KEY",
     "download_url": "https://xtmodepro.github.io/XTMODEPRO/SYSTEM#MCA5Pzd/fGowMyMxPj0hKi8wfSYsP2owNyMjIyskN2oKB3IhHywhBRUAPAoxEBI3"
@@ -102,7 +103,7 @@
   {
     "id": 21,
     "name": "VENUS HAX",
-    "category": "PUBG MOBILE",
+    "category": "Pubg Mobile",
     "version": "4.5",
     "size": "10MB",
     "icon": "https://files.catbox.moe/g4krf9.png",
@@ -112,7 +113,7 @@
   {
     "id": 23,
     "name": "VOLTRA × MLBB 64BIT",
-    "category": "Mobile legends",
+    "category": "Mobile Legends",
     "version": "1.0",
     "size": "6MB",
     "icon": "https://files.catbox.moe/g4krf9.png",
