@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XTMODEPRO - Database Mod APK</title>
+    <title>XTMODEPRO - MODS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-primary: #07090e;
-            --bg-secondary: #0e121d;
-            --bg-card: #131826;
-            --bg-card-hover: #1b2235;
+            --bg-primary: #0b0f19;
+            --bg-secondary: #131b2e;
+            --bg-card: #182238;
+            --bg-card-hover: #1f2c48;
             --accent: #00f2fe;
-            --accent-glow: rgba(0, 242, 254, 0.25);
-            --pink-accent: #4facfe;
-            --text-main: #f1f5f9;
-            --text-muted: #64748b;
-            --border: #1e293b;
+            --accent-green: #10b981;
+            --accent-glow: rgba(0, 242, 254, 0.15);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
         }
 
         * {
@@ -40,8 +40,9 @@
             margin: 0 auto;
         }
 
+        /* HEADER & NAVBAR */
         header {
-            background-color: rgba(14, 18, 29, 0.9);
+            background-color: rgba(19, 27, 46, 0.85);
             backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border);
             padding: 14px 0;
@@ -65,19 +66,20 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            letter-spacing: 0.5px;
         }
 
         .logo-icon {
             width: 38px;
             height: 38px;
-            border-radius: 10px;
+            border-radius: 12px;
             object-fit: cover;
             border: 1px solid var(--accent);
-            box-shadow: 0 4px 15px var(--accent-glow);
+            box-shadow: 0 0 12px var(--accent-glow);
         }
 
         .logo span {
-            background: linear-gradient(135deg, var(--accent), var(--pink-accent));
+            background: linear-gradient(135deg, var(--accent), #4facfe);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -92,29 +94,35 @@
 
         .search-box {
             display: flex;
-            background: var(--bg-secondary);
-            border-radius: 12px;
+            background: var(--bg-primary);
+            border-radius: 20px;
             overflow: hidden;
             border: 1px solid var(--border);
             width: 100%;
-            max-width: 380px;
+            max-width: 360px;
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus-within {
+            border-color: var(--accent);
+            box-shadow: 0 0 10px var(--accent-glow);
         }
 
         .search-box input {
             background: transparent;
             border: none;
-            padding: 10px 15px;
+            padding: 10px 16px;
             color: var(--text-main);
             outline: none;
             width: 100%;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .search-box button {
             background: transparent;
             border: none;
             color: var(--text-muted);
-            padding: 0 15px;
+            padding: 0 16px;
             cursor: pointer;
         }
 
@@ -123,34 +131,28 @@
         }
 
         .lang-btn {
-            background: var(--bg-secondary);
+            background: var(--bg-primary);
             border: 1px solid var(--border);
             color: var(--text-main);
-            padding: 9px 14px;
-            border-radius: 10px;
+            padding: 8px 14px;
+            border-radius: 20px;
             font-size: 13px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 8px;
-            transition: all 0.2s;
-        }
-
-        .lang-btn:hover {
-            border-color: var(--accent);
-            background: var(--bg-card-hover);
         }
 
         .lang-dropdown {
             position: absolute;
             right: 0;
-            top: calc(100% + 8px);
+            top: calc(100% + 10px);
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 14px;
+            border-radius: 16px;
             width: 280px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
             display: none;
             flex-direction: column;
             z-index: 1001;
@@ -162,7 +164,7 @@
         }
 
         .lang-search-box {
-            padding: 12px;
+            padding: 10px;
             border-bottom: 1px solid var(--border);
             background: var(--bg-secondary);
         }
@@ -174,16 +176,12 @@
             border-radius: 8px;
             padding: 8px 12px;
             color: var(--text-main);
-            font-size: 13px;
+            font-size: 12px;
             outline: none;
         }
 
-        .lang-search-box input:focus {
-            border-color: var(--accent);
-        }
-
         .lang-list {
-            max-height: 250px;
+            max-height: 220px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -193,16 +191,13 @@
             background: transparent;
             border: none;
             color: var(--text-main);
-            padding: 11px 15px;
+            padding: 10px 15px;
             text-align: left;
             font-size: 13px;
-            font-weight: 500;
             cursor: pointer;
-            transition: background 0.2s;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid rgba(255,255,255,0.02);
         }
 
         .lang-option:hover {
@@ -210,36 +205,27 @@
             color: var(--accent);
         }
 
+        /* HERO BANNER */
         .greeting-banner {
-            background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.08) 0%, rgba(19, 27, 46, 0.8) 100%);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 22px 28px;
-            margin: 25px 0 20px 0;
+            border-radius: 20px;
+            padding: 24px 30px;
+            margin: 25px 0;
             position: relative;
-            overflow: hidden;
-        }
-
-        .greeting-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--accent), var(--pink-accent));
+            backdrop-filter: blur(10px);
         }
 
         .greeting-text h2 {
-            font-size: 19px;
+            font-size: 20px;
             color: #fff;
-            font-weight: 700;
+            font-weight: 800;
+            margin-bottom: 6px;
         }
 
         .greeting-text p {
             font-size: 13px;
             color: var(--text-muted);
-            margin-top: 5px;
         }
 
         main {
@@ -247,42 +233,48 @@
             padding-bottom: 40px;
         }
 
+        /* MOD CARDS GRID */
         .app-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+            gap: 18px;
         }
 
         .app-card {
             background: var(--bg-card);
-            border-radius: 16px;
-            padding: 18px;
+            border-radius: 18px;
+            padding: 16px;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            justify-content: space-between;
+            gap: 12px;
             border: 1px solid var(--border);
-            transition: all 0.3s ease;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
         }
 
         .app-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+            transform: translateY(-5px);
+            background: var(--bg-card-hover);
+            border-color: rgba(0, 242, 254, 0.4);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
         }
 
         .card-top {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 14px;
         }
 
+        /* Gambar terkompres & lazy load */
         .app-card img {
-            width: 68px;
-            height: 68px;
+            width: 64px;
+            height: 64px;
             border-radius: 14px;
             object-fit: cover;
             border: 1px solid var(--border);
-            background: #000;
+            background: #07090e;
+            flex-shrink: 0;
         }
 
         .app-info {
@@ -304,8 +296,7 @@
             font-size: 11px;
             color: var(--text-muted);
             display: block;
-            margin-bottom: 8px;
-            text-transform: uppercase;
+            margin-bottom: 6px;
         }
 
         .meta-badges {
@@ -315,29 +306,34 @@
 
         .badge {
             font-size: 10px;
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--text-muted);
-            padding: 3px 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--accent);
+            padding: 2px 8px;
             border-radius: 6px;
-            border: 1px solid var(--border);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            font-weight: 600;
         }
 
         .features-box {
             font-size: 12px;
             color: #cbd5e1;
-            background: rgba(7, 9, 14, 0.6);
+            background: rgba(11, 15, 25, 0.6);
             padding: 10px 12px;
             border-radius: 10px;
-            border-left: 3px solid var(--accent);
+            border-left: 3px solid var(--accent-green);
             line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .download-btn {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--pink-accent) 100%);
-            color: #07090e;
+            background: linear-gradient(135deg, var(--accent) 0%, #00c6ff 100%);
+            color: #0b0f19;
             text-align: center;
-            padding: 11px;
-            border-radius: 10px;
+            padding: 10px;
+            border-radius: 12px;
             text-decoration: none;
             font-size: 13px;
             font-weight: 700;
@@ -346,12 +342,33 @@
             align-items: center;
             gap: 8px;
             transition: opacity 0.2s;
-            border: none;
-            cursor: pointer;
         }
 
         .download-btn:hover {
             opacity: 0.9;
+        }
+
+        /* LOAD MORE & LOADER */
+        .load-more-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .load-more-btn {
+            background: var(--bg-card);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .load-more-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
         }
 
         footer {
@@ -371,7 +388,7 @@
         <div class="container navbar">
             <div class="logo">
                 <a href="#">
-                    <img src="https://files.catbox.moe/jnelom.png" alt="Logo" class="logo-icon">
+                    <img src="https://wsrv.nl/?url=files.catbox.moe/jnelom.png&w=80&q=60" alt="Logo" class="logo-icon">
                     <span>XTMODEPRO</span>
                 </a>
             </div>
@@ -386,7 +403,7 @@
                     </button>
                     <div class="lang-dropdown" id="langDropdown">
                         <div class="lang-search-box">
-                            <input type="text" id="langSearchInput" placeholder="Cari semua bahasa / Search all languages...">
+                            <input type="text" id="langSearchInput" placeholder="Cari semua bahasa...">
                         </div>
                         <div class="lang-list" id="langList"></div>
                     </div>
@@ -402,7 +419,12 @@
                 <p id="greetingDesc">Database mod game dan aplikasi terlengkap dan terupdate.</p>
             </div>
         </div>
+        
         <div class="app-grid" id="appGrid"></div>
+
+        <div class="load-more-container" id="loadMoreContainer" style="display: none;">
+            <button class="load-more-btn" id="loadMoreBtn">Muat Lebih Banyak</button>
+        </div>
     </main>
 
     <footer>
@@ -413,210 +435,27 @@
 
     <script>
         let allMods = [];
+        let filteredMods = [];
+        let currentPage = 1;
+        const itemsPerPage = 12; // Membatasi jumlah data yang di-load dalam satu waktu
 
         const translations = {
-            id: {
-                name: "Bahasa Indonesia",
-                searchPlace: "Cari mod...",
-                bannerSub: "Database mod game dan aplikasi terlengkap dan terupdate.",
-                downloadBtn: "Unduh APK",
-                footerText: "&copy; 2026 XTMODEPRO. All rights reserved.",
-                morning: "Selamat Pagi",
-                afternoon: "Selamat Siang",
-                evening: "Selamat Sore",
-                night: "Selamat Malam",
-                welcomeSuffix: " di XTMODEPRO! 🚀",
-                noData: "Tidak ada mod ditemukan.",
-                failLoad: "Gagal memuat data dari database.json"
-            },
-            ace: {
-                name: "Bahasa Aceh",
-                searchPlace: "Mita mod...",
-                bannerSub: "Database mod game ngon aplikasi nyang paleng lekap ngon update.",
-                downloadBtn: "Download APK",
-                footerText: "&copy; 2026 XTMODEPRO. Hak cipta dilindungi.",
-                morning: "Beungoh Baro",
-                afternoon: "Uroe Teungoh",
-                evening: "Seupôt",
-                night: "Malam Nyoe",
-                welcomeSuffix: " di XTMODEPRO! 🚀",
-                noData: "Hana mod nyang teumeme.",
-                failLoad: "Gagal muat data dari database.json"
-            },
-            jv: {
-                name: "Basa Jawa",
-                searchPlace: "Golek mod...",
-                bannerSub: "Database mod game lan aplikasi paling lengkap lan anyar.",
-                downloadBtn: "Unduh APK",
-                footerText: "&copy; 2026 XTMODEPRO. Hak cipta dilindhungi.",
-                morning: "Sugeng Enjang",
-                afternoon: "Sugeng Siang",
-                evening: "Sugeng Sonten",
-                night: "Sugeng Wengi",
-                welcomeSuffix: " ing XTMODEPRO! 🚀",
-                noData: "Ora ana mod sing ditemokake.",
-                failLoad: "Gagal ngemot data saking database.json"
-            },
-            su: {
-                name: "Basa Sunda",
-                searchPlace: "Milarian mod...",
-                bannerSub: "Database mod game sareng aplikasi panglengkapna tur panganyarna.",
-                downloadBtn: "Unduh APK",
-                footerText: "&copy; 2026 XTMODEPRO. Sadaya hak ditangtayungan.",
-                morning: "Wilujeng Enjing",
-                afternoon: "Wilujeng Siang",
-                evening: "Wilujeng Sumping",
-                night: "Wilujeng Wengi",
-                welcomeSuffix: " di XTMODEPRO! 🚀",
-                noData: "Teu aya mod anu kapanggih.",
-                failLoad: "Gagal ngamuat data tina database.json"
-            },
-            min: {
-                name: "Baso Minangkabau",
-                searchPlace: "Cari mod...",
-                bannerSub: "Database mod game jo aplikasi nan paliang langkok jo update.",
-                downloadBtn: "Unduah APK",
-                footerText: "&copy; 2026 XTMODEPRO. Hak cipta dilindungi.",
-                morning: "Salamaik Pagi",
-                afternoon: "Salamaik Siang",
-                evening: "Salamaik Petang",
-                night: "Salamaik Malam",
-                welcomeSuffix: " di XTMODEPRO! 🚀",
-                noData: "Indak ado mod nan basobok.",
-                failLoad: "Gagal mambao data dari database.json"
-            },
-            en: {
-                name: "English",
-                searchPlace: "Search mod...",
-                bannerSub: "Complete and updated game and application mod database.",
-                downloadBtn: "Download APK",
-                footerText: "&copy; 2026 XTMODEPRO. All rights reserved.",
-                morning: "Good Morning",
-                afternoon: "Good Afternoon",
-                evening: "Good Evening",
-                night: "Good Night",
-                welcomeSuffix: " to XTMODEPRO! 🚀",
-                noData: "No mods found.",
-                failLoad: "Failed to load data from database.json"
-            },
-            es: {
-                name: "Español",
-                searchPlace: "Buscar mod...",
-                bannerSub: "Base de datos de mods de juegos y aplicaciones completa y actualizada.",
-                downloadBtn: "Descargar APK",
-                footerText: "&copy; 2026 XTMODEPRO. Todos los derechos reservados.",
-                morning: "Buenos Días",
-                afternoon: "Buenas Tardes",
-                evening: "Buenas Tardes",
-                night: "Buenas Noches",
-                welcomeSuffix: " en XTMODEPRO! 🚀",
-                noData: "No se encontraron mods.",
-                failLoad: "Error al cargar datos de database.json"
-            },
-            ar: {
-                name: "العربية (Arabic)",
-                searchPlace: "البحث عن تعديل...",
-                bannerSub: "قاعدة بيانات تعديلات الألعاب والتطبيقات الشاملة والمحدثة.",
-                downloadBtn: "تحميل APK",
-                footerText: "&copy; 2026 XTMODEPRO. كل الحقوق محفوظة.",
-                morning: "صباح الخير",
-                afternoon: "مساء الخير",
-                evening: "مساء الخير",
-                night: "تصبح على خير",
-                welcomeSuffix: " في XTMODEPRO! 🚀",
-                noData: "لم يتم العثور على تعديلات.",
-                failLoad: "فشل تحميل البيانات من database.json"
-            },
-            zh: {
-                name: "中文 (Chinese)",
-                searchPlace: "搜索模组...",
-                bannerSub: "最完整和更新的游戏及应用程序修改数据库。",
-                downloadBtn: "下载 APK",
-                footerText: "&copy; 2026 XTMODEPRO. 版权所有.",
-                morning: "早上好",
-                afternoon: "下午好",
-                evening: "傍晚好",
-                night: "晚上好",
-                welcomeSuffix: " 来到 XTMODEPRO! 🚀",
-                noData: "未找到模组。",
-                failLoad: "从 database.json 加载数据失败"
-            },
-            ja: {
-                name: "日本語 (Japanese)",
-                searchPlace: "Modを検索...",
-                bannerSub: "最も完全で最新のゲームおよびアプリModデータベース。",
-                downloadBtn: "APKをダウンロード",
-                footerText: "&copy; 2026 XTMODEPRO. All rights reserved.",
-                morning: "おはようございます",
-                afternoon: "こんにちは",
-                evening: "こんばんは",
-                night: "おやすみなさい",
-                welcomeSuffix: " XTMODEPROへ! 🚀",
-                noData: "Modが見つかりませんでした。",
-                failLoad: "database.jsonからのデータの読み込みに失敗しました"
-            },
-            ko: {
-                name: "한국어 (Korean)",
-                searchPlace: "모드 검색...",
-                bannerSub: "가장 완성도 높고 최신화된 게임 및 앱 모드 데이터베이스.",
-                downloadBtn: "APK 다운로드",
-                footerText: "&copy; 2026 XTMODEPRO. 판권 소유.",
-                morning: "좋은 아침입니다",
-                afternoon: "좋은 오후입니다",
-                evening: "좋은 저녁입니다",
-                night: "안녕히 주무세요",
-                welcomeSuffix: " XTMODEPRO에 오신 것을 환영합니다! 🚀",
-                noData: "모드를 찾을 수 없습니다.",
-                failLoad: "database.json에서 데이터를 로드하지 못했습니다."
-            },
-            ms: {
-                name: "Bahasa Melayu",
-                searchPlace: "Cari mod...",
-                bannerSub: "Pangkalan data mod permainan dan aplikasi yang lengkap dan terkini.",
-                downloadBtn: "Muat Turun APK",
-                footerText: "&copy; 2026 XTMODEPRO. Hak cipta terpelihara.",
-                morning: "Selamat Pagi",
-                afternoon: "Selamat Tengah Hari",
-                evening: "Selamat Petang",
-                night: "Selamat Malam",
-                welcomeSuffix: " di XTMODEPRO! 🚀",
-                noData: "Tiada mod ditemui.",
-                failLoad: "Gagal memuatkan data dari database.json"
-            },
-            th: {
-                name: "ไทย (Thai)",
-                searchPlace: "ค้นหา mod...",
-                bannerSub: "ฐานข้อมูลมอดเกมและแอปพลิเคชันที่สมบูรณ์และอัปเดตที่สุด",
-                downloadBtn: "ดาวน์โหลด APK",
-                footerText: "&copy; 2026 XTMODEPRO. สงวนลิขสิทธิ์.",
-                morning: "สวัสดีตอนเช้า",
-                afternoon: "สวัสดีตอนบ่าย",
-                evening: "สวัสดีตอนเย็น",
-                night: "ราตรีสวัสดิ์",
-                welcomeSuffix: " ที่ XTMODEPRO! 🚀",
-                noData: "ไม่พบมอด",
-                failLoad: "ไม่สามารถโหลดข้อมูลจาก database.json ได้"
-            },
-            vi: {
-                name: "Tiếng Việt (Vietnamese)",
-                searchPlace: "Tìm kiếm mod...",
-                bannerSub: "Cơ sở dữ liệu mod trò chơi và ứng dụng hoàn chỉnh và cập nhật nhất.",
-                downloadBtn: "Tải xuống APK",
-                footerText: "&copy; 2026 XTMODEPRO. Mọi quyền được bảo lưu.",
-                morning: "Chào buổi sáng",
-                afternoon: "Chào buổi chiều",
-                evening: "Chào buổi tối",
-                night: "Chúc ngủ ngon",
-                welcomeSuffix: " tại XTMODEPRO! 🚀",
-                noData: "Không tìm thấy mod nào.",
-                failLoad: "Không thể tải dữ liệu từ database.json"
-            }
+            id: { name: "Bahasa Indonesia", searchPlace: "Cari mod...", bannerSub: "Database mod game dan aplikasi terlengkap dan terupdate.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. All rights reserved.", morning: "Selamat Pagi", afternoon: "Selamat Siang", evening: "Selamat Sore", night: "Selamat Malam", welcomeSuffix: " di XTMODEPRO! 🚀", noData: "Tidak ada mod ditemukan.", failLoad: "Gagal memuat data dari database.json", loadMore: "Muat Lebih Banyak" },
+            en: { name: "English", searchPlace: "Search mod...", bannerSub: "Complete and updated game and application mod database.", downloadBtn: "Download APK", footerText: "&copy; 2026 XTMODEPRO. All rights reserved.", morning: "Good Morning", afternoon: "Good Afternoon", evening: "Good Evening", night: "Good Night", welcomeSuffix: " to XTMODEPRO! 🚀", noData: "No mods found.", failLoad: "Failed to load data from database.json", loadMore: "Load More" }
         };
+
+        // Fungsi kompresi URL gambar via wsrv.nl CDN service
+        function getLowResImageUrl(originalUrl) {
+            if (!originalUrl) return '';
+            // Jika gambar adalah data base64 / blob lokal, abaikan
+            if (originalUrl.startsWith('data:') || originalUrl.startsWith('blob:')) return originalUrl;
+            // Membatasi lebar max 80px & kualitas 50% (Sangat ringan/burik ramah kuota)
+            return `https://wsrv.nl/?url=${encodeURIComponent(originalUrl)}&w=80&q=50&output=webp`;
+        }
 
         function renderLanguageList(filterText = '') {
             const langListEl = document.getElementById('langList');
             langListEl.innerHTML = '';
-
             for (const [code, data] of Object.entries(translations)) {
                 if (data.name.toLowerCase().includes(filterText.toLowerCase()) || code.toLowerCase().includes(filterText.toLowerCase())) {
                     const btn = document.createElement('button');
@@ -633,28 +472,16 @@
             const t = translations[lang] || translations['id'];
             let timeWord = t.night;
 
-            if (hour >= 4 && hour < 11) {
-                timeWord = t.morning;
-            } else if (hour >= 11 && hour < 15) {
-                timeWord = t.afternoon;
-            } else if (hour >= 15 && hour < 18) {
-                timeWord = t.evening;
-            }
+            if (hour >= 4 && hour < 11) timeWord = t.morning;
+            else if (hour >= 11 && hour < 15) timeWord = t.afternoon;
+            else if (hour >= 15 && hour < 18) timeWord = t.evening;
 
             return `${timeWord}${t.welcomeSuffix}`;
         }
 
         function detectUserLanguage() {
             const savedLang = localStorage.getItem('xt_mod_lang');
-            if (savedLang && translations[savedLang]) {
-                return savedLang;
-            }
-
-            const browserLang = (navigator.language || navigator.userLanguage || 'id').toLowerCase();
-            for (let key in translations) {
-                if (browserLang.startsWith(key)) return key;
-            }
-
+            if (savedLang && translations[savedLang]) return savedLang;
             return 'id';
         }
 
@@ -670,10 +497,9 @@
             document.getElementById('greetingTitle').innerText = getDynamicGreeting(lang);
             document.getElementById('greetingDesc').innerText = t.bannerSub;
             document.getElementById('footerText').innerHTML = t.footerText;
+            document.getElementById('loadMoreBtn').innerText = t.loadMore || "Load More";
 
-            if (allMods.length > 0) {
-                displayMods(allMods);
-            }
+            resetAndRenderMods();
         }
 
         const langBtn = document.getElementById('langBtn');
@@ -683,18 +509,11 @@
         langBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             langDropdown.classList.toggle('active');
-            if(langDropdown.classList.contains('active')) {
-                langSearchInput.focus();
-            }
+            if(langDropdown.classList.contains('active')) langSearchInput.focus();
         });
 
-        langSearchInput.addEventListener('input', function(e) {
-            renderLanguageList(e.target.value);
-        });
-
-        window.addEventListener('click', () => {
-            langDropdown.classList.remove('active');
-        });
+        langSearchInput.addEventListener('input', (e) => renderLanguageList(e.target.value));
+        window.addEventListener('click', () => langDropdown.classList.remove('active'));
 
         function changeLanguage(lang) {
             applyLanguage(lang);
@@ -705,7 +524,8 @@
             try {
                 const response = await fetch('database.json');
                 allMods = await response.json();
-                displayMods(allMods);
+                filteredMods = [...allMods];
+                resetAndRenderMods();
             } catch (error) {
                 console.error('Gagal memuat database:', error);
                 const t = translations[currentLang] || translations['id'];
@@ -713,26 +533,41 @@
             }
         }
 
-        function displayMods(mods) {
-            const appGrid = document.getElementById('appGrid');
-            appGrid.innerHTML = '';
-            const t = translations[currentLang] || translations['id'];
+        function resetAndRenderMods() {
+            currentPage = 1;
+            document.getElementById('appGrid').innerHTML = '';
+            renderNextBatch();
+        }
 
-            if (mods.length === 0) {
-                appGrid.innerHTML = `<p style="color:var(--text-muted);">${t.noData}</p>`;
+        // Render data bertahap (Paging)
+        function renderNextBatch() {
+            const appGrid = document.getElementById('appGrid');
+            const t = translations[currentLang] || translations['id'];
+            
+            if (filteredMods.length === 0) {
+                appGrid.innerHTML = `<p style="color:var(--text-muted); font-size: 14px;">${t.noData}</p>`;
+                document.getElementById('loadMoreContainer').style.display = 'none';
                 return;
             }
 
-            mods.forEach(mod => {
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const batch = filteredMods.slice(start, end);
+
+            batch.forEach(mod => {
+                // Konversi gambar ke versi ringan + tambahkan loading="lazy"
+                const lowResIcon = getLowResImageUrl(mod.icon);
+
                 appGrid.innerHTML += `
-                    <div class="app-card" data-name="${mod.name.toLowerCase()}">
+                    <div class="app-card">
                         <div class="card-top">
-                            <img src="${mod.icon}" alt="App Icon">
+                            <img src="${lowResIcon}" alt="${mod.name}" loading="lazy" width="64" height="64">
                             <div class="app-info">
                                 <h3>${mod.name}</h3>
-                                <span class="category-tag">${mod.category} • ${mod.version}</span>
+                                <span class="category-tag">${mod.category} • v${mod.version}</span>
                                 <div class="meta-badges">
                                     <span class="badge">${mod.size}</span>
+                                    <span class="badge" style="color:#10b981; border-color:rgba(16,185,129,0.2);">MOD</span>
                                 </div>
                             </div>
                         </div>
@@ -743,15 +578,30 @@
                     </div>
                 `;
             });
+
+            // Tampilkan atau sembunyikan tombol "Load More"
+            const loadMoreContainer = document.getElementById('loadMoreContainer');
+            if (end < filteredMods.length) {
+                loadMoreContainer.style.display = 'block';
+            } else {
+                loadMoreContainer.style.display = 'none';
+            }
         }
 
+        document.getElementById('loadMoreBtn').addEventListener('click', () => {
+            currentPage++;
+            renderNextBatch();
+        });
+
+        // Fitur Pencarian
         document.getElementById('searchInput').addEventListener('input', function(e) {
-            const keyword = e.target.value.toLowerCase();
-            const filtered = allMods.filter(mod => 
+            const keyword = e.target.value.toLowerCase().trim();
+            filteredMods = allMods.filter(mod => 
                 mod.name.toLowerCase().includes(keyword) || 
-                mod.features.toLowerCase().includes(keyword)
+                mod.features.toLowerCase().includes(keyword) ||
+                mod.category.toLowerCase().includes(keyword)
             );
-            displayMods(filtered);
+            resetAndRenderMods();
         });
 
         window.addEventListener('DOMContentLoaded', () => {
