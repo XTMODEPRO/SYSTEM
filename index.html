@@ -224,7 +224,7 @@
             border: 1px solid var(--border);
             border-radius: 20px;
             padding: 24px 30px;
-            margin: 25px 0;
+            margin: 25px 0 15px 0;
             position: relative;
             backdrop-filter: blur(10px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -240,6 +240,80 @@
         .greeting-text p {
             font-size: 13px;
             color: var(--text-muted);
+        }
+
+        /* TUTORIAL SECTION */
+        .tutorial-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 20px 24px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: border-color 0.3s ease;
+        }
+
+        .tutorial-section:hover {
+            border-color: var(--border-hover);
+        }
+
+        .tutorial-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .tutorial-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff0000;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .tutorial-text h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .tutorial-text p {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .tutorial-btn {
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.25);
+            white-space: nowrap;
+        }
+
+        .tutorial-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
         }
 
         main {
@@ -396,14 +470,129 @@
             to { transform: rotate(360deg); }
         }
 
+        /* FLOATING TELEGRAM POPUP WIDGET */
+        .floating-telegram {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
+
+        .tg-popup-box {
+            background: rgba(13, 19, 34, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 136, 204, 0.3);
+            border-radius: 16px;
+            padding: 14px 18px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 136, 204, 0.2);
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            width: 260px;
+            transform-origin: bottom right;
+            animation: popupFadeIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .tg-popup-box.active {
+            display: flex;
+        }
+
+        @keyframes popupFadeIn {
+            from { opacity: 0; transform: scale(0.8) translateY(15px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .tg-popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+        }
+
+        .tg-close-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .tg-close-btn:hover {
+            color: #fff;
+        }
+
+        .tg-links-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .tg-link-item {
+            background: rgba(0, 136, 204, 0.12);
+            border: 1px solid rgba(0, 136, 204, 0.3);
+            color: #38bdf8;
+            padding: 8px 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .tg-link-item:hover {
+            background: #0088cc;
+            color: #fff;
+        }
+
+        .floating-tg-btn {
+            background: linear-gradient(135deg, #0088cc 0%, #005f99 100%);
+            color: #fff;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 26px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 136, 204, 0.4);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: floatPulse 3s ease-in-out infinite;
+        }
+
+        .floating-tg-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 30px rgba(0, 136, 204, 0.6);
+        }
+
+        @keyframes floatPulse {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        /* FOOTER BIASA */
         footer {
             background-color: var(--bg-secondary);
             color: var(--text-muted);
-            text-align: center;
             padding: 20px 0;
             border-top: 1px solid var(--border);
             font-size: 13px;
             margin-top: auto;
+            text-align: center;
         }
     </style>
 </head>
@@ -413,7 +602,6 @@
         <div class="container navbar">
             <div class="logo">
                 <a href="#">
-                    <!-- Menggunakan URL asli langsung tanpa CDN luar -->
                     <img src="https://files.catbox.moe/jnelom.png" alt="Logo" class="logo-icon" loading="lazy" width="38" height="38" decoding="async">
                     <span>XTMODEPRO</span>
                 </a>
@@ -445,6 +633,22 @@
                 <p id="greetingDesc">Database mod game dan aplikasi terlengkap dan terupdate.</p>
             </div>
         </div>
+
+        <!-- TEMPAT TUTORIAL DOWNLOAD -->
+        <div class="tutorial-section">
+            <div class="tutorial-info">
+                <div class="tutorial-icon">
+                    <i class="fa-brands fa-youtube"></i>
+                </div>
+                <div class="tutorial-text">
+                    <h3 id="tutorialTitle">Bingung Cara Downloadnya?</h3>
+                    <p id="tutorialDesc">Tonton video panduan singkat cara mengunduh file dengan aman.</p>
+                </div>
+            </div>
+            <a href="https://youtube.com/shorts/mMn4oN8tfhQ?si=2aEi_Y9YXyfjoQzy" target="_blank" class="tutorial-btn" id="tutorialBtn">
+                <i class="fa-solid fa-play"></i> Tonton Tutorial
+            </a>
+        </div>
         
         <div class="app-grid" id="appGrid"></div>
 
@@ -452,6 +656,27 @@
             <div class="spinner"></div> <span id="loadingText">Memuat data...</span>
         </div>
     </main>
+
+    <!-- FLOATING TELEGRAM WIDGET -->
+    <div class="floating-telegram">
+        <div class="tg-popup-box" id="tgPopupBox">
+            <div class="tg-popup-header">
+                <span id="tgPopupTitle">Gabung Komunitas Kami</span>
+                <button class="tg-close-btn" id="tgCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="tg-links-list">
+                <a href="https://t.me/XTMODEPROCHEATBYPASS" target="_blank" class="tg-link-item">
+                    <i class="fa-brands fa-telegram"></i> <span id="tgChannelText">Saluran Telegram</span>
+                </a>
+                <a href="https://t.me/XTMODEXVIP" target="_blank" class="tg-link-item">
+                    <i class="fa-brands fa-telegram"></i> <span id="tgVipText">Grup Diskusi</span>
+                </a>
+            </div>
+        </div>
+        <button class="floating-tg-btn" id="floatingTgBtn" title="Buka Menu Telegram">
+            <i class="fa-brands fa-telegram"></i>
+        </button>
+    </div>
 
     <footer>
         <div class="container">
@@ -467,30 +692,126 @@
         let isLoading = false;
 
         const translations = {
-            id: { name: "Bahasa Indonesia", searchPlace: "Cari mod...", bannerSub: "Database mod game dan aplikasi terlengkap dan terupdate.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. All rights reserved.", morning: "Selamat Pagi", afternoon: "Selamat Siang", evening: "Selamat Sore", night: "Selamat Malam", welcomeSuffix: " di XTMODEPRO! 🚀", noData: "Tidak ada mod ditemukan.", failLoad: "Gagal memuat data dari database.json", loadingText: "Memuat data..." },
-            jv: { name: "Basa Jawa (Jawa)", searchPlace: "Nggoleki mod...", bannerSub: "Database mod game lan aplikasi paling jangkep lan terupdate.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. Kabeh hak dilindungi.", morning: "Sugeng Enjang", afternoon: "Sugeng Siang", evening: "Sugeng Sonten", night: "Sugeng Dalu", welcomeSuffix: " teng XTMODEPRO! 🚀", noData: "Ora ana mod sing ditemokake.", failLoad: "Gagal ngemot data saka database.json", loadingText: "Ngemot data..." },
-            su: { name: "Basa Sunda (Sunda)", searchPlace: "Parios mod...", bannerSub: "Database mod game sareng aplikasi panglengkepna tur terupdate.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. Sadaya hak ditangtayungan.", morning: "Wilujeng Enjing", afternoon: "Wilujeng Siang", evening: "Wilujeng Sonten", night: "Wilujeng Wengi", welcomeSuffix: " di XTMODEPRO! 🚀", noData: "Teu aya mod nu kapanggih.", failLoad: "Gagal ngamuat data ti database.json", loadingText: "Ngamuat data..." },
-            min: { name: "Baso Minang (Minang)", searchPlace: "Cari mod...", bannerSub: "Database mod game jo aplikasi paling langkok jo terupdate.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. Kasadonyo hak dilindungi.", morning: "Pagi", afternoon: "Siang", evening: "Petang", night: "Malam", welcomeSuffix: " di XTMODEPRO! 🚀", noData: "Indak ado mod nan tajumpo.", failLoad: "Gagal maambik data dari database.json", loadingText: "Mambukak data..." },
-            ban: { name: "Basa Bali (Bali)", searchPlace: "Ngalih mod...", bannerSub: "Database mod game lan aplikasi pinih jangkep lan terupdate.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. Hak cipta kalindungi.", morning: "Rahajeng Semeng", afternoon: "Rahajeng Siang", evening: "Rahajeng Sanja", night: "Rahajeng Wengi", welcomeSuffix: " ring XTMODEPRO! 🚀", noData: "Tusing ada mod katemu.", failLoad: "Paling muat data uli database.json", loadingText: "Ngemuat data..." },
-            bug: { name: "Basa Ugi (Bugis)", searchPlace: "Sappa mod...", bannerSub: "Database mod game na aplikasi pammase pole terupdate.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. Hak cipta ipariyawa.", morning: "Aga Kareba Ele", afternoon: "Aga Kareba Tangsoppeng", evening: "Aga Kareba Aso", night: "Aga Kareba Wenni", welcomeSuffix: " ri XTMODEPRO! 🚀", noData: "Dekkaga mod lolongeng.", failLoad: "Gagal naola data pole database.json", loadingText: "Maccina data..." },
-            ace: { name: "Basa Aceh (Aceh)", searchPlace: "Cari mod...", bannerSub: "Database mod game ngon aplikasi yang paleng leubéh jangkep.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. Hak cipta geulindungi.", morning: "Seulamat Beureuhi", afternoon: "Seulamat Seupot", evening: "Seulamat Malam", night: "Seulamat Malam", welcomeSuffix: " bak XTMODEPRO! 🚀", noData: "Hana mod yang meureumpok.", failLoad: "Gagal ba data dari database.json", loadingText: "Geumuat data..." },
-            bjn: { name: "Bahasa Banjar (Banjar)", searchPlace: "Cari mod...", bannerSub: "Database mod game lawan aplikasi pamingkomplitnya wan terupdate.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. Bartahan hak dilindungi.", morning: "Selamat Baisukan", afternoon: "Selamat Tengah Hari", evening: "Selamat Sore", night: "Selamat Malam", welcomeSuffix: " di XTMODEPRO! 🚀", noData: "Kada dada mod tatamu.", failLoad: "Kada kawa muat data dari database.json", loadingText: "Memuat data..." },
-            en: { name: "English (US/UK)", searchPlace: "Search mod...", bannerSub: "Complete and updated game and application mod database.", downloadBtn: "Download APK", footerText: "&copy; 2026 XTMODEPRO. All rights reserved.", morning: "Good Morning", afternoon: "Good Afternoon", evening: "Good Evening", night: "Good Night", welcomeSuffix: " to XTMODEPRO! 🚀", noData: "No mods found.", failLoad: "Failed to load data from database.json", loadingText: "Loading data..." },
-            es: { name: "Español (Spanyol)", searchPlace: "Buscar mod...", bannerSub: "Base de datos completa y actualizada de mods de juegos y aplicaciones.", downloadBtn: "Descargar APK", footerText: "&copy; 2026 XTMODEPRO. Todos los derechos reservados.", morning: "Buenos Días", afternoon: "Buenas Tardes", evening: "Buenas Tardes", night: "Buenas Noches", welcomeSuffix: " a XTMODEPRO! 🚀", noData: "No se encontraron mods.", failLoad: "Error al cargar datos de database.json", loadingText: "Cargando datos..." },
-            fr: { name: "Français (Prancis)", searchPlace: "Rechercher un mod...", bannerSub: "Base de données de mods de jeux et d'applications complète et mise à jour.", downloadBtn: "Télécharger APK", footerText: "&copy; 2026 XTMODEPRO. Tous droits réservés.", morning: "Bonjour", afternoon: "Bon Après-midi", evening: "Bonsoir", night: "Bonne Nuit", welcomeSuffix: " sur XTMODEPRO! 🚀", noData: "Aucun mod trouvé.", failLoad: "Échec du chargement de database.json", loadingText: "Chargement..." },
-            de: { name: "Deutsch (Jerman)", searchPlace: "Mod suchen...", bannerSub: "Vollständige und aktualisierte Game- und App-Mod-Datenbank.", downloadBtn: "APK Herunterladen", footerText: "&copy; 2026 XTMODEPRO. Alle Rechte vorbehalten.", morning: "Guten Morgen", afternoon: "Guten Tag", evening: "Guten Abend", night: "Gute Nacht", welcomeSuffix: " bei XTMODEPRO! 🚀", noData: "Keine Mods gefunden.", failLoad: "Fehler beim Laden von database.json", loadingText: "Lade Daten..." },
-            ja: { name: "日本語 (Jepang)", searchPlace: "MODを検索...", bannerSub: "完全かつ更新されたゲームおよびアプリのMODデータベース。", downloadBtn: "APKをダウンロード", footerText: "&copy; 2026 XTMODEPRO. All rights reserved.", morning: "おはようございます", afternoon: "こんにちは", evening: "こんばんは", night: "おやすみなさい", welcomeSuffix: " XTMODEPROへ！ 🚀", noData: "MODが見つかりません。", failLoad: "database.jsonの読み込みに失敗しました", loadingText: "データを読み込み中..." },
-            ko: { name: "한국어 (Korea)", searchPlace: "모드 검색...", bannerSub: "완벽하고 최신화된 게임 및 앱 모드 데이터베이스.", downloadBtn: "APK 다운로드", footerText: "&copy; 2026 XTMODEPRO. All rights reserved.", morning: "좋은 아침입니다", afternoon: "좋은 오후입니다", evening: "좋은 저녁입니다", night: "안녕히 주무세요", welcomeSuffix: " XTMODEPRO에 오신 것을 환영합니다! 🚀", noData: "모드를 찾을 수 없습니다.", failLoad: "database.json을 불러오지 못했습니다", loadingText: "데이터 로딩 중..." },
-            zh: { name: "中文 (Cina)", searchPlace: "搜索 MOD...", bannerSub: "完整且更新的游戏和应用 MOD 数据库。", downloadBtn: "下载 APK", footerText: "&copy; 2026 XTMODEPRO. 保留所有权利。", morning: "早上好", afternoon: "下午好", evening: "晚上好", night: "晚安", welcomeSuffix: " 欢迎来到 XTMODEPRO！ 🚀", noData: "未找到相关 MOD。", failLoad: "无法从 database.json 加载数据", loadingText: "加载数据中..." },
-            ar: { name: "العربية (Arab)", searchPlace: "بحث عن مود...", bannerSub: "قاعدة بيانات تعديلات الألعاب والتطبيقات الكاملة والمحدثة.", downloadBtn: "تحميل APK", footerText: "&copy; 2026 XTMODEPRO. جميع الحقوق محفوظة.", morning: "صباح الخير", afternoon: "مساء الخير", evening: "مساء الخير", night: "تصبح على خير", welcomeSuffix: " في XTMODEPRO! 🚀", noData: "لم يتم العثور على أي مود.", failLoad: "فشل تحميل البيانات من database.json", loadingText: "جاري تحميل البيانات..." },
-            ru: { name: "Русский (Rusia)", searchPlace: "Поиск мода...", bannerSub: "Полная и обновленная база данных модов для игр и приложений.", downloadBtn: "Скачать APK", footerText: "&copy; 2026 XTMODEPRO. Все права защищены.", morning: "Доброе утро", afternoon: "Добрый день", evening: "Добрый вечер", night: "Доброй ночи", welcomeSuffix: " в XTMODEPRO! 🚀", noData: "Моды не найдены.", failLoad: "Не удалось загрузить database.json", loadingText: "Загрузка данных..." },
-            pt: { name: "Português (Brasil/Portugal)", searchPlace: "Buscar mod...", bannerSub: "Banco de dados completo e atualizado de mods de jogos e aplicativos.", downloadBtn: "Baixar APK", footerText: "&copy; 2026 XTMODEPRO. Todos os direitos reservados.", morning: "Bom Dia", afternoon: "Boa Tarde", evening: "Boa Tarde", night: "Boa Noite", welcomeSuffix: " ao XTMODEPRO! 🚀", noData: "Nenhum mod encontrado.", failLoad: "Falha ao carregar dados do database.json", loadingText: "Carregando dados..." },
-            hi: { name: "हिन्दी (India)", searchPlace: "मोड खोजें...", bannerSub: "पूरा और अद्यतन गेम और ऐप मोड डेटाबेस।", downloadBtn: "APK डाउनलोड करें", footerText: "&copy; 2026 XTMODEPRO. सर्वाधिकार सुरक्षित।", morning: "शुभ प्रभात", afternoon: "शुभ दोपहर", evening: "शुभ संध्या", night: "शुभ रात्रि", welcomeSuffix: " XTMODEPRO में आपका स्वागत है! 🚀", noData: "कोई मोड नहीं मिला।", failLoad: "database.json से डेटा लोड करने में विफल", loadingText: "डेटा लोड हो रहा है..." },
-            th: { name: "ไทย (Thailand)", searchPlace: "ค้นหามอด...", bannerSub: "ฐานข้อมูลมอดเกมและแอปพลิเคชันที่สมบูรณ์และอัปเดตล่าสุด", downloadBtn: "ดาวน์โหลด APK", footerText: "&copy; 2026 XTMODEPRO. สงวนลิขสิทธิ์.", morning: "อรุณสวัสดิ์", afternoon: "สวัสดีตอนบ่าย", evening: "สวัสดีตอนเย็น", night: "ราตรีสวัสดิ์", welcomeSuffix: " ยินดีต้อนรับสู่ XTMODEPRO! 🚀", noData: "ไม่พบมอดที่ค้นหา", failLoad: "โหลดข้อมูลจาก database.json ไม่สำเร็จ", loadingText: "กำลังโหลดข้อมูล..." },
-            vi: { name: "Tiếng Việt (Vietnam)", searchPlace: "Tìm kiếm mod...", bannerSub: "Cơ sở dữ liệu mod trò chơi và ứng dụng đầy đủ và cập nhật.", downloadBtn: "Tải APK", footerText: "&copy; 2026 XTMODEPRO. Mọi quyền được bảo lưu.", morning: "Chào buổi sáng", afternoon: "Chào buổi chiều", evening: "Chào buổi tối", night: "Chúc ngủ ngon", welcomeSuffix: " đến với XTMODEPRO! 🚀", noData: "Không tìm thấy mod nào.", failLoad: "Không thể tải dữ liệu từ database.json", loadingText: "Đang tải dữ liệu..." },
-            it: { name: "Italiano (Italia)", searchPlace: "Cerca mod...", bannerSub: "Database di mod per giochi e app completo e aggiornato.", downloadBtn: "Scarica APK", footerText: "&copy; 2026 XTMODEPRO. Tutti i diritti riservati.", morning: "Buongiorno", afternoon: "Buon Pomeriggio", evening: "Buonasera", night: "Buonanotte", welcomeSuffix: " su XTMODEPRO! 🚀", noData: "Nessun mod trovato.", failLoad: "Impossibile caricare i dati da database.json", loadingText: "Caricamento dati..." },
-            nl: { name: "Nederlands (Belanda)", searchPlace: "Zoek mod...", bannerSub: "Volledige en bijgewerkte game- en app-mod-database.", downloadBtn: "Download APK", footerText: "&copy; 2026 XTMODEPRO. Alle rechten voorbehouden.", morning: "Goedemorgen", afternoon: "Goedemiddag", evening: "Goedenavond", night: "Goedenacht", welcomeSuffix: " bij XTMODEPRO! 🚀", noData: "Geen mods gevonden.", failLoad: "Laden van data uit database.json mislukt", loadingText: "Data laden..." },
-            tr: { name: "Türkçe (Turki)", searchPlace: "Mod ara...", bannerSub: "Eksiksiz ve güncel oyun ve uygulama mod veritabanı.", downloadBtn: "APK İndir", footerText: "&copy; 2026 XTMODEPRO. Tüm hakları saklıdır.", morning: "Günaydın", afternoon: "Tünaydın", evening: "İyi Akşamlar", night: "İyi Geceler", welcomeSuffix: " XTMODEPRO'ya Hoş Geldiniz! 🚀", noData: "Mod bulunamadı.", failLoad: "database.json verisi yüklenemedi", loadingText: "Veriler yükleniyor..." }
+            id: { 
+                name: "Bahasa Indonesia", searchPlace: "Cari mod...", bannerSub: "Database mod game dan aplikasi terlengkap dan terupdate.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. All rights reserved.", morning: "Selamat Pagi", afternoon: "Selamat Siang", evening: "Selamat Sore", night: "Selamat Malam", welcomeSuffix: " di XTMODEPRO! 🚀", noData: "Tidak ada mod ditemukan.", failLoad: "Gagal memuat data dari database.json", loadingText: "Memuat data...", 
+                tutTitle: "Bingung Cara Downloadnya?", tutDesc: "Tonton video panduan singkat cara mengunduh file dengan aman.", tutBtn: "Tonton Tutorial",
+                tgTitle: "Gabung Komunitas Kami", tgChannel: "Saluran Telegram", tgVip: "Grup Diskusi"
+            },
+            jv: { 
+                name: "Basa Jawa (Jawa)", searchPlace: "Nggoleki mod...", bannerSub: "Database mod game lan aplikasi paling jangkep lan terupdate.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. Kabeh hak dilindungi.", morning: "Sugeng Enjang", afternoon: "Sugeng Siang", evening: "Sugeng Sonten", night: "Sugeng Dalu", welcomeSuffix: " teng XTMODEPRO! 🚀", noData: "Ora ana mod sing ditemokake.", failLoad: "Gagal ngemot data saka database.json", loadingText: "Ngemot data...", 
+                tutTitle: "Bingung Cara Download?", tutDesc: "Tonton video panduan cepet cara ngunduh file kanthi aman.", tutBtn: "Tonton Tutorial",
+                tgTitle: "Gabung Komunitas Kula", tgChannel: "Saluran Telegram", tgVip: "Grup Diskusi"
+            },
+            su: { 
+                name: "Basa Sunda (Sunda)", searchPlace: "Parios mod...", bannerSub: "Database mod game sareng aplikasi panglengkepna tur terupdate.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. Sadaya hak ditangtayungan.", morning: "Wilujeng Enjing", afternoon: "Wilujeng Siang", evening: "Wilujeng Sonten", night: "Wilujeng Wengi", welcomeSuffix: " di XTMODEPRO! 🚀", noData: "Teu aya mod nu kapanggih.", failLoad: "Gagal ngamuat data ti database.json", loadingText: "Ngamuat data...", 
+                tutTitle: "Bingung Cara Ngunduhna?", tutDesc: "Tonton pidéo panduan singget cara ngunduh file kalayan aman.", tutBtn: "Tonton Pidéo",
+                tgTitle: "Gabung Komunitas Urang", tgChannel: "Saluran Telegram", tgVip: "Grup Diskusi"
+            },
+            min: { 
+                name: "Baso Minang (Minang)", searchPlace: "Cari mod...", bannerSub: "Database mod game jo aplikasi paling langkok jo terupdate.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. Kasadonyo hak dilindungi.", morning: "Pagi", afternoon: "Siang", evening: "Petang", night: "Malam", welcomeSuffix: " di XTMODEPRO! 🚀", noData: "Indak ado mod nan tajumpo.", failLoad: "Gagal maambik data dari database.json", loadingText: "Mambukak data...", 
+                tutTitle: "Bingung Cara Downloadnyo?", tutDesc: "Caliak video panduan singkek caro mandownload file jo aman.", tutBtn: "Caliak Video",
+                tgTitle: "Gabuang Komunitas Kito", tgChannel: "Saluran Telegram", tgVip: "Grup Diskusi"
+            },
+            ban: { 
+                name: "Basa Bali (Bali)", searchPlace: "Ngalih mod...", bannerSub: "Database mod game lan aplikasi pinih jangkep lan terupdate.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. Hak cipta kalindungi.", morning: "Rahajeng Semeng", afternoon: "Rahajeng Siang", evening: "Rahajeng Sanja", night: "Rahajeng Wengi", welcomeSuffix: " ring XTMODEPRO! 🚀", noData: "Tusing ada mod katemu.", failLoad: "Paling muat data uli database.json", loadingText: "Ngemuat data...", 
+                tutTitle: "Bingung Cara Ngedownload?", tutDesc: "Cingak video panduan cutet cara ngunduh file antuk aman.", tutBtn: "Cingak Video",
+                tgTitle: "Gabung Komunitas Iraga", tgChannel: "Saluran Telegram", tgVip: "Grup Diskusi"
+            },
+            bug: { 
+                name: "Basa Ugi (Bugis)", searchPlace: "Sappa mod...", bannerSub: "Database mod game na aplikasi pammase pole terupdate.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. Hak cipta ipariyawa.", morning: "Aga Kareba Ele", afternoon: "Aga Kareba Tangsoppeng", evening: "Aga Kareba Aso", night: "Aga Kareba Wenni", welcomeSuffix: " ri XTMODEPRO! 🚀", noData: "Dekkaga mod lolongeng.", failLoad: "Gagal naola data pole database.json", loadingText: "Maccina data...", 
+                tutTitle: "Makana Kalarang Download?", tutDesc: "Nita video panduan mappakessing cara mendownload file.", tutBtn: "Nita Video",
+                tgTitle: "Mappabalu Komunitas", tgChannel: "Saluran Telegram", tgVip: "Grup Diskusi"
+            },
+            ace: { 
+                name: "Basa Aceh (Aceh)", searchPlace: "Cari mod...", bannerSub: "Database mod game ngon aplikasi yang paleng leubéh jangkep.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. Hak cipta geulindungi.", morning: "Seulamat Beureuhi", afternoon: "Seulamat Seupot", evening: "Seulamat Malam", night: "Seulamat Malam", welcomeSuffix: " bak XTMODEPRO! 🚀", noData: "Hana mod yang meureumpok.", failLoad: "Gagal ba data dari database.json", loadingText: "Geumuat data...", 
+                tutTitle: "Bimbung Cara Download?", tutDesc: "Peuhet video panduan singkat cara download file.", tutBtn: "Peuhet Video",
+                tgTitle: "Meugabung Komunitas Geutanyoe", tgChannel: "Saluran Telegram", tgVip: "Grup Diskusi"
+            },
+            bjn: { 
+                name: "Bahasa Banjar (Banjar)", searchPlace: "Cari mod...", bannerSub: "Database mod game lawan aplikasi pamingkomplitnya wan terupdate.", downloadBtn: "Unduh APK", footerText: "&copy; 2026 XTMODEPRO. Bartahan hak dilindungi.", morning: "Selamat Baisukan", afternoon: "Selamat Tengah Hari", evening: "Selamat Sore", night: "Selamat Malam", welcomeSuffix: " di XTMODEPRO! 🚀", noData: "Kada dada mod tatamu.", failLoad: "Kada kawa muat data dari database.json", loadingText: "Memuat data...", 
+                tutTitle: "Bingung Cara Mendownload?", tutDesc: "Lihati video panduan singkat cara mendownload file.", tutBtn: "Lihati Video",
+                tgTitle: "Gabung Komunitas Kita", tgChannel: "Saluran Telegram", tgVip: "Grup Diskusi"
+            },
+            en: { 
+                name: "English (US/UK)", searchPlace: "Search mod...", bannerSub: "Complete and updated game and application mod database.", downloadBtn: "Download APK", footerText: "&copy; 2026 XTMODEPRO. All rights reserved.", morning: "Good Morning", afternoon: "Good Afternoon", evening: "Good Evening", night: "Good Night", welcomeSuffix: " to XTMODEPRO! 🚀", noData: "No mods found.", failLoad: "Failed to load data from database.json", loadingText: "Loading data...", 
+                tutTitle: "Confused How to Download?", tutDesc: "Watch a short video guide on how to download files safely.", tutBtn: "Watch Tutorial",
+                tgTitle: "Join Our Community", tgChannel: "Telegram Channel", tgVip: "Discussion Group"
+            },
+            es: { 
+                name: "Español (Spanyol)", searchPlace: "Buscar mod...", bannerSub: "Base de datos completa y actualizada de mods de juegos y aplicaciones.", downloadBtn: "Descargar APK", footerText: "&copy; 2026 XTMODEPRO. Todos los derechos reservados.", morning: "Buenos Días", afternoon: "Buenas Tardes", evening: "Buenas Tardes", night: "Buenas Noches", welcomeSuffix: " a XTMODEPRO! 🚀", noData: "No se encontraron mods.", failLoad: "Error al cargar datos de database.json", loadingText: "Cargando datos...", 
+                tutTitle: "¿Confundido sobre cómo descargar?", tutDesc: "Mira un video guía breve sobre cómo descargar archivos de forma segura.", tutBtn: "Ver Tutorial",
+                tgTitle: "Únete a Nuestra Comunidad", tgChannel: "Canal de Telegram", tgVip: "Grupo de Discusión"
+            },
+            fr: { 
+                name: "Français (Prancis)", searchPlace: "Rechercher un mod...", bannerSub: "Base de données de mods de jeux et d'applications complète et mise à jour.", downloadBtn: "Télécharger APK", footerText: "&copy; 2026 XTMODEPRO. Tous droits réservés.", morning: "Bonjour", afternoon: "Bon Après-midi", evening: "Bonsoir", night: "Bonne Nuit", welcomeSuffix: " sur XTMODEPRO! 🚀", noData: "Aucun mod trouvé.", failLoad: "Échec du chargement de database.json", loadingText: "Chargement...", 
+                tutTitle: "Comment télécharger ?", tutDesc: "Regardez une courte vidéo pour apprendre à télécharger des fichiers.", tutBtn: "Voir le Tuto",
+                tgTitle: "Rejoignez notre communauté", tgChannel: "Canal Telegram", tgVip: "Groupe de Discussion"
+            },
+            de: { 
+                name: "Deutsch (Jerman)", searchPlace: "Mod suchen...", bannerSub: "Vollständige und aktualisierte Game- und App-Mod-Datenbank.", downloadBtn: "APK Herunterladen", footerText: "&copy; 2026 XTMODEPRO. Alle Rechte vorbehalten.", morning: "Guten Morgen", afternoon: "Guten Tag", evening: "Guten Abend", night: "Gute Nacht", welcomeSuffix: " bei XTMODEPRO! 🚀", noData: "Keine Mods gefunden.", failLoad: "Fehler beim Laden von database.json", loadingText: "Lade Daten...", 
+                tutTitle: "Unklar, wie man herunterlädt?", tutDesc: "Sehen Sie sich ein kurzes Video-Tutorial zum sicheren Download an.", tutBtn: "Tutorial Ansehen",
+                tgTitle: "Treten Sie unserer Community bei", tgChannel: "Telegram-Kanal", tgVip: "Diskussionsgruppe"
+            },
+            ja: { 
+                name: "日本語 (Jepang)", searchPlace: "MODを検索...", bannerSub: "完全かつ更新されたゲームおよびアプリのMODデータベース。", downloadBtn: "APKをダウンロード", footerText: "&copy; 2026 XTMODEPRO. All rights reserved.", morning: "おはようございます", afternoon: "こんにちは", evening: "こんばんは", night: "おやすみなさい", welcomeSuffix: " XTMODEPROへ！ 🚀", noData: "MODが見つかりません。", failLoad: "database.jsonの読み込みに失敗しました", loadingText: "データを読み込み中...", 
+                tutTitle: "ダウンロード方法がわかりませんか？", tutDesc: "ファイルを安全にダウンロードするための短い動画ガイドをご覧ください。", tutBtn: "動画を見る",
+                tgTitle: "コミュニティに参加する", tgChannel: "Telegramチャンネル", tgVip: "ディスカッショングループ"
+            },
+            ko: { 
+                name: "한국어 (Korea)", searchPlace: "모드 검색...", bannerSub: "완벽하고 최신화된 게임 및 앱 모드 데이터베이스.", downloadBtn: "APK 다운로드", footerText: "&copy; 2026 XTMODEPRO. All rights reserved.", morning: "좋은 아침입니다", afternoon: "좋은 오후입니다", evening: "좋은 저녁입니다", night: "안녕히 주무세요", welcomeSuffix: " XTMODEPRO에 오신 것을 환영합니다! 🚀", noData: "모드를 찾을 수 없습니다.", failLoad: "database.json을 불러오지 못했습니다", loadingText: "데이터 로딩 중...", 
+                tutTitle: "다운로드 방법을 모르시나요?", tutDesc: "안전하게 파일을 다운로드하는 방법에 대한 짧은 동영상 가이드를 시청하세요.", tutBtn: "튜토리얼 보기",
+                tgTitle: "커뮤니티 가입하기", tgChannel: "텔레그램 채널", tgVip: "토론 그룹"
+            },
+            zh: { 
+                name: "中文 (Cina)", searchPlace: "搜索 MOD...", bannerSub: "完整且更新的游戏和应用 MOD 数据库。", downloadBtn: "下载 APK", footerText: "&copy; 2026 XTMODEPRO. 保留所有权利。", morning: "早上好", afternoon: "下午好", evening: "晚上好", night: "晚安", welcomeSuffix: " 欢迎来到 XTMODEPRO！ 🚀", noData: "未找到相关 MOD。", failLoad: "无法从 database.json 加载数据", loadingText: "加载数据中...", 
+                tutTitle: "不知道怎么下载？", tutDesc: "观看简短的视频指南，了解如何安全地下载文件。", tutBtn: "观看教程",
+                tgTitle: "加入我们的社群", tgChannel: "电报频道", tgVip: "交流群组"
+            },
+            ar: { 
+                name: "العربية (Arab)", searchPlace: "بحث عن مود...", bannerSub: "قاعدة بيانات تعديلات الألعاب والتطبيقات الكاملة والمحدثة.", downloadBtn: "تحميل APK", footerText: "&copy; 2026 XTMODEPRO. جميع الحقوق محفوظة.", morning: "صباح الخير", afternoon: "مساء الخير", evening: "مساء الخير", night: "تصبح على خير", welcomeSuffix: " في XTMODEPRO! 🚀", noData: "لم يتم العثور على أي مود.", failLoad: "فشل تحميل البيانات من database.json", loadingText: "جاري تحميل البيانات...", 
+                tutTitle: "هل أنت مرتبك بشأن كيفية التحميل؟", tutDesc: "شاهد فيديو توضيحي قصير حول كيفية تحميل الملفات بأمان.", tutBtn: "شاهد الشرح",
+                tgTitle: "انضم إلى مجتمعنا", tgChannel: "قناة تيليجرام", tgVip: "مجموعة النقاش"
+            },
+            ru: { 
+                name: "Русский (Rusia)", searchPlace: "Поиск мода...", bannerSub: "Полная и обновленная база данных модов для игр и приложений.", downloadBtn: "Скачать APK", footerText: "&copy; 2026 XTMODEPRO. Все права защищены.", morning: "Доброе утро", afternoon: "Добрый день", evening: "Добрый вечер", night: "Доброй ночи", welcomeSuffix: " в XTMODEPRO! 🚀", noData: "Моды не найдены.", failLoad: "Не удалось загрузить database.json", loadingText: "Загрузка данных...", 
+                tutTitle: "Не знаете, как скачать?", tutDesc: "Посмотрите короткое видео-руководство о том, как безопасно скачивать файлы.", tutBtn: "Смотреть урок",
+                tgTitle: "Присоединяйтесь к нам", tgChannel: "Telegram Канал", tgVip: "Группа Обсуждения"
+            },
+            pt: { 
+                name: "Português (Brasil/Portugal)", searchPlace: "Buscar mod...", bannerSub: "Banco de dados completo e atualizado de mods de jogos e aplicativos.", downloadBtn: "Baixar APK", footerText: "&copy; 2026 XTMODEPRO. Todos os direitos reservados.", morning: "Bom Dia", afternoon: "Boa Tarde", evening: "Boa Tarde", night: "Boa Noite", welcomeSuffix: " ao XTMODEPRO! 🚀", noData: "Nenhum mod encontrado.", failLoad: "Falha ao carregar dados do database.json", loadingText: "Carregando dados...", 
+                tutTitle: "Com dúvida de como baixar?", tutDesc: "Assista a um breve vídeo tutorial sobre como baixar arquivos com segurança.", tutBtn: "Assistir Tutorial",
+                tgTitle: "Entre na nossa Comunidade", tgChannel: "Canal do Telegram", tgVip: "Grupo de Discussão"
+            },
+            hi: { 
+                name: "हिन्दी (India)", searchPlace: "मोड खोजें...", bannerSub: "पूरा और अद्यतन गेम और ऐप मोड डेटाबेस।", downloadBtn: "APK डाउनलोड करें", footerText: "&copy; 2026 XTMODEPRO. सर्वाधिकार सुरक्षित।", morning: "शुभ प्रभात", afternoon: "शुभ दोपहर", evening: "शुभ संध्या", night: "शुभ रात्रि", welcomeSuffix: " XTMODEPRO में आपका स्वागत है! 🚀", noData: "कोई मोड नहीं मिला।", failLoad: "database.json से डेटा लोड करने में विफल", loadingText: "डेटा लोड हो रहा है...", 
+                tutTitle: "डाउनलोड करने में भ्रम है?", tutDesc: "सुरक्षित रूप से फ़ाइलें डाउनलोड करने के तरीके पर एक छोटा वीडियो गाइड देखें।", tutBtn: "ट्यूटोरियल देखें",
+                tgTitle: "हमारे समुदाय में शामिल हों", tgChannel: "टेलीग्राम चैनल", tgVip: "चर्चा समूह"
+            },
+            th: { 
+                name: "ไทย (Thailand)", searchPlace: "ค้นหามอด...", bannerSub: "ฐานข้อมูลมอดเกมและแอปพลิเคชันที่สมบูรณ์และอัปเดตล่าสุด", downloadBtn: "ดาวน์โหลด APK", footerText: "&copy; 2026 XTMODEPRO. สงวนลิขสิทธิ์.", morning: "อรุณสวัสดิ์", afternoon: "สวัสดีตอนบ่าย", evening: "สวัสดีตอนเย็น", night: "ราตรีสวัสดิ์", welcomeSuffix: " ยินดีต้อนรับสู่ XTMODEPRO! 🚀", noData: "ไม่พบมอดที่ค้นหา", failLoad: "โหลดข้อมูลจาก database.json ไม่สำเร็จ", loadingText: "กำลังโหลดข้อมูล...", 
+                tutTitle: "สงสัยวิธีดาวน์โหลด?", tutDesc: "ดูวิดีโอแนะนำสั้น ๆ เกี่ยวกับวิธีดาวน์โหลดไฟล์อย่างปลอดภัย", tutBtn: "ดูวิดีโอแนะนำ",
+                tgTitle: "เข้าร่วมชุมชนของเรา", tgChannel: "ช่อง Telegram", tgVip: "กลุ่มพูดคุย"
+            },
+            vi: { 
+                name: "Tiếng Việt (Vietnam)", searchPlace: "Tìm kiếm mod...", bannerSub: "Cơ sở dữ liệu mod trò chơi và ứng dụng đầy đủ và cập nhật.", downloadBtn: "Tải APK", footerText: "&copy; 2026 XTMODEPRO. Mọi quyền được bảo lưu.", morning: "Chào buổi sáng", afternoon: "Chào buổi chiều", evening: "Chào buổi tối", night: "Chúc ngủ ngon", welcomeSuffix: " đến với XTMODEPRO! 🚀", noData: "Không tìm thấy mod nào.", failLoad: "Không thể tải dữ liệu từ database.json", loadingText: "Đang tải dữ liệu...", 
+                tutTitle: "Không biết cách tải xuống?", tutDesc: "Xem video hướng dẫn ngắn về cách tải xuống tệp một cách an toàn.", tutBtn: "Xem Hướng Dẫn",
+                tgTitle: "Tham gia cộng đồng của chúng tôi", tgChannel: "Kênh Telegram", tgVip: "Nhóm Thảo Luận"
+            },
+            it: { 
+                name: "Italiano (Italia)", searchPlace: "Cerca mod...", bannerSub: "Database di mod per giochi e app completo e aggiornato.", downloadBtn: "Scarica APK", footerText: "&copy; 2026 XTMODEPRO. Tutti i diritti riservati.", morning: "Buongiorno", afternoon: "Buon Pomeriggio", evening: "Buonasera", night: "Buonanotte", welcomeSuffix: " su XTMODEPRO! 🚀", noData: "Nessun mod trovato.", failLoad: "Impossibile caricare i dati da database.json", loadingText: "Caricamento dati...", 
+                tutTitle: "Dubbi su come scaricare?", tutDesc: "Guarda un breve video guida su come scaricare i file in sicurezza.", tutBtn: "Guarda Tutorial",
+                tgTitle: "Unisciti alla nostra community", tgChannel: "Canale Telegram", tgVip: "Gruppo di Discussione"
+            },
+            nl: { 
+                name: "Nederlands (Belanda)", searchPlace: "Zoek mod...", bannerSub: "Volledige en bijgewerkte game- en app-mod-database.", downloadBtn: "Download APK", footerText: "&copy; 2026 XTMODEPRO. Alle rechten voorbehouden.", morning: "Goedemorgen", afternoon: "Goedemiddag", evening: "Goedenavond", night: "Goedenacht", welcomeSuffix: " bij XTMODEPRO! 🚀", noData: "Geen mods gevonden.", failLoad: "Laden van data uit database.json mislukt", loadingText: "Data laden...", 
+                tutTitle: "Onzeker over downloaden?", tutDesc: "Bekijk een korte videohandleiding over het veilig downloaden van bestanden.", tutBtn: "Bekijk Handleiding",
+                tgTitle: "Word lid van onze community", tgChannel: "Telegram-kanaal", tgVip: "Discussiegroep"
+            },
+            tr: { 
+                name: "Türkçe (Turki)", searchPlace: "Mod ara...", bannerSub: "Eksiksiz ve güncel oyun ve uygulama mod veritabanı.", downloadBtn: "APK İndir", footerText: "&copy; 2026 XTMODEPRO. Tüm hakları saklıdır.", morning: "Günaydın", afternoon: "Tünaydın", evening: "İyi Akşamlar", night: "İyi Geceler", welcomeSuffix: " XTMODEPRO'ya Hoş Geldiniz! 🚀", noData: "Mod bulunamadı.", failLoad: "database.json verisi yüklenemedi", loadingText: "Veriler yükleniyor...", 
+                tutTitle: "Nasıl İndirileceğini Bilmiyor musunuz?", tutDesc: "Dosyaları güvenli bir şekilde nasıl indireceğinize dair kısa bir video rehberi izleyin.", tutBtn: "Eğitimi İzle",
+                tgTitle: "Topluluğumuza Katılın", tgChannel: "Telegram Kanalı", tgVip: "Tartışma Grubu"
+            }
         };
 
         function renderLanguageList(filterText = '') {
@@ -539,6 +860,16 @@
             document.getElementById('footerText').innerHTML = t.footerText;
             document.getElementById('loadingText').innerText = t.loadingText;
 
+            // Update teks tutorial
+            document.getElementById('tutorialTitle').innerText = t.tutTitle;
+            document.getElementById('tutorialDesc').innerText = t.tutDesc;
+            document.getElementById('tutorialBtn').innerHTML = `<i class="fa-solid fa-play"></i> ${t.tutBtn}`;
+
+            // Update teks Telegram Popup
+            document.getElementById('tgPopupTitle').innerText = t.tgTitle;
+            document.getElementById('tgChannelText').innerText = t.tgChannel;
+            document.getElementById('tgVipText').innerText = t.tgVip;
+
             resetAndRenderMods();
         }
 
@@ -560,9 +891,31 @@
             langDropdown.classList.remove('active');
         }
 
+        // Toggle Floating Telegram Popup
+        const floatingTgBtn = document.getElementById('floatingTgBtn');
+        const tgPopupBox = document.getElementById('tgPopupBox');
+        const tgCloseBtn = document.getElementById('tgCloseBtn');
+
+        floatingTgBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            tgPopupBox.classList.toggle('active');
+        });
+
+        tgCloseBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            tgPopupBox.classList.remove('active');
+        });
+
+        window.addEventListener('click', () => {
+            tgPopupBox.classList.remove('active');
+        });
+
+        tgPopupBox.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
         async function loadDatabase() {
             try {
-                // Parameter timestamp ditambahkan agar browser selalu meminta data paling baru dari server
                 const response = await fetch('database.json?v=' + new Date().getTime());
                 allMods = await response.json();
                 filteredMods = [...allMods];
