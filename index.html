@@ -362,9 +362,9 @@
             border-radius: 16px;
             object-fit: cover;
             border: 1px solid var(--border);
-            background: #000;
+            background: var(--bg-secondary);
             flex-shrink: 0;
-            image-rendering: -webkit-optimize-contrast;
+            image-rendering: auto;
         }
 
         .app-info {
@@ -596,7 +596,7 @@
         <div class="container navbar">
             <div class="logo">
                 <a href="#">
-                    <img src="https://files.catbox.moe/jnelom.png" alt="Logo" class="logo-icon" loading="lazy" width="38" height="38" decoding="async">
+                    <img src="https://wsrv.nl/?url=https://files.catbox.moe/jnelom.png&w=80&q=80&output=webp&we" alt="Logo" class="logo-icon" loading="lazy" width="38" height="38" decoding="async" onerror="this.onerror=null;this.src='https://files.catbox.moe/jnelom.png'">
                     <span>XTMODEPRO</span>
                 </a>
             </div>
@@ -684,6 +684,40 @@
         let currentPage = 1;
         const itemsPerPage = 12;
         let isLoading = false;
+
+        // ===== IMAGE OPTIMIZER (limit 350px, no HD) =====
+        const IMG_FALLBACK = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(
+            '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#0d1220"/><path d="M20 40l8-10 6 7 4-5 6 8z" fill="#1e293b"/><circle cx="24" cy="22" r="3" fill="#00f2fe" opacity="0.5"/></svg>'
+        );
+
+        function getOptimizedImageUrl(url, width = 350) {
+            if (!url || typeof url !== 'string') return IMG_FALLBACK;
+            url = url.trim();
+            if (url.startsWith('data:') || url.startsWith('blob:')) return url;
+
+            // 1. Cloudinary → inject transform (resize + auto quality + webp)
+            if (url.includes('res.cloudinary.com') && url.includes('/upload/')) {
+                return url.replace('/upload/', `/upload/w_${width},q_auto:eco,f_auto/`);
+            }
+
+            // 2. ImageKit
+            if (url.includes('ik.imagekit.io')) {
+                const sep = url.includes('?') ? '&' : '?';
+                return `${url}${sep}tr=w-${width},q-70,f-webp`;
+            }
+
+            // 3. Google User Content (Blogger/Drive thumbnail) → ganti =s0 jadi =w350
+            if (/googleusercontent\.com/.test(url)) {
+                if (/=s\d+/.test(url)) return url.replace(/=s\d+.*$/, `=w${width}`);
+                if (/=w\d+/.test(url)) return url.replace(/=w\d+.*$/, `=w${width}`);
+                return url + `=w${width}`;
+            }
+
+            // 4. Fallback universal (catbox, imgur, github, drive, dll)
+            //    pakai wsrv.nl (proxy resize + WebP + cache global)
+            return `https://wsrv.nl/?url=${encodeURIComponent(url)}&w=${width}&q=70&output=webp&we`;
+        }
+        // =================================================
 
         const translations = {
             id: { 
@@ -946,7 +980,7 @@
                 appGrid.innerHTML += `
                     <div class="app-card">
                         <div class="card-top">
-                            <img src="${mod.icon}" alt="${mod.name}" loading="lazy" width="64" height="64" decoding="async">
+                            <img src="${getOptimizedImageUrl(mod.icon, 350)}" alt="${mod.name}" loading="lazy" width="64" height="64" decoding="async" onerror="this.onerror=null;this.src='${IMG_FALLBACK}'">
                             <div class="app-info">
                                 <h3>${mod.name}</h3>
                                 <span class="category-tag">${mod.category} • v${mod.version}</span>
