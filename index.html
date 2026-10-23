@@ -371,7 +371,149 @@ html[dir="rtl"] .app-features { border-left: none; border-right: 2px solid rgba(
 .tg-link-item{display:flex;align-items:center;gap:9px;padding:10px 13px;border-radius:11px;font-size:12.5px;font-weight:600;color:#5fc2f5;text-decoration:none;background:rgba(0,136,204,.1);border:1px solid rgba(0,136,204,.25);transition:.2s;}
 .tg-link-item:hover{background:#0088cc;border-color:#0088cc;color:#fff;transform:translateX(2px)}
 
-/* Command Palette */
+/* ============================================================
+   ===== NEW: CUSTOMER SERVICE CHAT =====
+   ============================================================ */
+.cs-chat-wrap{
+  position:fixed;
+  right:22px;
+  bottom:92px; /* di atas tombol Telegram */
+  z-index:9999;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:12px;
+}
+
+.cs-chat-btn{
+  position:relative;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:22px;
+  color:#fff;
+  cursor:pointer;
+  border:1px solid rgba(255,255,255,.2);
+  background:linear-gradient(140deg,#a78bfa,#8b5cf6 50%,#6366f1);
+  box-shadow:0 16px 34px -14px rgba(139,92,246,.85),0 0 0 0 rgba(139,92,246,.5);
+  transition:transform .3s cubic-bezier(.2,.9,.3,1.4),box-shadow .3s;
+  animation:tgFloat 4s ease-in-out infinite;
+}
+.cs-chat-btn:hover{
+  transform:scale(1.09);
+  box-shadow:0 20px 40px -14px rgba(139,92,246,1);
+}
+.cs-chat-btn::before{
+  content:'';
+  position:absolute;
+  inset:-4px;
+  border-radius:50%;
+  border:2px solid rgba(139,92,246,.35);
+  animation:tgRing 2.5s ease-out infinite;
+  pointer-events:none;
+}
+.cs-chat-btn .cs-badge{
+  position:absolute;
+  top:-2px;
+  right:-2px;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#10d981;
+  border:2px solid #04070e;
+  box-shadow:0 0 8px #10d981;
+}
+
+/* Panel chat */
+.cs-chat-panel{
+  width:min(380px, calc(100vw - 44px));
+  height:min(560px, 70vh);
+  background:rgba(8,14,26,.96);
+  backdrop-filter:blur(24px) saturate(160%);
+  -webkit-backdrop-filter:blur(24px) saturate(160%);
+  border:1px solid rgba(139,92,246,.3);
+  border-radius:20px;
+  box-shadow:0 30px 60px -22px #000,0 0 34px -14px rgba(139,92,246,.7);
+  display:none;
+  flex-direction:column;
+  overflow:hidden;
+  transform-origin:bottom right;
+}
+.cs-chat-panel.active{
+  display:flex;
+  animation:popIn .3s cubic-bezier(.2,.9,.3,1.3) both;
+}
+
+.cs-chat-header{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 14px;
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(99,102,241,.04));
+  flex-shrink:0;
+}
+.cs-chat-avatar{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:15px;
+  color:#fff;
+  background:linear-gradient(135deg,#a78bfa,#6366f1);
+  flex-shrink:0;
+  box-shadow:0 0 0 3px rgba(139,92,246,.15);
+}
+.cs-chat-info{min-width:0;flex:1}
+.cs-chat-info h4{font-size:13.5px;font-weight:700;color:#fff;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cs-chat-info p{font-size:11px;color:#22d3ee;display:flex;align-items:center;gap:5px;font-weight:600}
+.cs-chat-info p .dot{width:6px;height:6px;background:#10d981;border-radius:50%;box-shadow:0 0 6px #10d981;display:inline-block}
+
+.cs-chat-ext,
+.cs-chat-close{
+  display:grid;
+  place-items:center;
+  width:30px;
+  height:30px;
+  border-radius:9px;
+  color:var(--muted);
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--line);
+  font-size:12px;
+  cursor:pointer;
+  transition:.2s;
+  text-decoration:none;
+  flex-shrink:0;
+}
+.cs-chat-ext{margin-left:auto}
+.cs-chat-ext:hover{background:rgba(139,92,246,.25);color:#fff;border-color:rgba(139,92,246,.5)}
+.cs-chat-close:hover{background:rgba(251,113,133,.25);color:#fff;border-color:rgba(251,113,133,.5)}
+
+.cs-chat-body{
+  flex:1;
+  position:relative;
+  background:#04070e;
+  overflow:hidden;
+}
+.cs-chat-body iframe{
+  width:100%;
+  height:100%;
+  border:0;
+  display:block;
+  background:#04070e;
+}
+
+/* Responsive chat */
+@media(max-width:460px){
+  .cs-chat-wrap{right:16px;bottom:88px}
+  .cs-chat-panel{width:calc(100vw - 32px);height:min(70vh, 540px)}
+  .cs-chat-btn,.floating-tg-btn{width:54px;height:54px;font-size:22px}
+}
+
+/* ---------- COMMAND PALETTE ---------- */
 .cmd-overlay{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.6);backdrop-filter:blur(10px);display:none;align-items:flex-start;justify-content:center;padding-top:10vh;}
 .cmd-overlay.active{display:flex;animation:fadeIn .15s ease-out both}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
@@ -392,7 +534,7 @@ html[dir="rtl"] .app-features { border-left: none; border-right: 2px solid rgba(
 .cmd-item-sub{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cmd-empty{padding:40px 20px;text-align:center;color:var(--muted);font-size:14px}
 
-/* CMD Hint — previously missing */
+/* CMD Hint */
 .cmd-hint{display:flex;gap:18px;padding:11px 24px;border-top:1px solid var(--line);
   font-size:11px;color:var(--dim);font-weight:600;letter-spacing:.03em}
 .cmd-hint span{display:inline-flex;align-items:center;gap:6px}
@@ -419,7 +561,7 @@ footer p{font-size:12.5px;color:var(--muted);letter-spacing:.02em}
 @media(max-width:820px){
   .nav-actions{width:100%;order:3;justify-content:flex-start; gap: 8px;}
   .search-trigger{max-width:none; flex: 1; min-width: 0;}
-  .kbd{display:none !important;} /* Sembunyikan Ctrl+K di mobile */
+  .kbd{display:none !important;}
 
   .hero{padding:36px 24px 34px;border-radius:24px}
   .hero h1{max-width:none}
@@ -608,6 +750,34 @@ footer p{font-size:12.5px;color:var(--muted);letter-spacing:.02em}
   </button>
 </div>
 
+<!-- ================= NEW: FLOATING CUSTOMER SERVICE CHAT ================= -->
+<div class="cs-chat-wrap">
+  <div class="cs-chat-panel" id="csChatPanel" role="dialog" aria-label="Customer Service Chat">
+    <div class="cs-chat-header">
+      <div class="cs-chat-avatar"><i class="fa-solid fa-headset"></i></div>
+      <div class="cs-chat-info">
+        <h4 id="csChatTitle">Customer Service</h4>
+        <p><span class="dot"></span><span id="csChatStatus">Online · AI Assistant</span></p>
+      </div>
+      <a href="https://xtmodepro-ai.edgeone.dev/" target="_blank" rel="noopener noreferrer"
+         class="cs-chat-ext" title="Open in new tab" aria-label="Open in new tab">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </a>
+      <button class="cs-chat-close" id="csChatClose" aria-label="Close chat">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="cs-chat-body">
+      <iframe src="https://xtmodepro-ai.edgeone.dev/" title="XTMODEPRO Customer Service" allow="clipboard-write; clipboard-read; microphone"></iframe>
+    </div>
+  </div>
+
+  <button class="cs-chat-btn" id="csChatBtn" title="Chat Customer Service" aria-label="Open customer service chat">
+    <i class="fa-solid fa-headset"></i>
+    <span class="cs-badge"></span>
+  </button>
+</div>
+
 <!-- ================= COMMAND PALETTE ================= -->
 <div class="cmd-overlay" id="cmdOverlay" role="dialog" aria-modal="true" aria-label="Search files">
   <div class="cmd-panel">
@@ -666,7 +836,11 @@ const LANGUAGES = {
     sortDefault: 'Default Sort',
     sortAsc: 'Name A→Z',
     sortDesc: 'Name Z→A',
-    sortSize: 'Largest Size'
+    sortSize: 'Largest Size',
+    /* NEW: Customer Service */
+    csTitle: 'Customer Service',
+    csStatus: 'Online · AI Assistant',
+    csTooltip: 'Chat Customer Service'
   },
   id: {
     greetingTitle: 'Selamat datang di <span class="accent">XTMODEPRO</span>! 🚀',
@@ -693,7 +867,11 @@ const LANGUAGES = {
     sortDefault: 'Urutan Default',
     sortAsc: 'Nama A→Z',
     sortDesc: 'Nama Z→A',
-    sortSize: 'Ukuran Terbesar'
+    sortSize: 'Ukuran Terbesar',
+    /* NEW: Customer Service */
+    csTitle: 'Layanan Pelanggan',
+    csStatus: 'Online · Asisten AI',
+    csTooltip: 'Chat Layanan Pelanggan'
   },
   ar: {
     greetingTitle: 'مرحبًا بك في <span class="accent">XTMODEPRO</span>! 🚀',
@@ -720,7 +898,11 @@ const LANGUAGES = {
     sortDefault: 'الترتيب الافتراضي',
     sortAsc: 'الاسم أ→ي',
     sortDesc: 'الاسم ي→أ',
-    sortSize: 'الأكبر حجمًا'
+    sortSize: 'الأكبر حجمًا',
+    /* NEW: Customer Service */
+    csTitle: 'خدمة العملاء',
+    csStatus: 'متصل · مساعد ذكي',
+    csTooltip: 'دردشة خدمة العملاء'
   }
 };
 
@@ -752,7 +934,7 @@ function applyLanguage(code) {
   set('tutorialDesc', dict.tutorialDesc);
   set('tutorialBtn', `<i class="fa-solid fa-play"></i> ${dict.tutorialBtn}`, true);
   set('footerText', dict.footerText);
-  set('cmdInput', null); // no-op guard
+  set('cmdInput', null);
   const ci = document.getElementById('cmdInput'); if (ci) ci.placeholder = dict.cmdPlaceholder;
   set('cmdHintOpen', dict.cmdHintOpen);
   set('cmdHintClose', dict.cmdHintClose);
@@ -762,7 +944,15 @@ function applyLanguage(code) {
   set('loaderText', dict.detecting);
   set('loadingText', dict.loading);
 
-  // Update sort options
+  /* NEW: Customer Service labels */
+  set('csChatTitle', dict.csTitle);
+  set('csChatStatus', dict.csStatus);
+  const csBtn = document.getElementById('csChatBtn');
+  if (csBtn) {
+    csBtn.title = dict.csTooltip;
+    csBtn.setAttribute('aria-label', dict.csTooltip);
+  }
+
   const sortSel = document.getElementById('sortSelect');
   if (sortSel) {
     const opts = sortSel.querySelectorAll('option');
@@ -770,7 +960,6 @@ function applyLanguage(code) {
     opts.forEach((o, i) => { if (keys[i]) o.textContent = dict[keys[i]]; });
   }
 
-  // Rebuild category chips (label "All" berubah)
   if (typeof allMods !== 'undefined' && allMods.length) buildCategories();
 }
 
@@ -1104,7 +1293,6 @@ cmdOverlay.addEventListener('click', e => { if (e.target === cmdOverlay) closeCm
 cmdInput.addEventListener('input', () => renderCmd(cmdInput.value));
 
 document.addEventListener('keydown', (e) => {
-  // Global shortcut
   if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
     e.preventDefault();
     if (cmdOverlay.classList.contains('active')) closeCmd();
@@ -1140,8 +1328,11 @@ document.addEventListener('keydown', (e) => {
    ========================================================= */
 const floatingTgBtn = document.getElementById('floatingTgBtn');
 const tgPopupBox    = document.getElementById('tgPopupBox');
+
 floatingTgBtn.addEventListener('click', (e) => {
   e.stopPropagation();
+  /* NEW: close chat when telegram opens */
+  if (typeof csChatPanel !== 'undefined') csChatPanel.classList.remove('active');
   tgPopupBox.classList.toggle('active');
 });
 document.getElementById('tgCloseBtn').addEventListener('click', (e) => {
@@ -1150,6 +1341,39 @@ document.getElementById('tgCloseBtn').addEventListener('click', (e) => {
 });
 window.addEventListener('click', () => tgPopupBox.classList.remove('active'));
 tgPopupBox.addEventListener('click', (e) => e.stopPropagation());
+
+/* =========================================================
+   ===== NEW: CUSTOMER SERVICE CHAT =====
+   ========================================================= */
+const csChatBtn   = document.getElementById('csChatBtn');
+const csChatPanel = document.getElementById('csChatPanel');
+const csChatClose = document.getElementById('csChatClose');
+
+csChatBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  /* Tutup popup telegram agar tidak tabrakan */
+  tgPopupBox.classList.remove('active');
+  csChatPanel.classList.toggle('active');
+});
+
+csChatClose.addEventListener('click', (e) => {
+  e.stopPropagation();
+  csChatPanel.classList.remove('active');
+});
+
+/* Klik di luar panel = tutup */
+window.addEventListener('click', (e) => {
+  if (!csChatPanel.classList.contains('active')) return;
+  if (csChatPanel.contains(e.target) || csChatBtn.contains(e.target)) return;
+  csChatPanel.classList.remove('active');
+});
+
+/* ESC = tutup chat */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && csChatPanel.classList.contains('active')) {
+    csChatPanel.classList.remove('active');
+  }
+});
 
 /* =========================================================
    SCROLL PROGRESS + BACK TO TOP
